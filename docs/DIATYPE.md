@@ -15,11 +15,25 @@ Open:
 Because this is a local unsigned app, macOS may require right-click → Open the
 first time.
 
-The app tries these font names:
+The build script embeds locally installed Diatype font files into:
+
+`dist/Photo System.app/Contents/Resources/Fonts`
+
+It currently looks for local font files matching:
+
+- `~/Library/Fonts/ABCDiatypeTrial-*.otf`
+- `~/Library/Fonts/*Diatype*.otf`
+- `~/Library/Fonts/*Diatype*.ttf`
+
+The app registers bundled fonts at launch and then tries these font names:
 
 - Diatype
 - ABC Diatype
 - ABCDiatype
+- ABCDiatypeTrial-Regular
+- ABCDiatypeTrial-Medium
+- ABCDiatypeTrial-Bold
+- ABCDiatypeTrial-Heavy
 - Diatype-Regular
 - Diatype Variable
 

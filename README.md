@@ -99,8 +99,9 @@ Then open:
 
 `/Users/mxpf/Code/photo-system-automation/dist/Photo System.app`
 
-The app uses Diatype if macOS exposes the font under a standard Diatype family
-name, and falls back to the system font otherwise.
+The build script embeds locally installed Diatype font files into the app
+bundle. The app registers those fonts at launch and falls back to the system
+font if none are available.
 
 Because this is a local unsigned app, macOS may require right-click → Open the
 first time.

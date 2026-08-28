@@ -1,4 +1,5 @@
 import Cocoa
+import CoreText
 
 enum Settings {
     static let projectRoot = "/Users/mxpf/Code/photo-system-automation"
@@ -7,6 +8,10 @@ enum Settings {
 
 func preferredFont(size: CGFloat, weight: NSFont.Weight = .regular) -> NSFont {
     let names = [
+        "ABCDiatypeTrial-Regular",
+        "ABCDiatypeTrial-Medium",
+        "ABCDiatypeTrial-Bold",
+        "ABCDiatypeTrial-Heavy",
         "Diatype",
         "ABC Diatype",
         "ABCDiatype",
@@ -36,6 +41,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        registerBundledFonts()
         NSApp.setActivationPolicy(.accessory)
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = statusItem.button {
@@ -44,6 +50,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             button.toolTip = "Photo System Automation"
         }
         rebuildMenu()
+    }
+
+    private func registerBundledFonts() {
+        guard let fontsURL = Bundle.main.resourceURL?.appendingPathComponent("Fonts") else {
+            return
+        }
+        guard let files = try? FileManager.default.contentsOfDirectory(
+            at: fontsURL,
+            includingPropertiesForKeys: nil
+        ) else {
+            return
+        }
+
+        for url in files where ["otf", "ttf"].contains(url.pathExtension.lowercased()) {
+            CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
+        }
     }
 
     private func rebuildMenu() {
