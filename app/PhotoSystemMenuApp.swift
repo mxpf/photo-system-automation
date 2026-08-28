@@ -36,13 +36,14 @@ func styled(_ title: String, size: CGFloat = 14, weight: NSFont.Weight = .regula
     )
 }
 
-@main
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
+    private var mainWindow: NSWindow?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        log("applicationDidFinishLaunching")
         registerBundledFonts()
-        NSApp.setActivationPolicy(.accessory)
+        NSApp.setActivationPolicy(.regular)
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = statusItem.button {
             button.title = "📷 Photos"
@@ -50,29 +51,30 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             button.toolTip = "Photo System Automation"
         }
         rebuildMenu()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            self.alert(
-                title: "Photo System is running",
-                text: "Look for “📷 Photos” in the menu bar. Use it to audit now, check status, open the latest report, or change the background audit interval.",
-                ok: true
-            )
-        }
+        showWindow()
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return false
     }
 
     private func registerBundledFonts() {
         guard let fontsURL = Bundle.main.resourceURL?.appendingPathComponent("Fonts") else {
+            log("No bundled Fonts directory found")
             return
         }
         guard let files = try? FileManager.default.contentsOfDirectory(
             at: fontsURL,
             includingPropertiesForKeys: nil
         ) else {
+            log("Could not list bundled Fonts directory")
             return
         }
 
         for url in files where ["otf", "ttf"].contains(url.pathExtension.lowercased()) {
             CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
         }
+        log("Registered \(files.count) bundled font files")
     }
 
     private func rebuildMenu() {
@@ -84,6 +86,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(title)
         menu.addItem(.separator())
 
+        menu.addItem(item("Show window", action: #selector(showWindow)))
         menu.addItem(item("Audit now…", action: #selector(auditNow)))
         menu.addItem(item("Status…", action: #selector(showStatus)))
         menu.addItem(item("Open latest report", action: #selector(openLatestReport)))
@@ -108,6 +111,92 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(item("Quit", action: #selector(quit)))
 
         statusItem.menu = menu
+    }
+
+    @objc private func showWindow() {
+        log("showWindow")
+        if mainWindow == nil {
+            mainWindow = makeMainWindow()
+        }
+        mainWindow?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        log("window visible=\(mainWindow?.isVisible == true)")
+    }
+
+    private func makeMainWindow() -> NSWindow {
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 460, height: 340),
+            styleMask: [.titled, .closable, .miniaturizable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "Photo System"
+        window.center()
+        window.isReleasedWhenClosed = false
+
+        let container = NSView(frame: NSRect(x: 0, y: 0, width: 460, height: 340))
+        container.wantsLayer = true
+        container.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
+
+        let stack = NSStackView()
+        stack.orientation = .vertical
+        stack.alignment = .leading
+        stack.spacing = 14
+        stack.translatesAutoresizingMaskIntoConstraints = false
+
+        let title = NSTextField(labelWithString: "📷 Photo System")
+        title.font = preferredFont(size: 28, weight: .bold)
+
+        let subtitle = NSTextField(labelWithString: "Running. You can use either this window or the “📷 Photos” menu-bar item.")
+        subtitle.font = preferredFont(size: 14)
+        subtitle.textColor = .secondaryLabelColor
+        subtitle.maximumNumberOfLines = 3
+        subtitle.lineBreakMode = .byWordWrapping
+        subtitle.preferredMaxLayoutWidth = 390
+
+        let status = NSTextField(labelWithString: "Safe defaults: audit-only, no deletes, kDrive remains the source of truth.")
+        status.font = preferredFont(size: 13, weight: .medium)
+        status.textColor = .secondaryLabelColor
+        status.maximumNumberOfLines = 2
+        status.preferredMaxLayoutWidth = 390
+
+        let buttonGrid = NSGridView(views: [
+            [button("Audit now", #selector(auditNow)), button("Status", #selector(showStatus))],
+            [button("Latest report", #selector(openLatestReport)), button("Project folder", #selector(openProject))]
+        ])
+        buttonGrid.rowSpacing = 10
+        buttonGrid.columnSpacing = 10
+
+        let hint = NSTextField(labelWithString: "Tip: if macOS hides the menu-bar item, leave this app open from the Dock.")
+        hint.font = preferredFont(size: 12)
+        hint.textColor = .tertiaryLabelColor
+        hint.maximumNumberOfLines = 2
+        hint.preferredMaxLayoutWidth = 390
+
+        stack.addArrangedSubview(title)
+        stack.addArrangedSubview(subtitle)
+        stack.addArrangedSubview(status)
+        stack.addArrangedSubview(buttonGrid)
+        stack.addArrangedSubview(hint)
+
+        container.addSubview(stack)
+        NSLayoutConstraint.activate([
+            stack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 28),
+            stack.trailingAnchor.constraint(lessThanOrEqualTo: container.trailingAnchor, constant: -28),
+            stack.topAnchor.constraint(equalTo: container.topAnchor, constant: 28)
+        ])
+
+        window.contentView = container
+        log("makeMainWindow")
+        return window
+    }
+
+    private func button(_ title: String, _ action: Selector) -> NSButton {
+        let button = NSButton(title: title, target: self, action: action)
+        button.font = preferredFont(size: 13, weight: .medium)
+        button.bezelStyle = .rounded
+        button.setFrameSize(NSSize(width: 160, height: 32))
+        return button
     }
 
     private func item(_ title: String, action: Selector) -> NSMenuItem {
@@ -194,5 +283,36 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func quit() {
         NSApp.terminate(nil)
+    }
+
+    private func log(_ message: String) {
+        let url = URL(fileURLWithPath: NSHomeDirectory())
+            .appendingPathComponent("Library/Logs/PhotoSystemMenu.log")
+        let stamp = ISO8601DateFormatter().string(from: Date())
+        let line = "\(stamp) \(message)\n"
+        if let data = line.data(using: .utf8) {
+            if FileManager.default.fileExists(atPath: url.path) {
+                if let handle = try? FileHandle(forWritingTo: url) {
+                    _ = try? handle.seekToEnd()
+                    try? handle.write(contentsOf: data)
+                    try? handle.close()
+                }
+            } else {
+                try? data.write(to: url)
+            }
+        }
+    }
+}
+
+@main
+enum PhotoSystemMain {
+    private static var appDelegate: AppDelegate?
+
+    static func main() {
+        let app = NSApplication.shared
+        let delegate = AppDelegate()
+        appDelegate = delegate
+        app.delegate = delegate
+        app.run()
     }
 }

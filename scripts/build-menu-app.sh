@@ -25,6 +25,7 @@ swiftc \
   -framework Cocoa
 
 chmod +x "$MACOS/Photo System"
+codesign --force --deep --sign - "$APP_DIR" >/dev/null 2>&1 || true
 echo "Embedded fonts:"
 find "$FONTS" -maxdepth 1 -type f -print | sed 's#^#  #'
 echo "$APP_DIR"
