@@ -45,11 +45,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.accessory)
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = statusItem.button {
-            button.title = "Photos"
+            button.title = "📷 Photos"
             button.font = preferredFont(size: 13, weight: .semibold)
             button.toolTip = "Photo System Automation"
         }
         rebuildMenu()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.alert(
+                title: "Photo System is running",
+                text: "Look for “📷 Photos” in the menu bar. Use it to audit now, check status, open the latest report, or change the background audit interval.",
+                ok: true
+            )
+        }
     }
 
     private func registerBundledFonts() {
