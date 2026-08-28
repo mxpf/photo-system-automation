@@ -33,6 +33,61 @@ Actions that change the archive must remain explicit:
 - build/import Ente batches
 - delete/trash/quarantine anything
 
+## Desktop/menu-bar use
+
+Use these executables from Finder, Terminal, or a menu-bar/script launcher like
+Diatype:
+
+- `Photo System Menu.command` — simple interactive menu
+- `Photo System Audit Now.command` — run the audit immediately
+- `Photo System Status.command` — show local automation status
+
+Direct executable paths:
+
+- `/Users/mxpf/Code/photo-system-automation/bin/photo-system-menu`
+- `/Users/mxpf/Code/photo-system-automation/bin/photo-system-audit-now`
+- `/Users/mxpf/Code/photo-system-automation/bin/photo-system-status`
+- `/Users/mxpf/Code/photo-system-automation/bin/photo-system-set-interval`
+
+Examples:
+
+```bash
+/Users/mxpf/Code/photo-system-automation/bin/photo-system-set-interval daily
+/Users/mxpf/Code/photo-system-automation/bin/photo-system-set-interval 6h
+/Users/mxpf/Code/photo-system-automation/bin/photo-system-set-interval 90m
+```
+
+Supported interval examples:
+
+- `hourly`
+- `daily`
+- `weekly`
+- `90m`
+- `6h`
+- `12h`
+- `1d`
+
+Minimum interval is 15 minutes.
+
+## Local scheduled audit
+
+The macOS LaunchAgent lives at:
+
+`/Users/mxpf/Library/LaunchAgents/com.max.photo-system-audit.plist`
+
+Helpful commands:
+
+```bash
+./bin/photo-system status
+./bin/photo-system install --interval daily
+./bin/photo-system install --interval 6h
+./bin/photo-system uninstall
+```
+
+Logs:
+
+`/Users/mxpf/Code/photo-system-automation/logs`
+
 ## Current status
 
 This repo is the local home for the automation code. The existing production scripts still live in:
@@ -51,4 +106,3 @@ Daily read-only audit of:
 Reports should continue to be written under:
 
 `/Users/mxpf/kDrive/01 Personal/Photos/Inbox/_automation/reports`
-

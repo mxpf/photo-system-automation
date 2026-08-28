@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+INTERVAL="${1:-daily}"
+exec /usr/bin/python3 "$SCRIPT_DIR/src/photo_system_automation.py" install --interval "$INTERVAL"
+

@@ -1,0 +1,13 @@
+{
+  "photos_root": "/Users/mxpf/kDrive/01 Personal/Photos",
+  "canonical_archive": "/Users/mxpf/kDrive/01 Personal/Photos/Archive",
+  "manual_inbox": "/Users/mxpf/kDrive/01 Personal/Photos/Inbox/00 New Batches",
+  "phone_camera_backup": "/Users/mxpf/kDrive/01 Personal/Device Backups/Phone/Camera",
+  "reports_root": "/Users/mxpf/kDrive/01 Personal/Photos/Inbox/_automation/reports",
+  "legacy_automation_root": "/Users/mxpf/kDrive/01 Personal/Photos/Inbox/_automation",
+  "ente_full_import_package": "/Volumes/Sanctum/Ente Full Import Package - 2026-08-28",
+  "notify_only_when_action_needed": true,
+  "allow_destructive_actions": false,
+  "allow_archive_promotion_without_confirmation": false
+}
+
