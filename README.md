@@ -35,8 +35,7 @@ Actions that change the archive must remain explicit:
 
 ## Desktop/menu-bar use
 
-Use these executables from Finder, Terminal, or a menu-bar/script launcher like
-Diatype:
+Use these executables from Finder or Terminal:
 
 - `Photo System Menu.command` — simple interactive menu
 - `Photo System Audit Now.command` — run the audit immediately
@@ -87,6 +86,24 @@ Helpful commands:
 Logs:
 
 `/Users/mxpf/Code/photo-system-automation/logs`
+
+## Native menu-bar app
+
+Build:
+
+```bash
+./scripts/build-menu-app.sh
+```
+
+Then open:
+
+`/Users/mxpf/Code/photo-system-automation/dist/Photo System.app`
+
+The app uses Diatype if macOS exposes the font under a standard Diatype family
+name, and falls back to the system font otherwise.
+
+Because this is a local unsigned app, macOS may require right-click → Open the
+first time.
 
 ## Current status
 

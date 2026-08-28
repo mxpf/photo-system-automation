@@ -1,35 +1,41 @@
-# Diatype / Menu Bar Setup
+# Diatype / Menu Bar Font
 
-Use one of these executable files as the menu-bar action:
+Diatype is treated as the preferred UI font for the native menu-bar app.
 
-## Recommended
+Build the app:
 
-`/Users/mxpf/Code/photo-system-automation/Photo System Menu.command`
+```bash
+/Users/mxpf/Code/photo-system-automation/scripts/build-menu-app.sh
+```
 
-This opens a tiny menu:
+Open:
 
-1. Audit now
-2. Status
-3. Install/update interval
-4. Stop automation
+`/Users/mxpf/Code/photo-system-automation/dist/Photo System.app`
 
-## Single-purpose actions
+Because this is a local unsigned app, macOS may require right-click → Open the
+first time.
 
-Audit now:
+The app tries these font names:
 
-`/Users/mxpf/Code/photo-system-automation/Photo System Audit Now.command`
+- Diatype
+- ABC Diatype
+- ABCDiatype
+- Diatype-Regular
+- Diatype Variable
 
-Status:
+If none are visible to macOS, the app falls back to the system font.
 
-`/Users/mxpf/Code/photo-system-automation/Photo System Status.command`
+## App menu items
 
-Set interval from a launcher that supports arguments:
-
-`/Users/mxpf/Code/photo-system-automation/bin/photo-system-set-interval 6h`
+- Audit now
+- Status
+- Open latest report
+- Set interval: `90m`, `hourly`, `6h`, `12h`, `daily`, `weekly`
+- Stop background audit
+- Open project folder
 
 ## Notes
 
 The project intentionally lives outside `Documents` because macOS privacy
 controls can block background LaunchAgents from reading scripts under
 Documents/Desktop.
-

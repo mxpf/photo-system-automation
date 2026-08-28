@@ -5,6 +5,8 @@ __pycache__/
 venv/
 logs/
 tmp/
+dist/
+build/
 *.log
 *.pid
 *.sqlite
@@ -24,4 +26,3 @@ tmp/
 *.m4v
 *.3gp
 *.zip
-

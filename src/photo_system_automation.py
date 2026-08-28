@@ -278,6 +278,34 @@ def status_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def latest_report_command(args: argparse.Namespace) -> int:
+    config = load_config(args.config)
+    reports_root = Path(config["reports_root"])
+    summaries: list[tuple[float, dict[str, Any]]] = []
+    for summary_path in reports_root.glob("photo-intake-audit-*/summary.json"):
+        try:
+            summary = json.loads(summary_path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        try:
+            stamp = summary_path.stat().st_mtime
+        except OSError:
+            stamp = 0
+        summaries.append((stamp, summary))
+
+    if not summaries:
+        print("No photo intake audit reports found.")
+        return 1
+
+    _, summary = sorted(summaries, key=lambda pair: pair[0])[-1]
+    report_dir = summary.get("report_dir", "")
+    label = "latest"
+    print(short_summary(label, summary))
+    if args.open and report_dir:
+        subprocess.run(["/usr/bin/open", report_dir], check=False)
+    return 0
+
+
 def menu_command(args: argparse.Namespace) -> int:
     """Simple text menu for menu-bar/script-launcher apps."""
     print("Photo System Automation")
@@ -336,6 +364,11 @@ def main() -> int:
     status = sub.add_parser("status", help="Show local automation status.")
     status.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     status.set_defaults(func=status_command)
+
+    latest_report = sub.add_parser("latest-report", help="Show/open the newest audit report.")
+    latest_report.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    latest_report.add_argument("--open", action="store_true")
+    latest_report.set_defaults(func=latest_report_command)
 
     menu = sub.add_parser("menu", help="Interactive menu for menu bar launchers.")
     menu.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
