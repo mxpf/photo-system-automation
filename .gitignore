@@ -1,0 +1,27 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
+logs/
+tmp/
+*.log
+*.pid
+*.sqlite
+*.sqlite3
+
+# Do not accidentally commit generated photo packages or media.
+*.jpg
+*.jpeg
+*.png
+*.heic
+*.heif
+*.gif
+*.webp
+*.avif
+*.mp4
+*.mov
+*.m4v
+*.3gp
+*.zip
+
