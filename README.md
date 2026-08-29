@@ -1,10 +1,14 @@
 # Photo System
 
-A small local control room for Max’s photo archive.
+A small local control room for a device → kDrive → Ente photo pipeline.
+
+Photo System is built around one opinion: preservation and presentation should be separate.
+
+kDrive holds the canonical files. Ente gives those files a humane photo-app surface. This repo sits between them as a quiet auditor, making sure new photos are noticed, compared, reported, and only promoted when the batch makes sense.
 
 ## What it does
 
-Photo System watches the places where new photos arrive, compares them against the canonical archive, and tells you what needs attention.
+Photo System watches the kDrive folders where new photos arrive, compares them against the canonical archive, and tells you what needs attention.
 
 In plain terms, it answers:
 
@@ -15,6 +19,82 @@ In plain terms, it answers:
 - Where is the latest audit report?
 
 It runs locally on the Mac, can sit in the menu bar, and can also run quiet scheduled checks in the background.
+
+## The pipeline
+
+The intended flow is:
+
+```text
+device photos → kDrive intake → audited archive → Ente import/update
+```
+
+Each layer has a different job.
+
+1. Devices capture the originals.
+   Phones and desktops produce the files. They are not asked to be the archive, the catalog, or the long-term memory.
+
+2. kDrive receives and preserves the originals.
+   kDrive is the canonical file layer: ordinary folders, visible paths, syncable storage, and a place where the archive can be inspected without needing a photo app to explain it.
+
+3. Photo System audits the intake.
+   It checks what arrived, what is already known, what looks duplicated, and what needs review. It writes a report instead of making silent changes.
+
+4. The archive is promoted deliberately.
+   Clean batches can move into the canonical archive only after a human decision.
+
+5. Ente gets updated from the archive.
+   Ente is the private photo-library layer: browsing, albums, sharing, memories, and the actual “I want to enjoy my photos” experience. It is downstream from the archive, not above it.
+
+## Why this is a good idea
+
+This architecture keeps the system calm.
+
+- It separates storage truth from app experience.
+- It reduces lock-in: if Ente, Google Photos, Apple Photos, or anything else changes, the archive still exists as files.
+- It makes kDrive useful as infrastructure instead of pretending it is a full photo brain.
+- It lets Ente be good at what Ente is good at: private, polished photo access.
+- It creates an audit trail before anything gets promoted.
+- It keeps automation on a leash. The script can notice things; it does not get to decide what your archive means.
+
+The point is not to have more software. The point is to keep each piece from becoming responsible for the wrong part of the system.
+
+## Why these apps
+
+### Devices
+
+The phone and desktop are the capture layer. Their job is to produce originals and metadata, then hand them off. They should not be the only place where anything important lives.
+
+### kDrive
+
+kDrive is a strong fit for the canonical layer because it behaves like a file system, not just a photo feed. It can receive automatic mobile photo backups, sync to the Mac, expose ordinary folders, and preserve a path-based archive that can be audited independently.
+
+That makes it a good source of truth: boring, inspectable, and not dependent on one photo app’s database.
+
+Relevant docs:
+
+- [kDrive photo backup on iOS](https://www.infomaniak.com/en/support/faq/2394/import-photos-to-the-kdrive-mobile-app-ios)
+- [kDrive photo backup on Android](https://www.infomaniak.com/en/support/faq/2514/import-photos-to-the-kdrive-mobile-app-android)
+
+### Ente
+
+Ente is a strong fit for the photo-app layer because it is designed around end-to-end encrypted photo storage, has apps across desktop, web, and mobile, and supports migration from Google Takeout through the desktop app.
+
+That makes it a good derived library: private, pleasant, and replaceable if needed.
+
+Relevant docs:
+
+- [Ente Photos](https://ente.com/)
+- [Import from Google Photos](https://ente.com/help/photos/migration/from-google-photos/)
+
+### Photo System
+
+Photo System is the guardrail between the two. It keeps the kDrive archive from becoming a junk drawer and keeps Ente imports from becoming a mystery ritual.
+
+It does not try to be beautiful. It tries to be trustworthy.
+
+### LaCie
+
+The LaCie archive remains the verified deep backup and migration record. It is the cold, boring safety net: not the daily workflow, but still part of the trust model.
 
 ## What it does not do
 
@@ -33,17 +113,7 @@ It does not:
 
 Those steps require an explicit decision.
 
-## Why it exists
-
-The system has one job: keep the photo pipeline legible.
-
-New photos arrive. The archive stays canonical. Ente gets fed from clean batches. Nothing quietly rearranges the house while nobody is looking.
-
-This is not a photo manager. It is a guardrail system around the photo manager.
-
-The photo archive should remain calm, inspectable, and boring. The apps around it can be replaced. The originals should not care.
-
-## The shape of the system
+## Canonical paths
 
 kDrive is the source of truth.
 
@@ -53,26 +123,18 @@ The canonical archive lives here:
 /Users/mxpf/kDrive/01 Personal/Photos/Archive
 ```
 
-Ente is the beautiful viewing layer. It is allowed to receive carefully prepared imports, but it is not the authority. If Ente loses state, changes an album, has a weird restore/trash behavior, or needs to be rebuilt from scratch, the canonical archive remains intact.
-
-The LaCie archive remains the verified deep backup and migration record. This project does not modify it.
-
-## The daily rhythm
-
-Photos enter through intake folders:
+New photos arrive here:
 
 ```text
 /Users/mxpf/kDrive/01 Personal/Photos/Inbox/00 New Batches
 /Users/mxpf/kDrive/01 Personal/Device Backups/Phone/Camera
 ```
 
-The automation checks those places and writes a report under:
+Reports are written under:
 
 ```text
 /Users/mxpf/kDrive/01 Personal/Photos/Inbox/_automation/reports
 ```
-
-If nothing needs attention, it stays quiet. If new or suspicious files appear, it speaks up.
 
 The audit helper is versioned in this repo at:
 
@@ -131,18 +193,6 @@ From Terminal:
 ./bin/photo-system install --interval 90m
 ./bin/photo-system uninstall
 ```
-
-## The intended long-term loop
-
-1. Phone and desktop photos land in kDrive intake.
-2. Photo System audits the intake.
-3. New material is reviewed.
-4. Clean files are promoted into the canonical kDrive archive.
-5. Ente import batches are generated from canonical material.
-6. Ente is updated as a derived library.
-7. Reports remain behind as a breadcrumb trail.
-
-The important thing is that the archive has a memory. Every batch should be understandable later: where it came from, when it arrived, what was accepted, and what needed judgment.
 
 ## Building the app
 
