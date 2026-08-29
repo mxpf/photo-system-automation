@@ -41,6 +41,8 @@ LEDGER_FIELDS = [
     "source_path",
     "staging_path",
     "final_home",
+    "lane",
+    "files_from",
     "status",
     "files",
     "bytes",
@@ -105,6 +107,8 @@ def update_chunk(
     files: str | None = None,
     bytes_: str | None = None,
     notes: str | None = None,
+    lane: str | None = None,
+    files_from: str | None = None,
     started: bool = False,
     finished: bool = False,
 ) -> None:
@@ -119,6 +123,10 @@ def update_chunk(
                 row["bytes"] = bytes_
             if notes is not None:
                 row["notes"] = notes
+            if lane is not None:
+                row["lane"] = lane
+            if files_from is not None:
+                row["files_from"] = files_from
             if started:
                 row["started_at"] = stamp()
             if finished:
@@ -156,6 +164,13 @@ def source_remote(source_path: str) -> str:
 def rclone_base() -> list[str]:
     rclone = shutil.which("rclone") or "/usr/local/bin/rclone"
     return [rclone, "--config", str(RCLONE_CONFIG)]
+
+
+def files_from_args(row: dict[str, str]) -> list[str]:
+    files_from = row.get("files_from", "").strip()
+    if not files_from:
+        return []
+    return ["--files-from", files_from]
 
 
 def run_to_file(cmd: list[str], output: Path) -> subprocess.CompletedProcess[str]:
@@ -256,6 +271,7 @@ def copy_command(
     source_path: str,
     destination: str,
     *,
+    files_from: str = "",
     duration: str,
     max_transfer: str,
     transfers: str,
@@ -286,6 +302,8 @@ def copy_command(
         "--stats",
         "1m",
     ]
+    if files_from:
+        cmd.extend(["--files-from", files_from])
     if dry_run:
         cmd.append("--dry-run")
     return cmd
@@ -450,6 +468,8 @@ def plan_command(args: argparse.Namespace) -> int:
         "source_path": validate_text(args.source, "source_path"),
         "staging_path": destination,
         "final_home": args.final_home or "",
+        "lane": args.lane or "",
+        "files_from": args.files_from or "",
         "status": "planned",
         "files": "",
         "bytes": "",
@@ -462,6 +482,10 @@ def plan_command(args: argparse.Namespace) -> int:
     print(f"Planned chunk {args.chunk_id}.")
     print(f"Source: {source_remote(args.source)}")
     print(f"Staging: {destination}")
+    if args.lane:
+        print(f"Lane: {args.lane}")
+    if args.files_from:
+        print(f"Files from: {args.files_from}")
     print(f"Ledger: {ledger}")
     return 0
 
@@ -484,6 +508,7 @@ def command_command(args: argparse.Namespace) -> int:
     cmd = copy_command(
         row["source_path"],
         row["staging_path"],
+        files_from=row.get("files_from", ""),
         duration=args.duration,
         max_transfer=args.max_transfer,
         transfers=args.transfers,
@@ -502,6 +527,7 @@ def copy_chunk_command(args: argparse.Namespace) -> int:
     cmd = copy_command(
         row["source_path"],
         row["staging_path"],
+        files_from=row.get("files_from", ""),
         duration=args.duration,
         max_transfer=args.max_transfer,
         transfers=args.transfers,
@@ -543,9 +569,10 @@ def verify_chunk_command(args: argparse.Namespace) -> int:
     destination_lsf_path = REPORTS_DIR / f"{args.chunk_id}-destination-lsf.txt"
     source_sha_path = REPORTS_DIR / f"{args.chunk_id}-source-sha256.txt"
     destination_sha_path = REPORTS_DIR / f"{args.chunk_id}-destination-sha256.txt"
+    source_filter = files_from_args(row)
 
     checks: list[tuple[str, subprocess.CompletedProcess[str]]] = []
-    result, source_size = run_json_to_file([*rclone_base(), "size", source, "--json"], source_size_path)
+    result, source_size = run_json_to_file([*rclone_base(), "size", source, "--json", *source_filter], source_size_path)
     checks.append(("source size", result))
     result, destination_size = run_json_to_file([*rclone_base(), "size", destination, "--json"], destination_size_path)
     checks.append(("destination size", result))
@@ -553,7 +580,7 @@ def verify_chunk_command(args: argparse.Namespace) -> int:
         (
             "source inventory",
             run_to_file(
-                [*rclone_base(), "lsf", source, "--recursive", "--files-only", "--format", "ps"],
+                [*rclone_base(), "lsf", source, "--recursive", "--files-only", "--format", "ps", *source_filter],
                 source_lsf_path,
             ),
         )
@@ -589,7 +616,10 @@ def verify_chunk_command(args: argparse.Namespace) -> int:
     dynamic_exports: list[str] = []
 
     if not args.no_hash:
-        source_hash_result = run_to_file([*rclone_base(), "hashsum", "SHA256", "--download", source], source_sha_path)
+        source_hash_result = run_to_file(
+            [*rclone_base(), "hashsum", "SHA256", "--download", source, *source_filter],
+            source_sha_path,
+        )
         destination_hash_result = run_to_file(
             [*rclone_base(), "hashsum", "SHA256", "--download", destination],
             destination_sha_path,
@@ -627,7 +657,7 @@ def verify_chunk_command(args: argparse.Namespace) -> int:
         if hash_missing_or_changed or hash_extra_or_changed:
             second_source_sha_path = REPORTS_DIR / f"{args.chunk_id}-source-sha256-second-pass.txt"
             second_result = run_to_file(
-                [*rclone_base(), "hashsum", "SHA256", "--download", source],
+                [*rclone_base(), "hashsum", "SHA256", "--download", source, *source_filter],
                 second_source_sha_path,
             )
             if second_result.returncode == 0:
@@ -827,6 +857,163 @@ def background_status_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def classify_source(source_path: str, label: str) -> dict[str, object]:
+    ensure_workspace()
+    source = source_remote(source_path)
+    lsjson_path = REPORTS_DIR / f"{label}-source-lsjson.json"
+    binary_files_path = REPORTS_DIR / f"{label}-binary-files.txt"
+    native_files_path = REPORTS_DIR / f"{label}-google-native-files.txt"
+    summary_path = REPORTS_DIR / f"{label}-lane-summary.json"
+    markdown_path = REPORTS_DIR / f"{label}-lane-summary.md"
+
+    result = run_to_file([*rclone_base(), "lsjson", source, "--recursive", "--files-only"], lsjson_path)
+    if result.returncode != 0:
+        raise SystemExit(result.stderr.strip() or f"Could not inspect source: {source}")
+
+    items = json.loads(lsjson_path.read_text(encoding="utf-8"))
+    binary_items: list[dict[str, object]] = []
+    native_items: list[dict[str, object]] = []
+    for item in items:
+        if item.get("IsDir"):
+            continue
+        if int(item.get("Size", 0)) < 0:
+            native_items.append(item)
+        else:
+            binary_items.append(item)
+
+    binary_files_path.write_text(
+        "".join(f"{item['Path']}\n" for item in sorted(binary_items, key=lambda x: str(x.get("Path", "")).lower())),
+        encoding="utf-8",
+    )
+    native_files_path.write_text(
+        "".join(f"{item['Path']}\n" for item in sorted(native_items, key=lambda x: str(x.get("Path", "")).lower())),
+        encoding="utf-8",
+    )
+
+    binary_bytes = sum(int(item.get("Size", 0)) for item in binary_items)
+    native_mime_counts: dict[str, int] = {}
+    for item in native_items:
+        mime = str(item.get("MimeType") or "unknown")
+        native_mime_counts[mime] = native_mime_counts.get(mime, 0) + 1
+
+    summary = {
+        "created_at_utc": stamp(),
+        "source": source,
+        "total_files": len(binary_items) + len(native_items),
+        "binary_files": len(binary_items),
+        "binary_bytes": binary_bytes,
+        "google_native_exports": len(native_items),
+        "google_native_mime_counts": native_mime_counts,
+        "binary_files_from": str(binary_files_path),
+        "google_native_files_from": str(native_files_path),
+        "lsjson": str(lsjson_path),
+    }
+    summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    lines = [
+        f"# {label} lane summary",
+        "",
+        f"Source: `{source}`",
+        "",
+        "| Lane | Files | Bytes |",
+        "|---|---:|---:|",
+        f"| Binary / hash-verifiable | {len(binary_items):,} | {binary_bytes:,} |",
+        f"| Google-native export review | {len(native_items):,} | unknown until exported |",
+        "",
+        "Generated manifests:",
+        "",
+        f"- Binary files: `{binary_files_path}`",
+        f"- Google-native exports: `{native_files_path}`",
+        f"- Raw source listing: `{lsjson_path}`",
+    ]
+    if native_mime_counts:
+        lines.extend(["", "Google-native/export MIME types:", ""])
+        for mime, count in sorted(native_mime_counts.items()):
+            lines.append(f"- `{mime}`: {count:,}")
+    markdown_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return summary
+
+
+def classify_source_command(args: argparse.Namespace) -> int:
+    label = args.label or validate_text(args.source, "source").replace("/", "-").replace(" ", "-")
+    summary = classify_source(args.source, label)
+    print(f"Source: {summary['source']}")
+    print(f"Binary files: {summary['binary_files']} ({summary['binary_bytes']} bytes)")
+    print(f"Google-native exports: {summary['google_native_exports']}")
+    print(f"Summary: {REPORTS_DIR / f'{label}-lane-summary.md'}")
+    return 0
+
+
+def add_planned_row(rows: list[dict[str, str]], row: dict[str, str]) -> None:
+    if any(existing["chunk_id"] == row["chunk_id"] for existing in rows):
+        raise SystemExit(f"Chunk already exists: {row['chunk_id']}")
+    rows.append(row)
+
+
+def plan_lanes_command(args: argparse.Namespace) -> int:
+    label = args.label or args.base_chunk_id
+    summary = classify_source(args.source, label)
+    rows = read_ledger()
+    source = validate_text(args.source, "source_path")
+    planned: list[str] = []
+
+    binary_count = int(summary["binary_files"])
+    native_count = int(summary["google_native_exports"])
+
+    if binary_count:
+        chunk_id = f"{args.base_chunk_id}-binary"
+        add_planned_row(
+            rows,
+            {
+                "chunk_id": chunk_id,
+                "source_path": source,
+                "staging_path": staging_remote(chunk_id, args.binary_bucket),
+                "final_home": args.final_home or "",
+                "lane": "binary",
+                "files_from": str(summary["binary_files_from"]),
+                "status": "planned",
+                "files": str(binary_count),
+                "bytes": str(summary["binary_bytes"]),
+                "started_at": "",
+                "finished_at": "",
+                "notes": "binary/hash-verifiable lane; planned from source classification",
+            },
+        )
+        planned.append(chunk_id)
+
+    if native_count:
+        chunk_id = f"{args.base_chunk_id}-google-native"
+        add_planned_row(
+            rows,
+            {
+                "chunk_id": chunk_id,
+                "source_path": source,
+                "staging_path": staging_remote(chunk_id, args.native_bucket),
+                "final_home": args.final_home or "",
+                "lane": "google-native",
+                "files_from": str(summary["google_native_files_from"]),
+                "status": "planned",
+                "files": str(native_count),
+                "bytes": "",
+                "started_at": "",
+                "finished_at": "",
+                "notes": "Google-native export lane; review generated exports before promotion",
+            },
+        )
+        planned.append(chunk_id)
+
+    write_ledger(rows)
+    print(f"Classified {summary['source']}.")
+    print(f"Binary files: {binary_count}")
+    print(f"Google-native exports: {native_count}")
+    if planned:
+        print("Planned chunks: " + ", ".join(planned))
+    else:
+        print("No files found to plan.")
+    print(f"Summary: {REPORTS_DIR / f'{label}-lane-summary.md'}")
+    return 0
+
+
 def inventory_command(args: argparse.Namespace) -> int:
     ensure_workspace()
     label = args.label or args.remote.replace(":", "").replace("/", "-")
@@ -886,6 +1073,8 @@ def main() -> int:
     plan.add_argument("--bucket", default=DEFAULT_BUCKET)
     plan.add_argument("--staging-path")
     plan.add_argument("--final-home")
+    plan.add_argument("--lane")
+    plan.add_argument("--files-from")
     plan.add_argument("--notes")
     plan.set_defaults(func=plan_command)
 
@@ -920,6 +1109,20 @@ def main() -> int:
     background_status = sub.add_parser("background-status", help="Check one chunk's background runner and ledger status.")
     background_status.add_argument("chunk_id")
     background_status.set_defaults(func=background_status_command)
+
+    classify = sub.add_parser("classify-source", help="Split a Google Drive source into binary and Google-native lanes.")
+    classify.add_argument("source")
+    classify.add_argument("--label")
+    classify.set_defaults(func=classify_source_command)
+
+    plan_lanes = sub.add_parser("plan-lanes", help="Classify a source and plan separate binary/native chunks.")
+    plan_lanes.add_argument("base_chunk_id")
+    plan_lanes.add_argument("source")
+    plan_lanes.add_argument("--label")
+    plan_lanes.add_argument("--final-home")
+    plan_lanes.add_argument("--binary-bucket", default="01 Binary - Verified Candidates")
+    plan_lanes.add_argument("--native-bucket", default="03 Google Native Exports")
+    plan_lanes.set_defaults(func=plan_lanes_command)
 
     inventory = sub.add_parser("inventory", help="Write a recursive inventory for a remote path.")
     inventory.add_argument("remote", help='Example: "gdrive:My Drive" or "kdrive-webdav:00 Migration"')

@@ -355,6 +355,44 @@ Google Docs, Sheets, and Slides are not ordinary files in the same way PDFs and 
 
 Export them deliberately.
 
+The helper can now split a Google Drive folder before copying:
+
+```bash
+./bin/drive-to-kdrive classify-source "money" --label "money-lanes"
+```
+
+That writes:
+
+```text
+.migration/reports/money-lanes-binary-files.txt
+.migration/reports/money-lanes-google-native-files.txt
+.migration/reports/money-lanes-lane-summary.md
+```
+
+To turn that into migration work, plan separate chunks:
+
+```bash
+./bin/drive-to-kdrive plan-lanes "chunk-008" "money" \
+  --final-home "/Private/01 Personal/Money"
+```
+
+This creates up to two chunks:
+
+```text
+chunk-008-binary
+chunk-008-google-native
+```
+
+The binary lane can be copied and hash-verified normally:
+
+```bash
+./bin/drive-to-kdrive run-background "chunk-008-binary" \
+  --duration 6h \
+  --max-transfer 25G
+```
+
+The Google-native lane should go to `03 Google Native Exports` and stay there until reviewed. Those files may export as `.docx`, `.xlsx`, `.pptx`, or similar generated files. Their byte-level hashes can change between reads even when the document content has not meaningfully changed.
+
 Default choices:
 
 - Docs → `.docx` and optionally `.pdf`
