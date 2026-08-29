@@ -217,6 +217,20 @@ For an overnight chunk, keep the command boring and log-backed:
   > ".migration/logs/chunk-007-run.out" 2>&1
 ```
 
+If you want the run to survive outside the current terminal/chat session, start it as a one-shot macOS background runner:
+
+```bash
+./bin/drive-to-kdrive run-background "chunk-007" \
+  --duration 6h \
+  --max-transfer 75G
+```
+
+Check it without reading the full logs:
+
+```bash
+./bin/drive-to-kdrive background-status "chunk-007"
+```
+
 Then only read the ledger/report when it finishes:
 
 ```bash

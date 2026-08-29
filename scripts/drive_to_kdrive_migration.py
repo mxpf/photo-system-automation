@@ -16,6 +16,8 @@ import csv
 import datetime as dt
 import getpass
 import json
+import os
+import plistlib
 import shlex
 import subprocess
 import sys
@@ -31,6 +33,7 @@ REPORTS_DIR = MIGRATION_ROOT / "reports"
 MAPS_DIR = MIGRATION_ROOT / "maps"
 LEDGERS_DIR = MIGRATION_ROOT / "ledgers"
 CHUNKS_DIR = MIGRATION_ROOT / "chunks"
+LAUNCHAGENTS_DIR = MIGRATION_ROOT / "launchagents"
 
 LEDGER_FIELDS = [
     "chunk_id",
@@ -61,7 +64,7 @@ def today() -> str:
 
 
 def ensure_workspace() -> None:
-    for path in [MIGRATION_ROOT, LOGS_DIR, REPORTS_DIR, MAPS_DIR, LEDGERS_DIR, CHUNKS_DIR]:
+    for path in [MIGRATION_ROOT, LOGS_DIR, REPORTS_DIR, MAPS_DIR, LEDGERS_DIR, CHUNKS_DIR, LAUNCHAGENTS_DIR]:
         path.mkdir(parents=True, exist_ok=True)
 
 
@@ -718,6 +721,102 @@ def run_chunk_command(args: argparse.Namespace) -> int:
     return verify_chunk_command(verify_args)
 
 
+def launch_label(chunk_id: str) -> str:
+    safe = validate_text(chunk_id, "chunk_id").replace("_", "-")
+    return f"com.max.photo-system.drive-to-kdrive.{safe}"
+
+
+def launchctl_target() -> str:
+    return f"gui/{os.getuid()}"
+
+
+def run_background_command(args: argparse.Namespace) -> int:
+    find_chunk(args.chunk_id)
+    ensure_workspace()
+
+    label = launch_label(args.chunk_id)
+    plist_path = LAUNCHAGENTS_DIR / f"{label}.plist"
+    stdout_path = LOGS_DIR / f"{args.chunk_id}-run.out"
+    stderr_path = LOGS_DIR / f"{args.chunk_id}-run.err"
+    pid_path = CHUNKS_DIR / f"{args.chunk_id}.launchagent"
+
+    program_args = [
+        str(PROJECT_ROOT / "bin" / "drive-to-kdrive"),
+        "run-chunk",
+        args.chunk_id,
+        "--duration",
+        args.duration,
+        "--max-transfer",
+        args.max_transfer,
+        "--transfers",
+        args.transfers,
+        "--checkers",
+        args.checkers,
+    ]
+    if args.no_hash:
+        program_args.append("--no-hash")
+
+    plist = {
+        "Label": label,
+        "ProgramArguments": program_args,
+        "WorkingDirectory": str(PROJECT_ROOT),
+        "RunAtLoad": True,
+        "StandardOutPath": str(stdout_path),
+        "StandardErrorPath": str(stderr_path),
+    }
+
+    if args.replace:
+        subprocess.run(["launchctl", "bootout", launchctl_target(), str(plist_path)], check=False)
+
+    with plist_path.open("wb") as f:
+        plistlib.dump(plist, f)
+
+    result = subprocess.run(
+        ["launchctl", "bootstrap", launchctl_target(), str(plist_path)],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        print("Could not start background chunk runner.")
+        print(result.stderr.strip() or result.stdout.strip())
+        print(f"If it was already loaded, retry with: ./bin/drive-to-kdrive run-background {args.chunk_id} --replace")
+        return result.returncode
+
+    pid_path.write_text(label + "\n", encoding="utf-8")
+    update_chunk(args.chunk_id, notes=f"background run started with LaunchAgent {label}; no promotion")
+    print(f"Started background chunk runner: {args.chunk_id}")
+    print(f"Run output: {stdout_path}")
+    print(f"Run errors: {stderr_path}")
+    print(f"LaunchAgent: {plist_path}")
+    return 0
+
+
+def background_status_command(args: argparse.Namespace) -> int:
+    find_chunk(args.chunk_id)
+    label = launch_label(args.chunk_id)
+    result = subprocess.run(
+        ["launchctl", "print", f"{launchctl_target()}/{label}"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode == 0:
+        print(f"{args.chunk_id}: background runner is loaded.")
+        for line in result.stdout.splitlines():
+            stripped = line.strip()
+            if stripped.startswith(("state =", "pid =", "last exit code =")):
+                print(stripped)
+    else:
+        print(f"{args.chunk_id}: background runner is not loaded.")
+    row = find_chunk(args.chunk_id)
+    print(f"ledger: {row['status']} | {row.get('files', '')} files | {row.get('bytes', '')} bytes | {row.get('notes', '')}")
+    for path in [LOGS_DIR / f"{args.chunk_id}-run.out", LOGS_DIR / f"{args.chunk_id}-run.err"]:
+        if path.exists():
+            print(f"{path.name}: {path.stat().st_size} bytes")
+    return 0
+
+
 def inventory_command(args: argparse.Namespace) -> int:
     ensure_workspace()
     label = args.label or args.remote.replace(":", "").replace("/", "-")
@@ -800,6 +899,17 @@ def main() -> int:
     add_transfer_flags(run_chunk)
     run_chunk.add_argument("--no-hash", action="store_true", help="Only compare count, bytes, and path+size.")
     run_chunk.set_defaults(func=run_chunk_command)
+
+    run_background = sub.add_parser("run-background", help="Start a one-shot macOS background runner for a chunk.")
+    run_background.add_argument("chunk_id")
+    add_transfer_flags(run_background)
+    run_background.add_argument("--no-hash", action="store_true", help="Only compare count, bytes, and path+size.")
+    run_background.add_argument("--replace", action="store_true", help="Replace this chunk's existing LaunchAgent if loaded.")
+    run_background.set_defaults(func=run_background_command)
+
+    background_status = sub.add_parser("background-status", help="Check one chunk's background runner and ledger status.")
+    background_status.add_argument("chunk_id")
+    background_status.set_defaults(func=background_status_command)
 
     inventory = sub.add_parser("inventory", help="Write a recursive inventory for a remote path.")
     inventory.add_argument("remote", help='Example: "gdrive:My Drive" or "kdrive-webdav:00 Migration"')
