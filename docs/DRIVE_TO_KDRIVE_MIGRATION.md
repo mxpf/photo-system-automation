@@ -24,6 +24,57 @@ This gives us three useful powers:
 
 The migration becomes a sequence of small, reversible decisions instead of one giant cloud-to-cloud shrug.
 
+## Chunking policy
+
+No migration job should run forever.
+
+Every copy run should have at least one hard boundary:
+
+- a time limit
+- a transfer-size limit
+- a small, named source folder
+- or a single large archive
+
+Default chunk size:
+
+- Time: 60–90 minutes
+- Data: 10–25 GB until the path proves boring
+- Files: 1,000–5,000 files for mixed folders
+- Scope: one human-understandable folder or category
+
+For giant folders, split by subfolder. For giant files, move one at a time. For photos, split by source/date/album and send them through Photo System.
+
+The goal is not maximum throughput. The goal is a migration you can pause, understand, and resume without dread.
+
+## Chunk ledger
+
+Track each chunk in a ledger:
+
+```text
+.migration/ledgers/YYYY-MM-DD-drive-to-kdrive-chunks.tsv
+```
+
+Columns:
+
+```text
+chunk_id	source_path	staging_path	final_home	status	files	bytes	started_at	finished_at	notes
+```
+
+Recommended statuses:
+
+```text
+planned
+copying
+copied
+verified
+promoted
+cleanup_approved
+skipped
+needs_review
+```
+
+A chunk is not “done” because a copy process ended. It is done only when the report says the copied files match what we expected.
+
 ## Non-negotiables
 
 During migration:
@@ -146,6 +197,32 @@ For each mapped batch, copy into staging:
 
 Use copy-only behavior. If a destination already exists, stop and choose a new dated folder rather than merging blindly.
 
+Every copy command should be capped. Use a template like this:
+
+```bash
+rclone copy "gdrive:SOURCE/PATH" "kdrive-webdav:00 Migration/Google Drive Incoming/YYYY-MM-DD/CHUNK-ID" \
+  --config ".migration/rclone.conf" \
+  --immutable \
+  --max-duration 90m \
+  --cutoff-mode SOFT \
+  --max-transfer 25G \
+  --transfers 4 \
+  --checkers 8 \
+  --log-file ".migration/logs/CHUNK-ID-copy.log" \
+  --log-level INFO \
+  --stats 1m
+```
+
+The important parts:
+
+- `copy` means Google Drive is not changed.
+- `--immutable` means existing destination files are not overwritten.
+- `--max-duration` keeps the run time-boxed.
+- `--max-transfer` keeps the batch size bounded.
+- `--cutoff-mode SOFT` lets active transfers finish more politely when the cap is reached.
+
+If a capped run stops before the whole source folder is copied, keep the same chunk open and resume it later. Do not start reorganizing the partial result as if it were complete.
+
 Good batch sizes:
 
 - Small documents: a few folders at a time
@@ -153,6 +230,26 @@ Good batch sizes:
 - Giant archives: one folder at a time
 
 Small batches are not less professional. They are how you keep the room lit.
+
+## Step 4.5 — pause/resume rules
+
+It is safe to pause between chunks.
+
+Before pausing:
+
+1. Let the current capped copy finish, or stop it cleanly.
+2. Mark the chunk status as `copied`, `needs_review`, or `copying`.
+3. Save the copy log.
+4. Do not promote partial chunks.
+
+When resuming:
+
+1. Re-run inventory for the active chunk.
+2. Check the prior log.
+3. Resume the same source → same staging destination with `copy` and `--immutable`.
+4. Verify before promotion.
+
+If anything feels ambiguous, create a new chunk rather than blending two attempts together.
 
 ## Step 5 — handle Google-native files deliberately
 
