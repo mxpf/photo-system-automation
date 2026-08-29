@@ -15,6 +15,7 @@ import argparse
 import csv
 import datetime as dt
 import getpass
+import json
 import shlex
 import subprocess
 import sys
@@ -93,6 +94,36 @@ def write_ledger(rows: list[dict[str, str]], path: Path | None = None) -> Path:
     return ledger
 
 
+def update_chunk(
+    chunk_id: str,
+    *,
+    status: str | None = None,
+    files: str | None = None,
+    bytes_: str | None = None,
+    notes: str | None = None,
+    started: bool = False,
+    finished: bool = False,
+) -> None:
+    rows = read_ledger()
+    for row in rows:
+        if row["chunk_id"] == chunk_id:
+            if status is not None:
+                row["status"] = status
+            if files is not None:
+                row["files"] = files
+            if bytes_ is not None:
+                row["bytes"] = bytes_
+            if notes is not None:
+                row["notes"] = notes
+            if started:
+                row["started_at"] = stamp()
+            if finished:
+                row["finished_at"] = stamp()
+            write_ledger(rows)
+            return
+    raise SystemExit(f"Unknown chunk: {chunk_id}")
+
+
 def shell_join(parts: Iterable[str]) -> str:
     return " ".join(shlex.quote(part) for part in parts)
 
@@ -120,6 +151,100 @@ def source_remote(source_path: str) -> str:
 
 def rclone_base() -> list[str]:
     return ["rclone", "--config", str(RCLONE_CONFIG)]
+
+
+def run_to_file(cmd: list[str], output: Path) -> subprocess.CompletedProcess[str]:
+    ensure_workspace()
+    with output.open("w", encoding="utf-8") as f:
+        return subprocess.run(cmd, text=True, stdout=f, stderr=subprocess.PIPE, check=False)
+
+
+def run_json_to_file(cmd: list[str], output: Path) -> tuple[subprocess.CompletedProcess[str], dict[str, object]]:
+    result = run_to_file(cmd, output)
+    if result.returncode != 0:
+        return result, {}
+    try:
+        return result, json.loads(output.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return result, {}
+
+
+def read_lines(path: Path) -> list[str]:
+    if not path.exists():
+        return []
+    return [line for line in path.read_text(encoding="utf-8", errors="replace").splitlines() if line]
+
+
+def read_path_size(path: Path) -> set[str]:
+    return set(read_lines(path))
+
+
+def read_hashes(path: Path) -> dict[str, str]:
+    hashes: dict[str, str] = {}
+    for line in read_lines(path):
+        digest, sep, relpath = line.partition("  ")
+        if sep and relpath:
+            hashes[relpath] = digest
+    return hashes
+
+
+def write_review_report(
+    chunk_id: str,
+    row: dict[str, str],
+    *,
+    status: str,
+    source_size: dict[str, object],
+    destination_size: dict[str, object],
+    path_size_missing: int,
+    path_size_extra: int,
+    source_hashes: int | None,
+    destination_hashes: int | None,
+    hash_missing_or_changed: int | None,
+    hash_extra_or_changed: int | None,
+    dynamic_exports: list[str],
+    note: str,
+) -> Path:
+    report = REPORTS_DIR / f"{chunk_id}-review.md"
+    lines = [
+        f"# {chunk_id} review",
+        "",
+        f"Status: {status}",
+        "",
+        f"Source: `{source_remote(row['source_path'])}`",
+        f"Destination: `{row['staging_path']}`",
+        f"Intended final home: `{row.get('final_home', '')}`",
+        "",
+        "Verification:",
+        f"- Source objects: {source_size.get('count', '')}",
+        f"- Destination files: {destination_size.get('count', '')}",
+        f"- Source reported bytes: {source_size.get('bytes', '')}",
+        f"- Destination bytes: {destination_size.get('bytes', '')}",
+        f"- Source unknown-size objects: {source_size.get('sizeless', 0)}",
+        f"- Missing path+size rows: {path_size_missing}",
+        f"- Extra path+size rows: {path_size_extra}",
+    ]
+    if source_hashes is not None:
+        lines.extend(
+            [
+                f"- Source SHA-256 rows: {source_hashes}",
+                f"- Destination SHA-256 rows: {destination_hashes}",
+                f"- SHA-256 missing/changed rows: {hash_missing_or_changed}",
+                f"- SHA-256 extra/changed rows: {hash_extra_or_changed}",
+            ]
+        )
+    if dynamic_exports:
+        lines.extend(["", "Likely dynamic Google-native exports:"])
+        lines.extend(f"- `{path}`" for path in dynamic_exports)
+    lines.extend(
+        [
+            "",
+            "Decision:",
+            f"- {note}",
+            "- No promotion or canonical reorganization was performed.",
+        ]
+    )
+    report.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return report
 
 
 def copy_command(
@@ -337,17 +462,7 @@ def plan_command(args: argparse.Namespace) -> int:
 
 
 def set_status(chunk_id: str, status: str, *, started: bool = False, finished: bool = False) -> None:
-    rows = read_ledger()
-    for row in rows:
-        if row["chunk_id"] == chunk_id:
-            row["status"] = status
-            if started:
-                row["started_at"] = stamp()
-            if finished:
-                row["finished_at"] = stamp()
-            write_ledger(rows)
-            return
-    raise SystemExit(f"Unknown chunk: {chunk_id}")
+    update_chunk(chunk_id, status=status, started=started, finished=finished)
 
 
 def find_chunk(chunk_id: str) -> dict[str, str]:
@@ -410,6 +525,199 @@ def copy_chunk_command(args: argparse.Namespace) -> int:
     return result.returncode
 
 
+def verify_chunk_command(args: argparse.Namespace) -> int:
+    row = find_chunk(args.chunk_id)
+    source = source_remote(row["source_path"])
+    destination = row["staging_path"]
+
+    print(f"Verifying chunk {args.chunk_id}.")
+
+    source_size_path = REPORTS_DIR / f"{args.chunk_id}-source-size.json"
+    destination_size_path = REPORTS_DIR / f"{args.chunk_id}-destination-size.json"
+    source_lsf_path = REPORTS_DIR / f"{args.chunk_id}-source-lsf.txt"
+    destination_lsf_path = REPORTS_DIR / f"{args.chunk_id}-destination-lsf.txt"
+    source_sha_path = REPORTS_DIR / f"{args.chunk_id}-source-sha256.txt"
+    destination_sha_path = REPORTS_DIR / f"{args.chunk_id}-destination-sha256.txt"
+
+    checks: list[tuple[str, subprocess.CompletedProcess[str]]] = []
+    result, source_size = run_json_to_file([*rclone_base(), "size", source, "--json"], source_size_path)
+    checks.append(("source size", result))
+    result, destination_size = run_json_to_file([*rclone_base(), "size", destination, "--json"], destination_size_path)
+    checks.append(("destination size", result))
+    checks.append(
+        (
+            "source inventory",
+            run_to_file(
+                [*rclone_base(), "lsf", source, "--recursive", "--files-only", "--format", "ps"],
+                source_lsf_path,
+            ),
+        )
+    )
+    checks.append(
+        (
+            "destination inventory",
+            run_to_file(
+                [*rclone_base(), "lsf", destination, "--recursive", "--files-only", "--format", "ps"],
+                destination_lsf_path,
+            ),
+        )
+    )
+
+    failed = [(label, result) for label, result in checks if result.returncode != 0]
+    if failed:
+        label, result = failed[0]
+        note = f"{label} failed; inspect saved reports/logs before continuing"
+        update_chunk(args.chunk_id, status="needs_review", notes=note, finished=True)
+        print(f"Chunk {args.chunk_id} needs review: {label} failed.")
+        print(result.stderr.strip())
+        return result.returncode or 1
+
+    source_rows = read_path_size(source_lsf_path)
+    destination_rows = read_path_size(destination_lsf_path)
+    path_size_missing = len(source_rows - destination_rows)
+    path_size_extra = len(destination_rows - source_rows)
+
+    source_hash_count = None
+    destination_hash_count = None
+    hash_missing_or_changed = None
+    hash_extra_or_changed = None
+    dynamic_exports: list[str] = []
+
+    if not args.no_hash:
+        source_hash_result = run_to_file([*rclone_base(), "hashsum", "SHA256", "--download", source], source_sha_path)
+        destination_hash_result = run_to_file(
+            [*rclone_base(), "hashsum", "SHA256", "--download", destination],
+            destination_sha_path,
+        )
+        if source_hash_result.returncode != 0 or destination_hash_result.returncode != 0:
+            note = "SHA-256 verification command failed; inspect saved hash outputs"
+            update_chunk(args.chunk_id, status="needs_review", notes=note, finished=True)
+            write_review_report(
+                args.chunk_id,
+                row,
+                status="needs_review",
+                source_size=source_size,
+                destination_size=destination_size,
+                path_size_missing=path_size_missing,
+                path_size_extra=path_size_extra,
+                source_hashes=None,
+                destination_hashes=None,
+                hash_missing_or_changed=None,
+                hash_extra_or_changed=None,
+                dynamic_exports=[],
+                note=note,
+            )
+            print(f"Chunk {args.chunk_id} needs review: SHA-256 verification failed.")
+            return source_hash_result.returncode or destination_hash_result.returncode or 1
+
+        source_hashes = read_hashes(source_sha_path)
+        destination_hashes = read_hashes(destination_sha_path)
+        source_hash_count = len(source_hashes)
+        destination_hash_count = len(destination_hashes)
+        source_hash_pairs = set(source_hashes.items())
+        destination_hash_pairs = set(destination_hashes.items())
+        hash_missing_or_changed = len(source_hash_pairs - destination_hash_pairs)
+        hash_extra_or_changed = len(destination_hash_pairs - source_hash_pairs)
+
+        if hash_missing_or_changed or hash_extra_or_changed:
+            second_source_sha_path = REPORTS_DIR / f"{args.chunk_id}-source-sha256-second-pass.txt"
+            second_result = run_to_file(
+                [*rclone_base(), "hashsum", "SHA256", "--download", source],
+                second_source_sha_path,
+            )
+            if second_result.returncode == 0:
+                second_source_hashes = read_hashes(second_source_sha_path)
+                dynamic_exports = sorted(
+                    path
+                    for path, digest in source_hashes.items()
+                    if second_source_hashes.get(path) not in [None, digest]
+                )
+
+    verified = (
+        int(source_size.get("count", -1)) == int(destination_size.get("count", -2))
+        and int(source_size.get("bytes", -1)) == int(destination_size.get("bytes", -2))
+        and int(source_size.get("sizeless", 0)) == 0
+        and path_size_missing == 0
+        and path_size_extra == 0
+        and (
+            args.no_hash
+            or (
+                source_hash_count == destination_hash_count == int(source_size.get("count", -1))
+                and hash_missing_or_changed == 0
+                and hash_extra_or_changed == 0
+            )
+        )
+    )
+
+    status = "verified" if verified else "needs_review"
+    if verified:
+        note = "copy verified by count, bytes, path+size inventory, and SHA-256; no promotion"
+    elif dynamic_exports:
+        ordinary_count = int(destination_size.get("count", 0)) - len(dynamic_exports)
+        note = (
+            f"copied; {ordinary_count} ordinary files appear stable; "
+            f"{len(dynamic_exports)} Google-native export(s) have unstable generated hashes and need human review; no promotion"
+        )
+    else:
+        note = "copied but verification found mismatches; inspect review report before continuing; no promotion"
+
+    report = write_review_report(
+        args.chunk_id,
+        row,
+        status=status,
+        source_size=source_size,
+        destination_size=destination_size,
+        path_size_missing=path_size_missing,
+        path_size_extra=path_size_extra,
+        source_hashes=source_hash_count,
+        destination_hashes=destination_hash_count,
+        hash_missing_or_changed=hash_missing_or_changed,
+        hash_extra_or_changed=hash_extra_or_changed,
+        dynamic_exports=dynamic_exports,
+        note=note,
+    )
+    update_chunk(
+        args.chunk_id,
+        status=status,
+        files=str(destination_size.get("count", "")),
+        bytes_=str(destination_size.get("bytes", "")),
+        notes=note,
+        finished=True,
+    )
+    print(f"Chunk {args.chunk_id}: {status}.")
+    print(f"Report: {report}")
+    return 0 if verified else 2
+
+
+def run_chunk_command(args: argparse.Namespace) -> int:
+    dry_run_args = argparse.Namespace(
+        chunk_id=args.chunk_id,
+        duration=args.duration,
+        max_transfer=args.max_transfer,
+        transfers=args.transfers,
+        checkers=args.checkers,
+        run=False,
+    )
+    dry_run_status = copy_chunk_command(dry_run_args)
+    if dry_run_status != 0:
+        return dry_run_status
+
+    copy_args = argparse.Namespace(
+        chunk_id=args.chunk_id,
+        duration=args.duration,
+        max_transfer=args.max_transfer,
+        transfers=args.transfers,
+        checkers=args.checkers,
+        run=True,
+    )
+    copy_status = copy_chunk_command(copy_args)
+    if copy_status != 0:
+        return copy_status
+
+    verify_args = argparse.Namespace(chunk_id=args.chunk_id, no_hash=args.no_hash)
+    return verify_chunk_command(verify_args)
+
+
 def inventory_command(args: argparse.Namespace) -> int:
     ensure_workspace()
     label = args.label or args.remote.replace(":", "").replace("/", "-")
@@ -433,11 +741,15 @@ def inventory_command(args: argparse.Namespace) -> int:
 
 
 def add_copy_flags(parser: argparse.ArgumentParser) -> None:
+    add_transfer_flags(parser)
+    parser.add_argument("--run", action="store_true", help="Actually copy files. Default is dry-run.")
+
+
+def add_transfer_flags(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--duration", default=DEFAULT_DURATION)
     parser.add_argument("--max-transfer", default=DEFAULT_MAX_TRANSFER)
     parser.add_argument("--transfers", default=DEFAULT_TRANSFERS)
     parser.add_argument("--checkers", default=DEFAULT_CHECKERS)
-    parser.add_argument("--run", action="store_true", help="Actually copy files. Default is dry-run.")
 
 
 def main() -> int:
@@ -477,6 +789,17 @@ def main() -> int:
     copy_chunk.add_argument("chunk_id")
     add_copy_flags(copy_chunk)
     copy_chunk.set_defaults(func=copy_chunk_command)
+
+    verify_chunk = sub.add_parser("verify-chunk", help="Verify one copied chunk and write a concise report.")
+    verify_chunk.add_argument("chunk_id")
+    verify_chunk.add_argument("--no-hash", action="store_true", help="Only compare count, bytes, and path+size.")
+    verify_chunk.set_defaults(func=verify_chunk_command)
+
+    run_chunk = sub.add_parser("run-chunk", help="Dry-run, copy, and verify one chunk.")
+    run_chunk.add_argument("chunk_id")
+    add_transfer_flags(run_chunk)
+    run_chunk.add_argument("--no-hash", action="store_true", help="Only compare count, bytes, and path+size.")
+    run_chunk.set_defaults(func=run_chunk_command)
 
     inventory = sub.add_parser("inventory", help="Write a recursive inventory for a remote path.")
     inventory.add_argument("remote", help='Example: "gdrive:My Drive" or "kdrive-webdav:00 Migration"')

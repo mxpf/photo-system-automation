@@ -192,7 +192,38 @@ Actually copy the chunk only after the dry-run looks sane:
 ./bin/drive-to-kdrive copy-chunk "chunk-001" --run
 ```
 
+Verify a copied chunk and write a concise report:
+
+```bash
+./bin/drive-to-kdrive verify-chunk "chunk-001"
+```
+
+For low-token / low-babysitting runs, use the end-to-end command:
+
+```bash
+./bin/drive-to-kdrive run-chunk "chunk-001"
+```
+
+That command dry-runs, copies, verifies, updates the ledger, and writes a review report. It still does not promote or reorganize anything.
+
 The default copy caps are 90 minutes and 25 GB.
+
+For an overnight chunk, keep the command boring and log-backed:
+
+```bash
+./bin/drive-to-kdrive run-chunk "chunk-007" \
+  --duration 6h \
+  --max-transfer 75G \
+  > ".migration/logs/chunk-007-run.out" 2>&1
+```
+
+Then only read the ledger/report when it finishes:
+
+```bash
+./bin/drive-to-kdrive ledger
+```
+
+The chat does not need to narrate progress. The machine can boil the kettle by itself.
 
 ## Step 2 — inventory Google Drive
 
