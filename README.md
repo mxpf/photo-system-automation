@@ -58,6 +58,10 @@ This architecture keeps the system calm.
 
 The point is not to have more software. The point is to keep each piece from becoming responsible for the wrong part of the system.
 
+## Related migration runbooks
+
+- [Google Drive → kDrive migration](docs/DRIVE_TO_KDRIVE_MIGRATION.md)
+
 ## Why these apps
 
 ### Devices
