@@ -10,6 +10,9 @@ FONTS="$RESOURCES/Fonts"
 
 mkdir -p "$MACOS" "$RESOURCES" "$FONTS"
 cp "$PROJECT_DIR/app/Info.plist" "$CONTENTS/Info.plist"
+if [ -f "$PROJECT_DIR/assets/PhotoSystem.icns" ]; then
+  cp "$PROJECT_DIR/assets/PhotoSystem.icns" "$RESOURCES/PhotoSystem.icns"
+fi
 
 find "$FONTS" -type f \( -name '*.otf' -o -name '*.ttf' \) -delete
 for font in "$HOME"/Library/Fonts/ABCDiatypeTrial-*.otf "$HOME"/Library/Fonts/*Diatype*.otf "$HOME"/Library/Fonts/*Diatype*.ttf; do

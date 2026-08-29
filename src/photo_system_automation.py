@@ -16,7 +16,6 @@ import os
 import plistlib
 import subprocess
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -64,20 +63,50 @@ def needs_attention(summary: dict[str, Any]) -> bool:
     return bool(file_count and (new_or_unaccounted or review or duplicates))
 
 
+def friendly_label(label: str) -> str:
+    return {
+        "manual": "Manual inbox",
+        "phone": "Phone camera backup",
+        "latest": "Latest report",
+    }.get(label, label)
+
+
 def short_summary(label: str, summary: dict[str, Any] | None) -> str:
+    name = friendly_label(label)
     if not summary:
-        return f"{label}: no report"
+        return f"{name}: no report yet."
     file_count = int(summary.get("file_count") or 0)
     already = int(summary.get("already_in_archive_files") or 0)
     review = int(summary.get("review_needed_files") or 0)
     duplicates = int(summary.get("duplicate_files_within_batch") or 0)
     new_or_unaccounted = max(0, file_count - already)
-    report_dir = summary.get("report_dir", "")
-    return (
-        f"{label}: files={file_count}, new_or_unaccounted={new_or_unaccounted}, "
-        f"already_in_archive={already}, review={review}, duplicates={duplicates}, "
-        f"report={report_dir}"
-    )
+    report_dir = Path(str(summary.get("report_dir", ""))).name
+    bits = [f"{name}: {file_count:,} file{'s' if file_count != 1 else ''} scanned"]
+    if new_or_unaccounted:
+        bits.append(f"{new_or_unaccounted:,} new/unaccounted")
+    elif file_count:
+        bits.append("all accounted for")
+    if already:
+        bits.append(f"{already:,} already in archive")
+    if review:
+        bits.append(f"{review:,} need review")
+    if duplicates:
+        bits.append(f"{duplicates:,} duplicates")
+    if report_dir:
+        bits.append(f"report: {report_dir}")
+    return "; ".join(bits) + "."
+
+
+def first_useful_error(text: str) -> str:
+    lines = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("Traceback ") or stripped.startswith("File \""):
+            continue
+        lines.append(stripped)
+    return lines[-1] if lines else "See the log/report for details."
 
 
 def notify(title: str, message: str) -> None:
@@ -90,19 +119,19 @@ def notify(title: str, message: str) -> None:
     subprocess.run(["/usr/bin/osascript", "-e", script], check=False)
 
 
-def run_audit(config: dict, input_path: str, *, no_hash: bool = False) -> int:
-    script = Path(config["legacy_automation_root"]) / "photo_intake_audit.py"
+def run_audit(config: dict, input_path: str, *, no_hash: bool = False) -> tuple[int, str]:
+    script = PROJECT_ROOT / "scripts/photo_intake_audit.py"
     if not script.exists():
-        print(f"Missing audit script: {script}", file=sys.stderr)
-        return 2
+        script = Path(config["legacy_automation_root"]) / "photo_intake_audit.py"
+    if not script.exists():
+        return 2, "The audit helper is missing."
     if not Path(input_path).exists():
-        print(f"Missing input folder: {input_path}", file=sys.stderr)
-        return 2
+        return 2, f"The input folder is missing: {input_path}"
     cmd = ["/usr/bin/python3", str(script), input_path]
     if no_hash:
         cmd.append("--no-hash")
-    result = subprocess.run(cmd, text=True, check=False)
-    return result.returncode
+    result = subprocess.run(cmd, text=True, capture_output=True, check=False)
+    return result.returncode, (result.stdout or "") + (result.stderr or "")
 
 
 def audit_command(args: argparse.Namespace) -> int:
@@ -116,17 +145,16 @@ def audit_command(args: argparse.Namespace) -> int:
     exit_code = 0
     summaries: list[tuple[str, dict[str, Any] | None]] = []
     for label, path in targets:
-        print(f"Running read-only {label} audit: {path}")
-        status = run_audit(config, path, no_hash=args.no_hash)
+        status, output = run_audit(config, path, no_hash=args.no_hash)
         if status != 0:
             exit_code = status
+            print(f"{friendly_label(label)} audit needs attention: {first_useful_error(output)}")
         summaries.append((label, latest_summary_for_input(Path(config["reports_root"]), path)))
 
     attention = [short_summary(label, summary) for label, summary in summaries if needs_attention(summary or {})]
     all_lines = [short_summary(label, summary) for label, summary in summaries]
 
-    print("")
-    print("Latest audit summary")
+    print("Photo intake audit complete.")
     for line in all_lines:
         print(f"- {line}")
 
@@ -136,11 +164,9 @@ def audit_command(args: argparse.Namespace) -> int:
         message = "New/reviewable photo intake found."
         if not config.get("notify_only_when_action_needed", True) or args.notify:
             notify("Photo intake needs review", message)
-        print("")
-        print(message)
+        print("Next: review the new/unaccounted files before importing or filing them.")
     else:
-        print("")
-        print("No new/reviewable photo intake found.")
+        print("Nothing needs attention right now.")
 
     return exit_code
 
@@ -231,9 +257,8 @@ def install_command(args: argparse.Namespace) -> int:
     enable = run_launchctl("enable", f"{domain}/{LAUNCH_AGENT_LABEL}")
     kick = run_launchctl("kickstart", "-k", f"{domain}/{LAUNCH_AGENT_LABEL}")
 
-    print(f"Installed local photo audit automation: every {seconds_to_human(seconds)}")
-    print(f"LaunchAgent: {LAUNCH_AGENT_PATH}")
-    print(f"Logs: {LOGS_DIR}")
+    print(f"Background audit is on: every {seconds_to_human(seconds)}.")
+    print("Photo System will check for new intake quietly and only speak up when review is needed.")
     if boot.returncode != 0:
         print(boot.stderr.strip() or boot.stdout.strip(), file=sys.stderr)
         return boot.returncode
@@ -248,33 +273,35 @@ def uninstall_command(args: argparse.Namespace) -> int:
     domain = f"gui/{os.getuid()}"
     run_launchctl("bootout", domain, str(LAUNCH_AGENT_PATH))
     if args.keep_plist:
-        print(f"Stopped automation; kept plist: {LAUNCH_AGENT_PATH}")
+        print("Background audit is stopped. The saved schedule file was kept.")
         return 0
     if LAUNCH_AGENT_PATH.exists():
         LAUNCH_AGENT_PATH.unlink()
-    print("Stopped local photo audit automation.")
+    print("Background audit is stopped.")
     return 0
 
 
 def status_command(args: argparse.Namespace) -> int:
-    print(f"Project: {PROJECT_ROOT}")
-    print(f"Config: {args.config if args.config.exists() else str(args.config) + ' (missing; example fallback available)'}")
-    print(f"LaunchAgent: {LAUNCH_AGENT_PATH} {'present' if LAUNCH_AGENT_PATH.exists() else 'not installed'}")
+    print("Photo System is running.")
+    installed = LAUNCH_AGENT_PATH.exists()
+    print(f"Background audit: {'On' if installed else 'Off'}")
     if LAUNCH_AGENT_PATH.exists():
         try:
             plist = plistlib.loads(LAUNCH_AGENT_PATH.read_bytes())
             seconds = int(plist.get("StartInterval", 0))
             if seconds:
-                print(f"Interval: every {seconds_to_human(seconds)}")
-            print(f"RunAtLoad: {plist.get('RunAtLoad')}")
+                print(f"Interval: Every {seconds_to_human(seconds)}")
         except Exception as exc:
-            print(f"Could not read plist: {exc}")
+            print(f"Interval: Could not read setting ({exc})")
     domain_label = f"gui/{os.getuid()}/{LAUNCH_AGENT_LABEL}"
     proc = run_launchctl("print", domain_label)
-    print(f"Loaded: {'yes' if proc.returncode == 0 else 'no'}")
-    for p in [LOGS_DIR / "photo-system-audit.out.log", LOGS_DIR / "photo-system-audit.err.log"]:
-        if p.exists():
-            print(f"{p.name}: {p.stat().st_size} bytes")
+    print(f"Scheduler: {'Loaded' if proc.returncode == 0 else 'Not loaded'}")
+    err_log = LOGS_DIR / "photo-system-audit.err.log"
+    if err_log.exists() and err_log.stat().st_size:
+        print("Last run: Needs attention")
+    else:
+        print("Last run: OK")
+    print("Reports: kDrive → 01 Personal → Photos → Inbox → _automation → reports")
     return 0
 
 
@@ -379,7 +406,6 @@ def main() -> int:
     init_config.set_defaults(func=init_config_command)
 
     args = parser.parse_args()
-    print(f"photo-system-automation {datetime.now(timezone.utc).isoformat(timespec='seconds')}")
     return args.func(args)
 
 

@@ -44,10 +44,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         log("applicationDidFinishLaunching")
         registerBundledFonts()
         NSApp.setActivationPolicy(.regular)
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         if let button = statusItem.button {
-            button.title = "📷 Photos"
-            button.font = preferredFont(size: 13, weight: .semibold)
+            button.image = makeMenuBarIcon()
+            button.imagePosition = .imageOnly
             button.toolTip = "Photo System Automation"
         }
         rebuildMenu()
@@ -144,10 +144,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         stack.spacing = 14
         stack.translatesAutoresizingMaskIntoConstraints = false
 
-        let title = NSTextField(labelWithString: "📷 Photo System")
+        let title = NSTextField(labelWithString: "Photo System")
         title.font = preferredFont(size: 28, weight: .bold)
 
-        let subtitle = NSTextField(labelWithString: "Running. You can use either this window or the “📷 Photos” menu-bar item.")
+        let subtitle = NSTextField(labelWithString: "Running. Use this window or the small photo icon in the menu bar.")
         subtitle.font = preferredFont(size: 14)
         subtitle.textColor = .secondaryLabelColor
         subtitle.maximumNumberOfLines = 3
@@ -199,6 +199,38 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         return button
     }
 
+    private func makeMenuBarIcon() -> NSImage {
+        let size = NSSize(width: 18, height: 18)
+        let image = NSImage(size: size)
+        image.lockFocus()
+        NSColor.black.setStroke()
+        NSColor.black.setFill()
+
+        let tray = NSBezierPath(roundedRect: NSRect(x: 3.0, y: 3.0, width: 12.0, height: 5.0), xRadius: 1.4, yRadius: 1.4)
+        tray.lineWidth = 1.8
+        tray.stroke()
+
+        let circle = NSBezierPath(ovalIn: NSRect(x: 5.0, y: 7.0, width: 8.0, height: 8.0))
+        circle.lineWidth = 1.8
+        circle.stroke()
+
+        let center = NSPoint(x: 9.0, y: 11.0)
+        for angle in stride(from: 0.0, to: 360.0, by: 60.0) {
+            let radians = angle * .pi / 180.0
+            let inner = NSPoint(x: center.x + CGFloat(cos(radians)) * 1.5, y: center.y + CGFloat(sin(radians)) * 1.5)
+            let outer = NSPoint(x: center.x + CGFloat(cos(radians)) * 3.5, y: center.y + CGFloat(sin(radians)) * 3.5)
+            let line = NSBezierPath()
+            line.move(to: inner)
+            line.line(to: outer)
+            line.lineWidth = 1.1
+            line.stroke()
+        }
+
+        image.unlockFocus()
+        image.isTemplate = true
+        return image
+    }
+
     private func item(_ title: String, action: Selector) -> NSMenuItem {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
         item.target = self
@@ -241,11 +273,37 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let alert = NSAlert()
         alert.messageText = title
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        alert.informativeText = String(trimmed.prefix(3500))
+        alert.informativeText = ""
         alert.alertStyle = ok ? .informational : .warning
+        alert.accessoryView = resultTextView(String(trimmed.prefix(3500)))
         alert.addButton(withTitle: "OK")
         NSApp.activate(ignoringOtherApps: true)
         alert.runModal()
+    }
+
+    private func resultTextView(_ text: String) -> NSView {
+        let width: CGFloat = 420
+        let height: CGFloat = text.count > 900 ? 220 : 140
+        let scrollView = NSScrollView(frame: NSRect(x: 0, y: 0, width: width, height: height))
+        scrollView.hasVerticalScroller = text.count > 900
+        scrollView.borderType = .noBorder
+        scrollView.drawsBackground = false
+
+        let textView = NSTextView(frame: scrollView.bounds)
+        textView.string = text
+        textView.isEditable = false
+        textView.isSelectable = true
+        textView.drawsBackground = false
+        textView.font = preferredFont(size: 13)
+        textView.textColor = .labelColor
+        textView.textContainerInset = NSSize(width: 0, height: 0)
+        textView.textContainer?.lineFragmentPadding = 0
+        textView.textContainer?.containerSize = NSSize(width: width, height: .greatestFiniteMagnitude)
+        textView.textContainer?.widthTracksTextView = true
+        textView.autoresizingMask = [.width]
+
+        scrollView.documentView = textView
+        return scrollView
     }
 
     private func notify(title: String, message: String) {

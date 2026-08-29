@@ -11,6 +11,8 @@
   <string>Photo System</string>
   <key>CFBundleDisplayName</key>
   <string>Photo System</string>
+  <key>CFBundleIconFile</key>
+  <string>PhotoSystem</string>
   <key>CFBundlePackageType</key>
   <string>APPL</string>
   <key>CFBundleShortVersionString</key>
