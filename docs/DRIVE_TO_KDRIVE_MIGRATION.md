@@ -149,6 +149,14 @@ This repo includes a local helper for the chunked workflow:
 ./bin/drive-to-kdrive ledger
 ```
 
+For kDrive WebDAV, create the remote shell first, then save the password/app password through the helper:
+
+```bash
+./bin/drive-to-kdrive set-kdrive-password
+```
+
+The helper prompts invisibly and stores the password in the local rclone config.
+
 The helper stores local migration state under:
 
 ```text

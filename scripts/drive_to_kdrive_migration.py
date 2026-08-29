@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime as dt
+import getpass
 import shlex
 import subprocess
 import sys
@@ -235,23 +236,62 @@ def setup_help_command(args: argparse.Namespace) -> int:
         )
     )
     print("")
-    print("Then add the password/app password without printing it:")
+    print("Then add the password/app password without showing it on screen:")
     print(
         shell_join(
             [
-                "rclone",
-                "--config",
-                str(RCLONE_CONFIG),
-                "config",
-                "password",
-                "kdrive-webdav",
-                "pass",
+                "./bin/drive-to-kdrive",
+                "set-kdrive-password",
             ]
         )
     )
     print("")
     print("The kDrive ID is the number after /drive/ in the kDrive web app URL.")
     print("The WebDAV URL format is documented by Infomaniak.")
+    return 0
+
+
+def set_kdrive_password_command(args: argparse.Namespace) -> int:
+    ensure_workspace()
+    password = getpass.getpass("kDrive WebDAV password/app password: ")
+    if not password:
+        print("No password entered. Nothing changed.")
+        return 1
+
+    obscure = subprocess.run(
+        ["rclone", "obscure", "-"],
+        input=password + "\n",
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if obscure.returncode != 0:
+        print("Could not prepare password for rclone.")
+        print(obscure.stderr.strip() or obscure.stdout.strip())
+        return obscure.returncode
+
+    obscured = obscure.stdout.strip()
+    update = subprocess.run(
+        [
+            *rclone_base(),
+            "config",
+            "update",
+            "kdrive-webdav",
+            "pass",
+            obscured,
+            "--no-obscure",
+        ],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if update.returncode != 0:
+        print("Could not save kDrive WebDAV password.")
+        print(update.stderr.strip() or update.stdout.strip())
+        return update.returncode
+
+    print("kDrive WebDAV password saved in the local migration rclone config.")
+    print("Next: ./bin/drive-to-kdrive check")
     return 0
 
 
@@ -412,6 +452,9 @@ def main() -> int:
 
     setup_help = sub.add_parser("setup-help", help="Print safe remote setup commands.")
     setup_help.set_defaults(func=setup_help_command)
+
+    set_kdrive_password = sub.add_parser("set-kdrive-password", help="Prompt for and save the kDrive WebDAV password.")
+    set_kdrive_password.set_defaults(func=set_kdrive_password_command)
 
     ledger = sub.add_parser("ledger", help="Show planned chunks.")
     ledger.set_defaults(func=ledger_command)
