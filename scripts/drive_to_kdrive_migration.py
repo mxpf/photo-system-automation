@@ -208,6 +208,53 @@ def check_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def setup_help_command(args: argparse.Namespace) -> int:
+    ensure_workspace()
+    print("Google Drive remote")
+    print("Already configured if `./bin/drive-to-kdrive check` sees gdrive:.")
+    print("")
+    print("kDrive WebDAV remote")
+    print("Create it with:")
+    print(
+        shell_join(
+            [
+                "rclone",
+                "--config",
+                str(RCLONE_CONFIG),
+                "config",
+                "create",
+                "kdrive-webdav",
+                "webdav",
+                "vendor",
+                "other",
+                "url",
+                "https://YOUR_KDRIVE_ID.connect.kdrive.infomaniak.com",
+                "user",
+                "YOUR_INFOMANIAK_LOGIN",
+            ]
+        )
+    )
+    print("")
+    print("Then add the password/app password without printing it:")
+    print(
+        shell_join(
+            [
+                "rclone",
+                "--config",
+                str(RCLONE_CONFIG),
+                "config",
+                "password",
+                "kdrive-webdav",
+                "pass",
+            ]
+        )
+    )
+    print("")
+    print("The kDrive ID is the number after /drive/ in the kDrive web app URL.")
+    print("The WebDAV URL format is documented by Infomaniak.")
+    return 0
+
+
 def ledger_command(args: argparse.Namespace) -> int:
     rows = read_ledger()
     if not rows:
@@ -362,6 +409,9 @@ def main() -> int:
 
     check = sub.add_parser("check", help="Check rclone and required remotes.")
     check.set_defaults(func=check_command)
+
+    setup_help = sub.add_parser("setup-help", help="Print safe remote setup commands.")
+    setup_help.set_defaults(func=setup_help_command)
 
     ledger = sub.add_parser("ledger", help="Show planned chunks.")
     ledger.set_defaults(func=ledger_command)
