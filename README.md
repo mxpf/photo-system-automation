@@ -2,7 +2,46 @@
 
 A small local control room for Max’s photo archive.
 
-The system has one job: keep the photo pipeline legible. New photos arrive, the archive stays canonical, Ente gets fed from clean batches, and nothing quietly rearranges the house while nobody is looking.
+## What it does
+
+Photo System watches the places where new photos arrive, compares them against the canonical archive, and tells you what needs attention.
+
+In plain terms, it answers:
+
+- Did new photos arrive?
+- Are they already in the archive?
+- Are there duplicates?
+- Are there files that look odd enough to review?
+- Where is the latest audit report?
+
+It runs locally on the Mac, can sit in the menu bar, and can also run quiet scheduled checks in the background.
+
+## What it does not do
+
+Photo System does not manage your photo library for you.
+
+It does not:
+
+- delete photos
+- rename photos
+- move photos into the archive
+- deduplicate originals
+- modify embedded metadata
+- promote anything into the canonical archive
+- import anything into Ente
+- treat Ente as the source of truth
+
+Those steps require an explicit decision.
+
+## Why it exists
+
+The system has one job: keep the photo pipeline legible.
+
+New photos arrive. The archive stays canonical. Ente gets fed from clean batches. Nothing quietly rearranges the house while nobody is looking.
+
+This is not a photo manager. It is a guardrail system around the photo manager.
+
+The photo archive should remain calm, inspectable, and boring. The apps around it can be replaced. The originals should not care.
 
 ## The shape of the system
 
@@ -42,33 +81,6 @@ The audit helper is versioned in this repo at:
 ```
 
 There may still be an older copy in the kDrive `_automation` folder for continuity, but the app prefers the repo copy.
-
-## What the automation is allowed to do
-
-By default, this project is intentionally boring:
-
-- scan intake folders
-- compare files against the archive manifest
-- identify new, duplicate, already-archived, or review-needed files
-- write reports
-- notify when a human decision is needed
-
-That is it.
-
-## What it will not do by itself
-
-The automation does not:
-
-- delete photos
-- rename photos
-- move photos into the archive
-- deduplicate originals
-- modify embedded metadata
-- promote anything into the canonical archive
-- import anything into Ente
-- treat Ente as the source of truth
-
-Those steps require an explicit decision.
 
 ## Menu app
 
@@ -150,9 +162,3 @@ Output:
 ```text
 /Users/mxpf/Code/photo-system-automation/dist/Photo System.app
 ```
-
-## Project stance
-
-This is not a photo manager. It is a little guardrail system around the photo manager.
-
-The photo archive should remain calm, inspectable, and boring. The apps around it can be replaced. The originals should not care.
