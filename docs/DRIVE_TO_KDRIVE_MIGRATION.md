@@ -141,6 +141,51 @@ Keep the rclone config in a migration workspace, not scattered across the machin
 
 Do not commit that file. It contains credentials.
 
+This repo includes a local helper for the chunked workflow:
+
+```bash
+./bin/drive-to-kdrive init
+./bin/drive-to-kdrive check
+./bin/drive-to-kdrive ledger
+```
+
+The helper stores local migration state under:
+
+```text
+.migration/
+```
+
+That folder is intentionally ignored by git.
+
+Once the remotes are configured, plan a chunk:
+
+```bash
+./bin/drive-to-kdrive plan "chunk-001" "My Drive/Folder Name" \
+  --bucket "02 Needs Review" \
+  --final-home "/Private/01 Personal/Somewhere" \
+  --notes "first small test chunk"
+```
+
+Preview the capped copy command:
+
+```bash
+./bin/drive-to-kdrive command "chunk-001"
+```
+
+Dry-run the chunk:
+
+```bash
+./bin/drive-to-kdrive copy-chunk "chunk-001"
+```
+
+Actually copy the chunk only after the dry-run looks sane:
+
+```bash
+./bin/drive-to-kdrive copy-chunk "chunk-001" --run
+```
+
+The default copy caps are 90 minutes and 25 GB.
+
 ## Step 2 — inventory Google Drive
 
 Before copying anything, list what exists.

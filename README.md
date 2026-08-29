@@ -62,6 +62,14 @@ The point is not to have more software. The point is to keep each piece from bec
 
 - [Google Drive → kDrive migration](docs/DRIVE_TO_KDRIVE_MIGRATION.md)
 
+The Drive migration helper is:
+
+```bash
+./bin/drive-to-kdrive
+```
+
+It plans and runs capped chunks so a migration never turns into a forever process.
+
 ## Why these apps
 
 ### Devices
