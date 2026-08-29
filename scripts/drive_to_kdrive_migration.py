@@ -770,6 +770,10 @@ def run_background_command(args: argparse.Namespace) -> int:
         "StandardErrorPath": str(stderr_path),
     }
 
+    for stale_log in [stdout_path, stderr_path]:
+        if stale_log.exists():
+            stale_log.unlink()
+
     if args.replace:
         subprocess.run(["launchctl", "bootout", f"{launchctl_target()}/{label}"], check=False)
         subprocess.run(["launchctl", "bootout", launchctl_target(), str(plist_path)], check=False)
