@@ -18,6 +18,7 @@ import getpass
 import json
 import os
 import plistlib
+import shutil
 import shlex
 import subprocess
 import sys
@@ -153,7 +154,8 @@ def source_remote(source_path: str) -> str:
 
 
 def rclone_base() -> list[str]:
-    return ["rclone", "--config", str(RCLONE_CONFIG)]
+    rclone = shutil.which("rclone") or "/usr/local/bin/rclone"
+    return [rclone, "--config", str(RCLONE_CONFIG)]
 
 
 def run_to_file(cmd: list[str], output: Path) -> subprocess.CompletedProcess[str]:
@@ -761,11 +763,15 @@ def run_background_command(args: argparse.Namespace) -> int:
         "ProgramArguments": program_args,
         "WorkingDirectory": str(PROJECT_ROOT),
         "RunAtLoad": True,
+        "EnvironmentVariables": {
+            "PATH": "/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        },
         "StandardOutPath": str(stdout_path),
         "StandardErrorPath": str(stderr_path),
     }
 
     if args.replace:
+        subprocess.run(["launchctl", "bootout", f"{launchctl_target()}/{label}"], check=False)
         subprocess.run(["launchctl", "bootout", launchctl_target(), str(plist_path)], check=False)
 
     with plist_path.open("wb") as f:
