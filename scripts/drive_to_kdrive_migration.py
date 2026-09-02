@@ -753,6 +753,37 @@ def run_chunk_command(args: argparse.Namespace) -> int:
     return verify_chunk_command(verify_args)
 
 
+def notify_macos_failure(chunk_id: str, exit_code: int) -> None:
+    """Show an immediate local alert when a background migration chunk fails."""
+    osascript = Path("/usr/bin/osascript")
+    if not osascript.exists():
+        return
+    script = (
+        'on run argv\n'
+        'display notification (item 2 of argv) with title (item 1 of argv) sound name "Basso"\n'
+        'end run'
+    )
+    subprocess.run(
+        [
+            str(osascript),
+            "-e",
+            script,
+            "Photo migration paused",
+            f"{chunk_id} failed verification or transfer (exit {exit_code}).",
+        ],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+
+def run_chunk_notified_command(args: argparse.Namespace) -> int:
+    status = run_chunk_command(args)
+    if status != 0:
+        notify_macos_failure(args.chunk_id, status)
+    return status
+
+
 def launch_label(chunk_id: str) -> str:
     safe = validate_text(chunk_id, "chunk_id").replace("_", "-")
     return f"com.max.photo-system.drive-to-kdrive.{safe}"
@@ -774,7 +805,7 @@ def run_background_command(args: argparse.Namespace) -> int:
 
     program_args = [
         str(PROJECT_ROOT / "bin" / "drive-to-kdrive"),
-        "run-chunk",
+        "run-chunk-notified",
         args.chunk_id,
         "--duration",
         args.duration,
@@ -1098,6 +1129,15 @@ def main() -> int:
     add_transfer_flags(run_chunk)
     run_chunk.add_argument("--no-hash", action="store_true", help="Only compare count, bytes, and path+size.")
     run_chunk.set_defaults(func=run_chunk_command)
+
+    run_chunk_notified = sub.add_parser(
+        "run-chunk-notified",
+        help="Run one chunk and show an immediate macOS notification if it fails.",
+    )
+    run_chunk_notified.add_argument("chunk_id")
+    add_transfer_flags(run_chunk_notified)
+    run_chunk_notified.add_argument("--no-hash", action="store_true", help="Only compare count, bytes, and path+size.")
+    run_chunk_notified.set_defaults(func=run_chunk_notified_command)
 
     run_background = sub.add_parser("run-background", help="Start a one-shot macOS background runner for a chunk.")
     run_background.add_argument("chunk_id")

@@ -225,6 +225,10 @@ If you want the run to survive outside the current terminal/chat session, start 
   --max-transfer 75G
 ```
 
+The background runner stays quiet while work is healthy. If transfer or verification
+exits unsuccessfully, it immediately posts a local macOS notification so a scheduled
+status check does not have to be the first sign that work paused.
+
 Check it without reading the full logs:
 
 ```bash
