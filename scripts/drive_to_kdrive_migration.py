@@ -22,6 +22,7 @@ import shutil
 import shlex
 import subprocess
 import sys
+import time
 from pathlib import Path
 from typing import Iterable
 
@@ -778,9 +779,21 @@ def notify_macos_failure(chunk_id: str, exit_code: int) -> None:
 
 
 def run_chunk_notified_command(args: argparse.Namespace) -> int:
-    status = run_chunk_command(args)
-    if status != 0:
-        notify_macos_failure(args.chunk_id, status)
+    total_attempts = args.retry_attempts + 1
+    status = 0
+    for attempt in range(1, total_attempts + 1):
+        if attempt > 1:
+            print(
+                f"Retrying {args.chunk_id} automatically "
+                f"({attempt - 1}/{args.retry_attempts}); existing staged files will be reused."
+            )
+        status = run_chunk_command(args)
+        if status == 0:
+            return 0
+        if attempt < total_attempts and args.retry_delay > 0:
+            time.sleep(args.retry_delay)
+
+    notify_macos_failure(args.chunk_id, status)
     return status
 
 
@@ -815,6 +828,10 @@ def run_background_command(args: argparse.Namespace) -> int:
         args.transfers,
         "--checkers",
         args.checkers,
+        "--retry-attempts",
+        str(args.retry_attempts),
+        "--retry-delay",
+        str(args.retry_delay),
     ]
     if args.no_hash:
         program_args.append("--no-hash")
@@ -1137,6 +1154,21 @@ def main() -> int:
     run_chunk_notified.add_argument("chunk_id")
     add_transfer_flags(run_chunk_notified)
     run_chunk_notified.add_argument("--no-hash", action="store_true", help="Only compare count, bytes, and path+size.")
+    run_chunk_notified.add_argument(
+        "--retry-attempts",
+        type=int,
+        default=2,
+        choices=range(0, 11),
+        metavar="N",
+        help="Resume automatically up to N times before notifying (default: 2).",
+    )
+    run_chunk_notified.add_argument(
+        "--retry-delay",
+        type=int,
+        default=30,
+        metavar="SECONDS",
+        help="Wait between automatic retries (default: 30).",
+    )
     run_chunk_notified.set_defaults(func=run_chunk_notified_command)
 
     run_background = sub.add_parser("run-background", help="Start a one-shot macOS background runner for a chunk.")
@@ -1144,6 +1176,21 @@ def main() -> int:
     add_transfer_flags(run_background)
     run_background.add_argument("--no-hash", action="store_true", help="Only compare count, bytes, and path+size.")
     run_background.add_argument("--replace", action="store_true", help="Replace this chunk's existing LaunchAgent if loaded.")
+    run_background.add_argument(
+        "--retry-attempts",
+        type=int,
+        default=2,
+        choices=range(0, 11),
+        metavar="N",
+        help="Resume automatically up to N times before notifying (default: 2).",
+    )
+    run_background.add_argument(
+        "--retry-delay",
+        type=int,
+        default=30,
+        metavar="SECONDS",
+        help="Wait between automatic retries (default: 30).",
+    )
     run_background.set_defaults(func=run_background_command)
 
     background_status = sub.add_parser("background-status", help="Check one chunk's background runner and ledger status.")

@@ -226,8 +226,10 @@ If you want the run to survive outside the current terminal/chat session, start 
 ```
 
 The background runner stays quiet while work is healthy. If transfer or verification
-exits unsuccessfully, it immediately posts a local macOS notification so a scheduled
-status check does not have to be the first sign that work paused.
+exits unsuccessfully, it safely resumes against the same staging destination up to
+two times. Existing matching files are reused. It posts a local macOS notification
+only if both automatic retries also fail, so a scheduled status check does not have
+to be the first sign that work genuinely paused.
 
 Check it without reading the full logs:
 
