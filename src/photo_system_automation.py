@@ -11,11 +11,14 @@ Archive promotion and Ente import package generation stay manual/explicit.
 from __future__ import annotations
 
 import argparse
+import csv
+import hashlib
 import json
 import os
 import plistlib
 import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -167,6 +170,12 @@ def audit_command(args: argparse.Namespace) -> int:
         print("Next: review the new/unaccounted files before importing or filing them.")
     else:
         print("Nothing needs attention right now.")
+
+    if config.get("font_audit_enabled"):
+        font_args = argparse.Namespace(config=args.config, notify=True)
+        font_exit = font_audit_command(font_args)
+        if font_exit:
+            exit_code = exit_code or font_exit
 
     return exit_code
 
@@ -367,6 +376,163 @@ def init_config_command(args: argparse.Namespace) -> int:
     return 0
 
 
+FONT_EXTENSIONS = {".otf", ".ttf", ".ttc", ".woff", ".woff2", ".eot"}
+APPROVED_FONT_STATUSES = {"open_source", "free_commercial_license"}
+
+
+def load_font_catalog(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        raise SystemExit(f"The font catalog is missing: {path}")
+    with path.open(newline="", encoding="utf-8-sig") as stream:
+        return list(csv.DictReader(stream))
+
+
+def font_catalog_counts(rows: list[dict[str, str]]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for row in rows:
+        status = row.get("status", "provenance_unknown")
+        counts[status] = counts.get(status, 0) + 1
+    return counts
+
+
+def font_status_command(args: argparse.Namespace) -> int:
+    config = load_config(args.config)
+    rows = load_font_catalog(Path(config["font_catalog"]))
+    counts = font_catalog_counts(rows)
+    approved = sum(counts.get(status, 0) for status in APPROVED_FONT_STATUSES)
+    restricted = counts.get("restricted_or_trial", 0) + counts.get("web_only_restricted", 0)
+    review = len(rows) - approved - restricted - counts.get("non_font_admin", 0)
+    intake = Path(config["font_intake"])
+    intake_files = sum(1 for path in intake.rglob("*") if path.is_file()) if intake.exists() else 0
+    print("Font library is organized and monitored.")
+    print(f"Approved for production: {approved:,} families")
+    print(f"Restricted or web-only: {restricted:,} families")
+    print(f"License/provenance review: {review:,} families")
+    print(f"New font intake: {intake_files:,} files")
+    print("Restricted and unresolved fonts are isolated from the production collection.")
+    return 0
+
+
+def font_metadata(path: Path) -> str:
+    tool = "/usr/local/bin/fc-query"
+    if not Path(tool).exists():
+        return ""
+    result = subprocess.run(
+        [tool, "--format", "%{family[0]} | %{foundry} | %{fullname[0]}", str(path)],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    return result.stdout.strip()
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def font_audit_command(args: argparse.Namespace) -> int:
+    config = load_config(args.config)
+    root = Path(config["font_library_root"])
+    intake = Path(config["font_intake"])
+    reports = Path(config["font_reports_root"])
+    rows = load_font_catalog(Path(config["font_catalog"]))
+    catalog = {row["family"].casefold(): row for row in rows}
+    reports.mkdir(parents=True, exist_ok=True)
+    intake.mkdir(parents=True, exist_ok=True)
+
+    files = [path for path in intake.rglob("*") if path.is_file()]
+    approved_files: dict[tuple[str, int], list[str]] = {}
+    reserved = {"Specimens & Licenses", "00 Catalog & Audit", "_Incoming", "_Quarantine"}
+    if root.exists():
+        for family in root.iterdir():
+            if not family.is_dir() or family.name in reserved:
+                continue
+            for path in family.rglob("*"):
+                if path.is_file():
+                    try:
+                        approved_files.setdefault((path.name.casefold(), path.stat().st_size), []).append(str(path))
+                    except OSError:
+                        pass
+
+    issues: list[dict[str, str]] = []
+    hashes: dict[str, str] = {}
+    inspected: list[dict[str, object]] = []
+    for path in files:
+        relative = str(path.relative_to(intake))
+        suffix = path.suffix.lower()
+        size = path.stat().st_size
+        family = path.relative_to(intake).parts[0] if len(path.relative_to(intake).parts) > 1 else path.stem
+        catalog_row = catalog.get(family.casefold())
+        record: dict[str, object] = {
+            "path": relative,
+            "size": size,
+            "family": family,
+            "catalog_status": catalog_row.get("status") if catalog_row else "new_family",
+            "metadata": font_metadata(path) if suffix in FONT_EXTENSIONS else "",
+        }
+        if size == 0:
+            issues.append({"path": relative, "issue": "zero-byte file"})
+        if not suffix:
+            issues.append({"path": relative, "issue": "missing extension"})
+        elif suffix not in FONT_EXTENSIONS and suffix not in {".txt", ".pdf"}:
+            issues.append({"path": relative, "issue": f"unsupported extension: {suffix}"})
+        if not catalog_row:
+            issues.append({"path": relative, "issue": "new family needs license review"})
+        elif catalog_row.get("status") not in APPROVED_FONT_STATUSES:
+            issues.append({"path": relative, "issue": f"family is not production-approved: {catalog_row.get('status')}"})
+        if suffix in FONT_EXTENSIONS and size:
+            digest = sha256(path)
+            record["sha256"] = digest
+            if digest in hashes:
+                issues.append({"path": relative, "issue": f"exact duplicate of {hashes[digest]}"})
+            else:
+                hashes[digest] = relative
+            matches = approved_files.get((path.name.casefold(), size), [])
+            if matches:
+                issues.append({"path": relative, "issue": f"possible archive duplicate: {matches[0]}"})
+        inspected.append(record)
+
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    payload = {"generated_at": stamp, "intake": str(intake), "file_count": len(files), "issue_count": len(issues), "files": inspected, "issues": issues}
+    json_path = reports / f"font-intake-audit-{stamp}.json"
+    md_path = reports / f"font-intake-audit-{stamp}.md"
+    json_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    lines = ["# Font Intake Audit", "", f"- Files: {len(files):,}", f"- Issues: {len(issues):,}", f"- Intake: `{intake}`", ""]
+    if issues:
+        lines.extend(["## Review queue", ""] + [f"- `{item['path']}` — {item['issue']}" for item in issues])
+    else:
+        lines.append("Nothing needs review.")
+    md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"Font intake audit complete: {len(files):,} files, {len(issues):,} issues.")
+    print(f"Report: {md_path}")
+    if issues and args.notify:
+        notify("Font intake needs review", f"{len(issues)} issue{'s' if len(issues) != 1 else ''} found.")
+    return 1 if issues else 0
+
+
+def font_catalog_command(args: argparse.Namespace) -> int:
+    config = load_config(args.config)
+    path = Path(config["font_catalog"])
+    print(path)
+    if args.open:
+        subprocess.run(["/usr/bin/open", str(path)], check=False)
+    return 0
+
+
+def font_guide_command(args: argparse.Namespace) -> int:
+    print("Font use guide")
+    print("Production approved: open-source fonts and included freeware licenses that expressly permit commercial work.")
+    print("Restricted: trial, test, personal-use, unlicensed, suspect-source, and web-only fonts.")
+    print("Web-only: websites only; do not use in desktop layouts, print, PDFs, presentations, logos, or apps.")
+    print("Needs license review: keep out of final work until purchase or provenance records are confirmed.")
+    print("New fonts: place them in kDrive → Fonts → _Incoming, then run Font intake audit.")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Photo system automation")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -404,6 +570,24 @@ def main() -> int:
     init_config = sub.add_parser("init-config", help="Create local config from the example.")
     init_config.add_argument("--force", action="store_true")
     init_config.set_defaults(func=init_config_command)
+
+    font_audit = sub.add_parser("font-audit", help="Audit the font intake folder without moving files.")
+    font_audit.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    font_audit.add_argument("--notify", action="store_true")
+    font_audit.set_defaults(func=font_audit_command)
+
+    font_status = sub.add_parser("font-status", help="Show production-font licensing status.")
+    font_status.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    font_status.set_defaults(func=font_status_command)
+
+    font_catalog = sub.add_parser("font-catalog", help="Show or open the font license catalog.")
+    font_catalog.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    font_catalog.add_argument("--open", action="store_true")
+    font_catalog.set_defaults(func=font_catalog_command)
+
+    font_guide = sub.add_parser("font-guide", help="Explain permitted-use categories.")
+    font_guide.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    font_guide.set_defaults(func=font_guide_command)
 
     args = parser.parse_args()
     return args.func(args)

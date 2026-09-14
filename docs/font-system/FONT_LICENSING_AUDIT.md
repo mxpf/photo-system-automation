@@ -1,0 +1,2245 @@
+# Font Licensing Audit
+
+Generated: 2026-09-13
+Updated with evidence resolution and metadata triage: 2026-09-13
+
+This audit is evidentiary, not legal advice. It made no changes to kDrive or any font files.
+
+## Summary
+
+- Families and administrative entries reviewed: 2,195
+- Open-source evidence: 1,809
+- Included freeware license permits commercial use: 17
+- Restricted, trial, test, personal-use, unlicensed, or suspect-source: 157
+- Web-only license: 1
+- Vendor/foundry identified; entitlement record still needed: 46
+- Legacy source; provenance confirmation needed: 156
+- No evidence establishing production rights: 7
+- Unsupported legacy font artifact: 1
+- Administrative item (not a font family): 1
+
+## Recommended production policy
+
+Use open-source families and families with an included license that expressly permits commercial work. Confirm that the intended use still respects embedding, redistribution, modification, seat, web, app, and other scope limits. Keep every restricted, trial, test, personal-use, web-only, unsupported, or unresolved-provenance family out of final production work until the necessary license or entitlement is documented.
+
+## 1. Open-source evidence
+
+- ADLaM Display — Official Google Fonts open-source catalog: ADLaM Display
+- AR One Sans — Official Google Fonts open-source catalog: AR One Sans
+- Abhaya Libre — Official Google Fonts open-source catalog: Abhaya Libre
+- Abhaya Libre ExtraBold — Official Google Fonts open-source catalog: Abhaya Libre
+- Abhaya Libre Medium — Official Google Fonts open-source catalog: Abhaya Libre
+- Abhaya Libre SemiBold — Official Google Fonts open-source catalog: Abhaya Libre
+- Abril Fatface — Official Google Fonts open-source catalog: Abril Fatface
+- Abyssinica SIL — Official Google Fonts open-source catalog: Abyssinica SIL
+- Advent Pro — Official Google Fonts open-source catalog: Advent Pro
+- Afacad Flux — Official Google Fonts open-source catalog: Afacad Flux
+- Agu Display — Official Google Fonts open-source catalog: Agu Display
+- Aguafina Script — Official Google Fonts open-source catalog: Aguafina Script
+- Akaya Kanadaka — Official Google Fonts open-source catalog: Akaya Kanadaka
+- Akaya Telivigala — Official Google Fonts open-source catalog: Akaya Telivigala
+- Alan Sans — Official Google Fonts open-source catalog: Alan Sans
+- Albert Sans — Official Google Fonts open-source catalog: Albert Sans
+- Alegreya SC — Official Google Fonts open-source catalog: Alegreya SC
+- Alegreya Sans — Official Google Fonts open-source catalog: Alegreya Sans
+- Alegreya Sans SC — Official Google Fonts open-source catalog: Alegreya Sans SC
+- Alex Brush — Official Google Fonts open-source catalog: Alex Brush
+- Alfa Slab One — Official Google Fonts open-source catalog: Alfa Slab One
+- Alien Block — Official Google Fonts open-source catalog: Alien Block
+- Alike Angular — Official Google Fonts open-source catalog: Alike Angular
+- Allerta Stencil — Official Google Fonts open-source catalog: Allerta Stencil
+- Almendra Display — Official Google Fonts open-source catalog: Almendra Display
+- Almendra SC — Official Google Fonts open-source catalog: Almendra SC
+- Alumni Sans — Official Google Fonts open-source catalog: Alumni Sans
+- Alumni Sans Collegiate One — Official Google Fonts open-source catalog: Alumni Sans Collegiate One
+- Alumni Sans Inline One — Official Google Fonts open-source catalog: Alumni Sans Inline One
+- Alumni Sans Pinstripe — Official Google Fonts open-source catalog: Alumni Sans Pinstripe
+- Alumni Sans SC — Official Google Fonts open-source catalog: Alumni Sans SC
+- Amatic SC — Official Google Fonts open-source catalog: Amatic SC
+- Amiri Quran — Official Google Fonts open-source catalog: Amiri Quran
+- Ancizar Sans — Official Google Fonts open-source catalog: Ancizar Sans
+- Ancizar Serif — Official Google Fonts open-source catalog: Ancizar Serif
+- Andada Pro — Official Google Fonts open-source catalog: Andada Pro
+- Annapurna SIL — Official Google Fonts open-source catalog: Annapurna SIL
+- Annie Use Your Telescope — Official Google Fonts open-source catalog: Annie Use Your Telescope
+- Anonymous Pro — Official Google Fonts open-source catalog: Anonymous Pro
+- Antic Didone — Official Google Fonts open-source catalog: Antic Didone
+- Antic Slab — Official Google Fonts open-source catalog: Antic Slab
+- Anton SC — Official Google Fonts open-source catalog: Anton SC
+- Aoboshi One — Official Google Fonts open-source catalog: Aoboshi One
+- Arbutus Slab — Official Google Fonts open-source catalog: Arbutus Slab
+- Architects Daughter — Official Google Fonts open-source catalog: Architects Daughter
+- Archivo — Official Google Fonts open-source catalog: Archivo
+- Archivo Black — Official Google Fonts open-source catalog: Archivo Black
+- Archivo Narrow — Official Google Fonts open-source catalog: Archivo Narrow
+- Are You Serious — Official Google Fonts open-source catalog: Are You Serious
+- Aref Ruqaa — Official Google Fonts open-source catalog: Aref Ruqaa
+- Aref Ruqaa Ink — Official Google Fonts open-source catalog: Aref Ruqaa Ink
+- Arsenal SC — Official Google Fonts open-source catalog: Arsenal SC
+- Asta Sans — Official Google Fonts open-source catalog: Asta Sans
+- Atkinson Hyperlegible — Official Google Fonts open-source catalog: Atkinson Hyperlegible
+- Atkinson Hyperlegible Mono — Official Google Fonts open-source catalog: Atkinson Hyperlegible Mono
+- Atkinson Hyperlegible Next — Official Google Fonts open-source catalog: Atkinson Hyperlegible Next
+- Atomic Age — Official Google Fonts open-source catalog: Atomic Age
+- Autour One — Official Google Fonts open-source catalog: Autour One
+- Average Sans — Official Google Fonts open-source catalog: Average Sans
+- Averia Gruesa Libre — Official Google Fonts open-source catalog: Averia Gruesa Libre
+- Averia Libre — Official Google Fonts open-source catalog: Averia Libre
+- Averia Sans Libre — Official Google Fonts open-source catalog: Averia Sans Libre
+- Averia Serif Libre — Official Google Fonts open-source catalog: Averia Serif Libre
+- Azeret Mono — Official Google Fonts open-source catalog: Azeret Mono
+- B612 Mono — Official Google Fonts open-source catalog: B612 Mono
+- BBH Bartle — Official Google Fonts open-source catalog: BBH Bartle
+- BBH Bogle — Official Google Fonts open-source catalog: BBH Bogle
+- BBH Hegarty — Official Google Fonts open-source catalog: BBH Hegarty
+- BIZ UDGothic — Official Google Fonts open-source catalog: BIZ UDGothic
+- BIZ UDMincho — Official Google Fonts open-source catalog: BIZ UDMincho
+- BIZ UDPGothic — Official Google Fonts open-source catalog: BIZ UDPGothic
+- BIZ UDPMincho — Official Google Fonts open-source catalog: BIZ UDPMincho
+- Bacasime Antique — Official Google Fonts open-source catalog: Bacasime Antique
+- Bad Script — Official Google Fonts open-source catalog: Bad Script
+- Badeen Display — Official Google Fonts open-source catalog: Badeen Display
+- Bagel Fat One — Official Google Fonts open-source catalog: Bagel Fat One
+- Bai Jamjuree — Official Google Fonts open-source catalog: Bai Jamjuree
+- Bakbak One — Official Google Fonts open-source catalog: Bakbak One
+- Baloo 2 — Official Google Fonts open-source catalog: Baloo 2
+- Balsamiq Sans — Official Google Fonts open-source catalog: Balsamiq Sans
+- Barlow Condensed — Official Google Fonts open-source catalog: Barlow Condensed
+- Barlow Semi Condensed — Official Google Fonts open-source catalog: Barlow Semi Condensed
+- Baskervville SC — Official Google Fonts open-source catalog: Baskervville SC
+- Be Vietnam Pro — Official Google Fonts open-source catalog: Be Vietnam Pro
+- Beau Rivage — Official Google Fonts open-source catalog: Beau Rivage
+- Bebas Neue — Official Google Fonts open-source catalog: Bebas Neue
+- Bellota Text — Official Google Fonts open-source catalog: Bellota Text
+- Berkshire Swash — Official Google Fonts open-source catalog: Berkshire Swash
+- Betania Patmos — Official Google Fonts open-source catalog: Betania Patmos
+- Betania Patmos GDL — Official Google Fonts open-source catalog: Betania Patmos GDL
+- Betania Patmos In — Official Google Fonts open-source catalog: Betania Patmos In
+- Betania Patmos In GDL — Official Google Fonts open-source catalog: Betania Patmos In GDL
+- Beth Ellen — Official Google Fonts open-source catalog: Beth Ellen
+- BhuTuka Expanded One — Official Google Fonts open-source catalog: BhuTuka Expanded One
+- Big Shoulders — Official Google Fonts open-source catalog: Big Shoulders
+- Big Shoulders 18pt — Official Google Fonts open-source catalog: Big Shoulders
+- Big Shoulders 24pt — Official Google Fonts open-source catalog: Big Shoulders
+- Big Shoulders 36pt — Official Google Fonts open-source catalog: Big Shoulders
+- Big Shoulders 60pt — Official Google Fonts open-source catalog: Big Shoulders
+- Big Shoulders Inline — Official Google Fonts open-source catalog: Big Shoulders Inline
+- Big Shoulders Inline 18pt — Official Google Fonts open-source catalog: Big Shoulders Inline
+- Big Shoulders Inline 24pt — Official Google Fonts open-source catalog: Big Shoulders Inline
+- Big Shoulders Inline 36pt — Official Google Fonts open-source catalog: Big Shoulders Inline
+- Big Shoulders Inline 60pt — Official Google Fonts open-source catalog: Big Shoulders Inline
+- Big Shoulders Stencil — Official Google Fonts open-source catalog: Big Shoulders Stencil
+- Big Shoulders Stencil 18pt — Official Google Fonts open-source catalog: Big Shoulders Stencil
+- Big Shoulders Stencil 24pt — Official Google Fonts open-source catalog: Big Shoulders Stencil
+- Big Shoulders Stencil 36pt — Official Google Fonts open-source catalog: Big Shoulders Stencil
+- Big Shoulders Stencil 60pt — Official Google Fonts open-source catalog: Big Shoulders Stencil
+- Bigelow Rules — Official Google Fonts open-source catalog: Bigelow Rules
+- Bigshot One — Official Google Fonts open-source catalog: Bigshot One
+- Bilbo Swash Caps — Official Google Fonts open-source catalog: Bilbo Swash Caps
+- Birthstone Bounce — Official Google Fonts open-source catalog: Birthstone Bounce
+- Bitcount Grid Double — Official Google Fonts open-source catalog: Bitcount Grid Double
+- Bitcount Grid Double Ink — Official Google Fonts open-source catalog: Bitcount Grid Double Ink
+- Bitcount Grid Single — Official Google Fonts open-source catalog: Bitcount Grid Single
+- Bitcount Grid Single Ink — Official Google Fonts open-source catalog: Bitcount Grid Single Ink
+- Bitcount Ink — Official Google Fonts open-source catalog: Bitcount Ink
+- Bitcount Prop Double — Official Google Fonts open-source catalog: Bitcount Prop Double
+- Bitcount Prop Double Ink — Official Google Fonts open-source catalog: Bitcount Prop Double Ink
+- Bitcount Prop Single — Official Google Fonts open-source catalog: Bitcount Prop Single
+- Bitcount Prop Single Ink — Official Google Fonts open-source catalog: Bitcount Prop Single Ink
+- Bitcount Single — Official Google Fonts open-source catalog: Bitcount Single
+- Bitcount Single Ink — Official Google Fonts open-source catalog: Bitcount Single Ink
+- Black And White Picture — Official Google Fonts open-source catalog: Black And White Picture
+- Black Han Sans — Official Google Fonts open-source catalog: Black Han Sans
+- Black Ops One — Official Google Fonts open-source catalog: Black Ops One
+- Blaka Hollow — Official Google Fonts open-source catalog: Blaka Hollow
+- Blaka Ink — Official Google Fonts open-source catalog: Blaka Ink
+- Bodoni Moda — Official Google Fonts open-source catalog: Bodoni Moda
+- Bodoni Moda 18pt — Official Google Fonts open-source catalog: Bodoni Moda
+- Bodoni Moda 28pt — Official Google Fonts open-source catalog: Bodoni Moda
+- Bodoni Moda 48pt — Official Google Fonts open-source catalog: Bodoni Moda
+- Bodoni Moda 72pt — Official Google Fonts open-source catalog: Bodoni Moda
+- Bodoni Moda 9pt — Official Google Fonts open-source catalog: Bodoni Moda
+- Bodoni Moda SC — Official Google Fonts open-source catalog: Bodoni Moda SC
+- Bodoni Moda SC 18pt — Official Google Fonts open-source catalog: Bodoni Moda SC
+- Bodoni Moda SC 28pt — Official Google Fonts open-source catalog: Bodoni Moda SC
+- Bodoni Moda SC 48pt — Official Google Fonts open-source catalog: Bodoni Moda SC
+- Bodoni Moda SC 72pt — Official Google Fonts open-source catalog: Bodoni Moda SC
+- Bodoni Moda SC 9pt — Official Google Fonts open-source catalog: Bodoni Moda SC
+- Bona Nova — Official Google Fonts open-source catalog: Bona Nova
+- Bona Nova SC — Official Google Fonts open-source catalog: Bona Nova SC
+- Bonheur Royale — Official Google Fonts open-source catalog: Bonheur Royale
+- Bowlby One — Official Google Fonts open-source catalog: Bowlby One
+- Bowlby One SC — Official Google Fonts open-source catalog: Bowlby One SC
+- Bpmf Huninn — Official Google Fonts open-source catalog: Bpmf Huninn
+- Bpmf Iansui — Official Google Fonts open-source catalog: Bpmf Iansui
+- Bpmf Zihi Kai Std — Official Google Fonts open-source catalog: Bpmf Zihi Kai Std
+- Braah One — Official Google Fonts open-source catalog: Braah One
+- Bree Serif — Official Google Fonts open-source catalog: Bree Serif
+- Bricolage Grotesque — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 24pt — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 24pt Condensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 24pt SemiCondensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 36pt — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 36pt Condensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 36pt SemiCondensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 48pt — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 48pt Condensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 48pt SemiCondensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 72pt — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 72pt Condensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque 72pt SemiCondensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque Condensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bricolage Grotesque SemiCondensed — Official Google Fonts open-source catalog: Bricolage Grotesque
+- Bruno Ace — Official Google Fonts open-source catalog: Bruno Ace
+- Bruno Ace SC — Official Google Fonts open-source catalog: Bruno Ace SC
+- Brygada 1918 — Official Google Fonts open-source catalog: Brygada 1918
+- Bubblegum Sans — Official Google Fonts open-source catalog: Bubblegum Sans
+- Bubbler One — Official Google Fonts open-source catalog: Bubbler One
+- Bungee Hairline — Official Google Fonts open-source catalog: Bungee Hairline
+- Bungee Inline — Official Google Fonts open-source catalog: Bungee Inline
+- Bungee Outline — Official Google Fonts open-source catalog: Bungee Outline
+- Bungee Shade — Official Google Fonts open-source catalog: Bungee Shade
+- Bungee Spice — Official Google Fonts open-source catalog: Bungee Spice
+- Bungee Tint — Official Google Fonts open-source catalog: Bungee Tint
+- Butterfly Kids — Official Google Fonts open-source catalog: Butterfly Kids
+- Cabin Sketch — Official Google Fonts open-source catalog: Cabin Sketch
+- Cactus Classical Serif — Official Google Fonts open-source catalog: Cactus Classical Serif
+- Caesar Dressing — Official Google Fonts open-source catalog: Caesar Dressing
+- Cairo Play — Official Google Fonts open-source catalog: Cairo Play
+- Cal Sans — Official Google Fonts open-source catalog: Cal Sans
+- Cantata One — Official Google Fonts open-source catalog: Cantata One
+- Cantora One — Official Google Fonts open-source catalog: Cantora One
+- Carrois Gothic — Official Google Fonts open-source catalog: Carrois Gothic
+- Carrois Gothic SC — Official Google Fonts open-source catalog: Carrois Gothic SC
+- Carter One — Official Google Fonts open-source catalog: Carter One
+- Cascadia Code — Official Google Fonts open-source catalog: Cascadia Code
+- Cascadia Mono — Official Google Fonts open-source catalog: Cascadia Mono
+- Castoro Titling — Official Google Fonts open-source catalog: Castoro Titling
+- Caveat Brush — Official Google Fonts open-source catalog: Caveat Brush
+- Cedarville Cursive — Official Google Fonts open-source catalog: Cedarville Cursive
+- Ceviche One — Official Google Fonts open-source catalog: Ceviche One
+- Chakra Petch — Official Google Fonts open-source catalog: Chakra Petch
+- Changa One — Official Google Fonts open-source catalog: Changa One
+- Charis SIL — Official Google Fonts open-source catalog: Charis SIL
+- Chau Philomene One — Official Google Fonts open-source catalog: Chau Philomene One
+- Chela One — Official Google Fonts open-source catalog: Chela One
+- Chelsea Market — Official Google Fonts open-source catalog: Chelsea Market
+- Cherry Bomb One — Official Google Fonts open-source catalog: Cherry Bomb One
+- Cherry Cream Soda — Official Google Fonts open-source catalog: Cherry Cream Soda
+- Cherry Swash — Official Google Fonts open-source catalog: Cherry Swash
+- Chiron GoRound TC — Official Google Fonts open-source catalog: Chiron GoRound TC
+- Chiron Hei HK — Official Google Fonts open-source catalog: Chiron Hei HK
+- Chiron Sung HK — Official Google Fonts open-source catalog: Chiron Sung HK
+- Chivo Mono — Official Google Fonts open-source catalog: Chivo Mono
+- Chocolate Classical Sans — Official Google Fonts open-source catalog: Chocolate Classical Sans
+- Cinzel Decorative — Official Google Fonts open-source catalog: Cinzel Decorative
+- Clicker Script — Official Google Fonts open-source catalog: Clicker Script
+- Climate Crisis — Official Google Fonts open-source catalog: Climate Crisis
+- Comforter Brush — Official Google Fonts open-source catalog: Comforter Brush
+- Comic Neue — Official Google Fonts open-source catalog: Comic Neue
+- Comic Relief — Official Google Fonts open-source catalog: Comic Relief
+- Coming Soon — Official Google Fonts open-source catalog: Coming Soon
+- Concert One — Official Google Fonts open-source catalog: Concert One
+- Contrail One — Official Google Fonts open-source catalog: Contrail One
+- Coral Pixels — Official Google Fonts open-source catalog: Coral Pixels
+- Cormorant Garamond — Official Google Fonts open-source catalog: Cormorant Garamond
+- Cormorant Infant — Official Google Fonts open-source catalog: Cormorant Infant
+- Cormorant SC — Official Google Fonts open-source catalog: Cormorant SC
+- Cormorant Unicase — Official Google Fonts open-source catalog: Cormorant Unicase
+- Cormorant Upright — Official Google Fonts open-source catalog: Cormorant Upright
+- Cossette Texte — Official Google Fonts open-source catalog: Cossette Texte
+- Cossette Titre — Official Google Fonts open-source catalog: Cossette Titre
+- Courier Prime — Official Google Fonts open-source catalog: Courier Prime
+- Covered By Your Grace — Official Google Fonts open-source catalog: Covered By Your Grace
+- Crafty Girls — Official Google Fonts open-source catalog: Crafty Girls
+- Crete Round — Official Google Fonts open-source catalog: Crete Round
+- Crimson Pro — Official Google Fonts open-source catalog: Crimson Pro
+- Crimson Text — Official Google Fonts open-source catalog: Crimson Text
+- Croissant One — Official Google Fonts open-source catalog: Croissant One
+- Cute Font — Official Google Fonts open-source catalog: Cute Font
+- Cutive Mono — Official Google Fonts open-source catalog: Cutive Mono
+- DM Mono — Official Google Fonts open-source catalog: DM Mono
+- DM Sans — Official Google Fonts open-source catalog: DM Sans
+- DM Serif Display — Official Google Fonts open-source catalog: DM Serif Display
+- DM Serif Text — Official Google Fonts open-source catalog: DM Serif Text
+- Dai Banna SIL — Official Google Fonts open-source catalog: Dai Banna SIL
+- Dancing Script — Official Google Fonts open-source catalog: Dancing Script
+- Darker Grotesque — Official Google Fonts open-source catalog: Darker Grotesque
+- Darumadrop One — Official Google Fonts open-source catalog: Darumadrop One
+- David Libre — Official Google Fonts open-source catalog: David Libre
+- Dawning of a New Day — Official Google Fonts open-source catalog: Dawning of a New Day
+- Days One — Official Google Fonts open-source catalog: Days One
+- Dela Gothic One — Official Google Fonts open-source catalog: Dela Gothic One
+- Delicious Handrawn — Official Google Fonts open-source catalog: Delicious Handrawn
+- Delius Swash Caps — Official Google Fonts open-source catalog: Delius Swash Caps
+- Delius Unicase — Official Google Fonts open-source catalog: Delius Unicase
+- Della Respira — Official Google Fonts open-source catalog: Della Respira
+- Denk One — Official Google Fonts open-source catalog: Denk One
+- Didact Gothic — Official Google Fonts open-source catalog: Didact Gothic
+- Diplomata SC — Official Google Fonts open-source catalog: Diplomata SC
+- Do Hyeon — Official Google Fonts open-source catalog: Do Hyeon
+- Donegal One — Official Google Fonts open-source catalog: Donegal One
+- Doppio One — Official Google Fonts open-source catalog: Doppio One
+- Dr Sugiyama — Official Google Fonts open-source catalog: Dr Sugiyama
+- Duru Sans — Official Google Fonts open-source catalog: Duru Sans
+- EB Garamond — Official Google Fonts open-source catalog: EB Garamond
+- Eagle Lake — Official Google Fonts open-source catalog: Eagle Lake
+- East Sea Dokdo — Official Google Fonts open-source catalog: East Sea Dokdo
+- Edu AU VIC WA NT Arrows — Official Google Fonts open-source catalog: Edu AU VIC WA NT Arrows
+- Edu AU VIC WA NT Dots — Official Google Fonts open-source catalog: Edu AU VIC WA NT Dots
+- Edu AU VIC WA NT Guides — Official Google Fonts open-source catalog: Edu AU VIC WA NT Guides
+- Edu AU VIC WA NT Hand — Official Google Fonts open-source catalog: Edu AU VIC WA NT Hand
+- Edu AU VIC WA NT Pre — Official Google Fonts open-source catalog: Edu AU VIC WA NT Pre
+- Edu NSW ACT Cursive — Official Google Fonts open-source catalog: Edu NSW ACT Cursive
+- Edu NSW ACT Foundation — Official Google Fonts open-source catalog: Edu NSW ACT Foundation
+- Edu NSW ACT Hand Pre — Official Google Fonts open-source catalog: Edu NSW ACT Hand Pre
+- Edu QLD Beginner — Official Google Fonts open-source catalog: Edu QLD Beginner
+- Edu QLD Hand — Official Google Fonts open-source catalog: Edu QLD Hand
+- Edu SA Beginner — Official Google Fonts open-source catalog: Edu SA Beginner
+- Edu SA Hand — Official Google Fonts open-source catalog: Edu SA Hand
+- Edu TAS Beginner — Official Google Fonts open-source catalog: Edu TAS Beginner
+- Edu VIC WA NT Beginner — Official Google Fonts open-source catalog: Edu VIC WA NT Beginner
+- Edu VIC WA NT Hand — Official Google Fonts open-source catalog: Edu VIC WA NT Hand
+- Edu VIC WA NT Hand Pre — Official Google Fonts open-source catalog: Edu VIC WA NT Hand Pre
+- El Messiri — Official Google Fonts open-source catalog: El Messiri
+- Elms Sans — Official Google Fonts open-source catalog: Elms Sans
+- Elsie Swash Caps — Official Google Fonts open-source catalog: Elsie Swash Caps
+- Emberly v1.3 — Open-source license text found
+- Emblema One — Official Google Fonts open-source catalog: Emblema One
+- Emilys Candy — Official Google Fonts open-source catalog: Emilys Candy
+- Encode Sans — Official Google Fonts open-source catalog: Encode Sans
+- Encode Sans Condensed — Official Google Fonts open-source catalog: Encode Sans Condensed
+- Encode Sans Expanded — Official Google Fonts open-source catalog: Encode Sans Expanded
+- Encode Sans SC — Official Google Fonts open-source catalog: Encode Sans SC
+- Encode Sans SC Condensed — Official Google Fonts open-source catalog: Encode Sans SC
+- Encode Sans SC Expanded — Official Google Fonts open-source catalog: Encode Sans SC
+- Encode Sans SC SemiCondensed — Official Google Fonts open-source catalog: Encode Sans SC
+- Encode Sans SC SemiExpanded — Official Google Fonts open-source catalog: Encode Sans SC
+- Encode Sans SemiCondensed — Official Google Fonts open-source catalog: Encode Sans Semi Condensed
+- Encode Sans SemiExpanded — Official Google Fonts open-source catalog: Encode Sans Semi Expanded
+- Epilogue — Official Google Fonts open-source catalog: Epilogue
+- Epunda Sans — Official Google Fonts open-source catalog: Epunda Sans
+- Epunda Slab — Official Google Fonts open-source catalog: Epunda Slab
+- Erica One — Official Google Fonts open-source catalog: Erica One
+- Euphoria Script — Official Google Fonts open-source catalog: Euphoria Script
+- Exo 2 — Official Google Fonts open-source catalog: Exo 2
+- Expletus Sans — Official Google Fonts open-source catalog: Expletus Sans
+- Faculty Glyphic — Official Google Fonts open-source catalog: Faculty Glyphic
+- Familjen Grotesk — Official Google Fonts open-source catalog: Familjen Grotesk
+- Fanwood Text — Official Google Fonts open-source catalog: Fanwood Text
+- Fascinate Inline — Official Google Fonts open-source catalog: Fascinate Inline
+- Faster One — Official Google Fonts open-source catalog: Faster One
+- Fauna One — Official Google Fonts open-source catalog: Fauna One
+- Finger Paint — Official Google Fonts open-source catalog: Finger Paint
+- Finlandica Headline — Official Google Fonts open-source catalog: Finlandica Headline
+- Finlandica Text — Official Google Fonts open-source catalog: Finlandica Text
+- Fira Code — Official Google Fonts open-source catalog: Fira Code
+- Fira Mono — Official Google Fonts open-source catalog: Fira Mono
+- Fira Sans — Official Google Fonts open-source catalog: Fira Sans
+- Fira Sans Condensed — Official Google Fonts open-source catalog: Fira Sans Condensed
+- Fira Sans Extra Condensed — Official Google Fonts open-source catalog: Fira Sans Extra Condensed
+- Fjalla One — Official Google Fonts open-source catalog: Fjalla One
+- Fleur De Leah — Official Google Fonts open-source catalog: Fleur De Leah
+- Flow Block — Official Google Fonts open-source catalog: Flow Block
+- Flow Circular — Official Google Fonts open-source catalog: Flow Circular
+- Flow Rounded — Official Google Fonts open-source catalog: Flow Rounded
+- Fontdiner Swanky — Official Google Fonts open-source catalog: Fontdiner Swanky
+- Fragment Mono — Official Google Fonts open-source catalog: Fragment Mono
+- Francois One — Official Google Fonts open-source catalog: Francois One
+- Frank Ruhl Libre — Official Google Fonts open-source catalog: Frank Ruhl Libre
+- Freckle Face — Official Google Fonts open-source catalog: Freckle Face
+- Fredericka the Great — Official Google Fonts open-source catalog: Fredericka the Great
+- Fugaz One — Official Google Fonts open-source catalog: Fugaz One
+- Funnel Display — Official Google Fonts open-source catalog: Funnel Display
+- Funnel Sans — Official Google Fonts open-source catalog: Funnel Sans
+- Fuzzy Bubbles — Official Google Fonts open-source catalog: Fuzzy Bubbles
+- GFS Didot — Official Google Fonts open-source catalog: GFS Didot
+- GFS Neohellenic — Official Google Fonts open-source catalog: GFS Neohellenic
+- Ga Maamli — Official Google Fonts open-source catalog: Ga Maamli
+- Gajraj One — Official Google Fonts open-source catalog: Gajraj One
+- Gamja Flower — Official Google Fonts open-source catalog: Gamja Flower
+- Gasoek One — Official Google Fonts open-source catalog: Gasoek One
+- Geist — Official Google Fonts open-source catalog: Geist
+- Geist Mono — Official Google Fonts open-source catalog: Geist Mono
+- Geist Pixel — Official Google Fonts open-source catalog: Geist Pixel
+- Gemunu Libre — Official Google Fonts open-source catalog: Gemunu Libre
+- Gentium Book Plus — Official Google Fonts open-source catalog: Gentium Book Plus
+- Gentium Plus — Official Google Fonts open-source catalog: Gentium Plus
+- Geostar Fill — Official Google Fonts open-source catalog: Geostar Fill
+- Germania One — Official Google Fonts open-source catalog: Germania One
+- Gideon Roman — Official Google Fonts open-source catalog: Gideon Roman
+- Gilda Display — Official Google Fonts open-source catalog: Gilda Display
+- Give You Glory — Official Google Fonts open-source catalog: Give You Glory
+- Glass Antiqua — Official Google Fonts open-source catalog: Glass Antiqua
+- Gloria Hallelujah — Official Google Fonts open-source catalog: Gloria Hallelujah
+- Goblin One — Official Google Fonts open-source catalog: Goblin One
+- Gochi Hand — Official Google Fonts open-source catalog: Gochi Hand
+- Golos Text — Official Google Fonts open-source catalog: Golos Text
+- Google Sans — Official Google Fonts open-source catalog: Google Sans
+- Google Sans 17pt — Official Google Fonts open-source catalog: Google Sans
+- Google Sans Code — Official Google Fonts open-source catalog: Google Sans Code
+- Google Sans Flex — Official Google Fonts open-source catalog: Google Sans Flex
+- Gothic A1 — Official Google Fonts open-source catalog: Gothic A1
+- Goudy Bookletter 1911 — Official Google Fonts open-source catalog: Goudy Bookletter 1911
+- Gowun Batang — Official Google Fonts open-source catalog: Gowun Batang
+- Gowun Dodum — Official Google Fonts open-source catalog: Gowun Dodum
+- Grand Hotel — Official Google Fonts open-source catalog: Grand Hotel
+- Grandiflora One — Official Google Fonts open-source catalog: Grandiflora One
+- Grape Nuts — Official Google Fonts open-source catalog: Grape Nuts
+- Gravitas One — Official Google Fonts open-source catalog: Gravitas One
+- Great Vibes — Official Google Fonts open-source catalog: Great Vibes
+- Grechen Fuemen — Official Google Fonts open-source catalog: Grechen Fuemen
+- Grenze Gotisch — Official Google Fonts open-source catalog: Grenze Gotisch
+- Grey Qo — Official Google Fonts open-source catalog: Grey Qo
+- Gveret Levin — Official Google Fonts open-source catalog: Gveret Levin
+- Hachi Maru Pop — Official Google Fonts open-source catalog: Hachi Maru Pop
+- Hammersmith One — Official Google Fonts open-source catalog: Hammersmith One
+- Hanalei Fill — Official Google Fonts open-source catalog: Hanalei Fill
+- Hanken Grotesk — Official Google Fonts open-source catalog: Hanken Grotesk
+- Happy Monkey — Official Google Fonts open-source catalog: Happy Monkey
+- HeadlandOne — Official Google Fonts open-source catalog: Headland One
+- Hedvig Letters Sans — Official Google Fonts open-source catalog: Hedvig Letters Sans
+- Hedvig Letters Serif — Official Google Fonts open-source catalog: Hedvig Letters Serif
+- Hedvig Letters Serif 14pt — Official Google Fonts open-source catalog: Hedvig Letters Serif
+- Hedvig Letters Serif 18pt — Official Google Fonts open-source catalog: Hedvig Letters Serif
+- Henny Penny — Official Google Fonts open-source catalog: Henny Penny
+- Hepta Slab — Official Google Fonts open-source catalog: Hepta Slab
+- Herr Von Muellerhoff — Official Google Fonts open-source catalog: Herr Von Muellerhoff
+- Hi Melody — Official Google Fonts open-source catalog: Hi Melody
+- Hibur Mono — Official Google Fonts open-source catalog: Hibur Mono
+- Hina Mincho — Official Google Fonts open-source catalog: Hina Mincho
+- Hind Mysuru — Official Google Fonts open-source catalog: Hind Mysuru
+- Holtwood One SC — Official Google Fonts open-source catalog: Holtwood One SC
+- Homemade Apple — Official Google Fonts open-source catalog: Homemade Apple
+- Host Grotesk — Official Google Fonts open-source catalog: Host Grotesk
+- IBM Plex Mono — Official Google Fonts open-source catalog: IBM Plex Mono
+- IBM Plex Sans — Official Google Fonts open-source catalog: IBM Plex Sans
+- IBM Plex Serif — Official Google Fonts open-source catalog: IBM Plex Serif
+- IM FELL DW Pica — Official Google Fonts open-source catalog: IM Fell DW Pica
+- IM FELL DW Pica SC — Official Google Fonts open-source catalog: IM Fell DW Pica SC
+- IM FELL Double Pica — Official Google Fonts open-source catalog: IM Fell Double Pica
+- IM FELL Double Pica SC — Official Google Fonts open-source catalog: IM Fell Double Pica SC
+- IM FELL English — Official Google Fonts open-source catalog: IM Fell English
+- IM FELL English SC — Official Google Fonts open-source catalog: IM Fell English SC
+- IM FELL French Canon — Official Google Fonts open-source catalog: IM Fell French Canon
+- IM FELL French Canon SC — Official Google Fonts open-source catalog: IM Fell French Canon SC
+- IM FELL Great Primer — Official Google Fonts open-source catalog: IM Fell Great Primer
+- IM FELL Great Primer SC — Official Google Fonts open-source catalog: IM Fell Great Primer SC
+- Ibarra Real Nova — Official Google Fonts open-source catalog: Ibarra Real Nova
+- Imperial Script — Official Google Fonts open-source catalog: Imperial Script
+- Inclusive Sans — Official Google Fonts open-source catalog: Inclusive Sans
+- Indie Flower — Official Google Fonts open-source catalog: Indie Flower
+- Ingrid Darling — Official Google Fonts open-source catalog: Ingrid Darling
+- Inknut Antiqua — Official Google Fonts open-source catalog: Inknut Antiqua
+- Inria Sans — Official Google Fonts open-source catalog: Inria Sans
+- Inria Serif — Official Google Fonts open-source catalog: Inria Serif
+- Instrument Serif — Official Google Fonts open-source catalog: Instrument Serif
+- Intel One Mono — Official Google Fonts open-source catalog: Intel One Mono
+- Inter Tight — Official Google Fonts open-source catalog: Inter Tight
+- Iosevka Charon — Official Google Fonts open-source catalog: Iosevka Charon
+- Iosevka Charon Mono — Official Google Fonts open-source catalog: Iosevka Charon Mono
+- Irish Grover — Official Google Fonts open-source catalog: Irish Grover
+- Island Moments — Official Google Fonts open-source catalog: Island Moments
+- Istok Web — Official Google Fonts open-source catalog: Istok Web
+- Jacquard 12 — Official Google Fonts open-source catalog: Jacquard 12
+- Jacquard 12 Charted — Official Google Fonts open-source catalog: Jacquard 12 Charted
+- Jacquard 24 — Official Google Fonts open-source catalog: Jacquard 24
+- Jacquard 24 Charted — Official Google Fonts open-source catalog: Jacquard 24 Charted
+- Jacquarda Bastarda 9 — Official Google Fonts open-source catalog: Jacquarda Bastarda 9
+- Jacquarda Bastarda 9 Charted — Official Google Fonts open-source catalog: Jacquarda Bastarda 9 Charted
+- Jacques Francois — Official Google Fonts open-source catalog: Jacques Francois
+- Jacques Francois Shadow — Official Google Fonts open-source catalog: Jacques Francois Shadow
+- Jaini Purva — Official Google Fonts open-source catalog: Jaini Purva
+- Jersey 10 — Official Google Fonts open-source catalog: Jersey 10
+- Jersey 10 Charted — Official Google Fonts open-source catalog: Jersey 10 Charted
+- Jersey 15 — Official Google Fonts open-source catalog: Jersey 15
+- Jersey 15 Charted — Official Google Fonts open-source catalog: Jersey 15 Charted
+- Jersey 20 — Official Google Fonts open-source catalog: Jersey 20
+- Jersey 20 Charted — Official Google Fonts open-source catalog: Jersey 20 Charted
+- Jersey 25 — Official Google Fonts open-source catalog: Jersey 25
+- Jersey 25 Charted — Official Google Fonts open-source catalog: Jersey 25 Charted
+- JetBrains Mono — Official Google Fonts open-source catalog: JetBrains Mono
+- Jim Nightshade — Official Google Fonts open-source catalog: Jim Nightshade
+- Jockey One — Official Google Fonts open-source catalog: Jockey One
+- Jolly Lodger — Official Google Fonts open-source catalog: Jolly Lodger
+- Josefin Sans — Official Google Fonts open-source catalog: Josefin Sans
+- Josefin Slab — Official Google Fonts open-source catalog: Josefin Slab
+- Joti One — Official Google Fonts open-source catalog: Joti One
+- Julius Sans One — Official Google Fonts open-source catalog: Julius Sans One
+- Just Another Hand — Official Google Fonts open-source catalog: Just Another Hand
+- Just Me Again Down Here — Official Google Fonts open-source catalog: Just Me Again Down Here
+- Kaisei Decol — Official Google Fonts open-source catalog: Kaisei Decol
+- Kaisei HarunoUmi — Official Google Fonts open-source catalog: Kaisei HarunoUmi
+- Kaisei Opti — Official Google Fonts open-source catalog: Kaisei Opti
+- Kaisei Tokumin — Official Google Fonts open-source catalog: Kaisei Tokumin
+- Kalnia Glaze — Official Google Fonts open-source catalog: Kalnia Glaze
+- Kantumruy Pro — Official Google Fonts open-source catalog: Kantumruy Pro
+- Kaushan Script — Official Google Fonts open-source catalog: Kaushan Script
+- Kay Pho Du — Official Google Fonts open-source catalog: Kay Pho Du
+- Kdam Thmor Pro — Official Google Fonts open-source catalog: Kdam Thmor Pro
+- Keania One — Official Google Fonts open-source catalog: Keania One
+- Kelly Slab — Official Google Fonts open-source catalog: Kelly Slab
+- Kirang Haerang — Official Google Fonts open-source catalog: Kirang Haerang
+- Kite One — Official Google Fonts open-source catalog: Kite One
+- Kiwi Maru — Official Google Fonts open-source catalog: Kiwi Maru
+- Klee One — Official Google Fonts open-source catalog: Klee One
+- Kode Mono — Official Google Fonts open-source catalog: Kode Mono
+- Koh Santepheap — Official Google Fonts open-source catalog: Koh Santepheap
+- Kolker Brush — Official Google Fonts open-source catalog: Kolker Brush
+- Konkhmer Sleokchher — Official Google Fonts open-source catalog: Konkhmer Sleokchher
+- Kosugi Maru — Official Google Fonts open-source catalog: Kosugi Maru
+- Kotta One — Official Google Fonts open-source catalog: Kotta One
+- Krona One — Official Google Fonts open-source catalog: Krona One
+- Kulim Park — Official Google Fonts open-source catalog: Kulim Park
+- Kumar One — Official Google Fonts open-source catalog: Kumar One
+- Kumar One Outline — Official Google Fonts open-source catalog: Kumar One Outline
+- Kumbh Sans — Official Google Fonts open-source catalog: Kumbh Sans
+- LINE Seed JP — Official Google Fonts open-source catalog: LINE Seed JP
+- LXGW Marker Gothic — Official Google Fonts open-source catalog: LXGW Marker Gothic
+- LXGW WenKai Mono TC — Official Google Fonts open-source catalog: LXGW WenKai Mono TC
+- LXGW WenKai TC — Official Google Fonts open-source catalog: LXGW WenKai TC
+- La Belle Aurore — Official Google Fonts open-source catalog: La Belle Aurore
+- Lakki Reddy — Official Google Fonts open-source catalog: Lakki Reddy
+- Lavishly Yours — Official Google Fonts open-source catalog: Lavishly Yours
+- League Gothic — Official Google Fonts open-source catalog: League Gothic
+- League Gothic Condensed — Official Google Fonts open-source catalog: League Gothic
+- League Gothic SemiCondensed — Official Google Fonts open-source catalog: League Gothic
+- League Script — Official Google Fonts open-source catalog: League Script
+- League Spartan — Official Google Fonts open-source catalog: League Spartan
+- Leckerli One — Official Google Fonts open-source catalog: Leckerli One
+- Lexend Deca — Official Google Fonts open-source catalog: Lexend Deca
+- Lexend Exa — Official Google Fonts open-source catalog: Lexend Exa
+- Lexend Giga — Official Google Fonts open-source catalog: Lexend Giga
+- Lexend Mega — Official Google Fonts open-source catalog: Lexend Mega
+- Lexend Peta — Official Google Fonts open-source catalog: Lexend Peta
+- Lexend Tera — Official Google Fonts open-source catalog: Lexend Tera
+- Lexend Zetta — Official Google Fonts open-source catalog: Lexend Zetta
+- Libertinus Keyboard — Official Google Fonts open-source catalog: Libertinus Keyboard
+- Libertinus Math — Official Google Fonts open-source catalog: Libertinus Math
+- Libertinus Mono — Official Google Fonts open-source catalog: Libertinus Mono
+- Libertinus Sans — Official Google Fonts open-source catalog: Libertinus Sans
+- Libertinus Serif — Official Google Fonts open-source catalog: Libertinus Serif
+- Libertinus Serif Display — Official Google Fonts open-source catalog: Libertinus Serif Display
+- Libre Barcode 128 — Official Google Fonts open-source catalog: Libre Barcode 128
+- Libre Barcode 128 Text — Official Google Fonts open-source catalog: Libre Barcode 128 Text
+- Libre Barcode 39 — Official Google Fonts open-source catalog: Libre Barcode 39
+- Libre Barcode 39 Extended — Official Google Fonts open-source catalog: Libre Barcode 39 Extended
+- Libre Barcode 39 Extended Text — Official Google Fonts open-source catalog: Libre Barcode 39 Extended Text
+- Libre Barcode 39 Text — Official Google Fonts open-source catalog: Libre Barcode 39 Text
+- Libre Barcode EAN13 Text — Official Google Fonts open-source catalog: Libre Barcode EAN13 Text
+- Libre Baskerville — Official Google Fonts open-source catalog: Libre Baskerville
+- Libre Bodoni — Official Google Fonts open-source catalog: Libre Bodoni
+- Libre Caslon Display — Official Google Fonts open-source catalog: Libre Caslon Display
+- Libre Caslon Text — Official Google Fonts open-source catalog: Libre Caslon Text
+- Libre Franklin — Official Google Fonts open-source catalog: Libre Franklin
+- Life Savers — Official Google Fonts open-source catalog: Life Savers
+- Lilita One — Official Google Fonts open-source catalog: Lilita One
+- Lily Script One — Official Google Fonts open-source catalog: Lily Script One
+- Linden Hill — Official Google Fonts open-source catalog: Linden Hill
+- Lisu Bosa — Official Google Fonts open-source catalog: Lisu Bosa
+- Liu Jian Mao Cao — Official Google Fonts open-source catalog: Liu Jian Mao Cao
+- Lobster Two — Official Google Fonts open-source catalog: Lobster Two
+- Londrina Outline — Official Google Fonts open-source catalog: Londrina Outline
+- Londrina Shadow — Official Google Fonts open-source catalog: Londrina Shadow
+- Londrina Sketch — Official Google Fonts open-source catalog: Londrina Sketch
+- Londrina Solid — Official Google Fonts open-source catalog: Londrina Solid
+- Long Cang — Official Google Fonts open-source catalog: Long Cang
+- Love Light — Official Google Fonts open-source catalog: Love Light
+- Love Ya Like A Sister — Official Google Fonts open-source catalog: Love Ya Like A Sister
+- Loved by the King — Official Google Fonts open-source catalog: Loved by the King
+- Lovers Quarrel — Official Google Fonts open-source catalog: Lovers Quarrel
+- Luckiest Guy — Official Google Fonts open-source catalog: Luckiest Guy
+- Luxurious Roman — Official Google Fonts open-source catalog: Luxurious Roman
+- Luxurious Script — Official Google Fonts open-source catalog: Luxurious Script
+- M PLUS 1 — Official Google Fonts open-source catalog: M PLUS 1
+- M PLUS 1 Code — Official Google Fonts open-source catalog: M PLUS 1 Code
+- M PLUS 1p — Official Google Fonts open-source catalog: M PLUS 1p
+- M PLUS 2 — Official Google Fonts open-source catalog: M PLUS 2
+- M PLUS Code Latin — Official Google Fonts open-source catalog: M PLUS Code Latin
+- M PLUS Code Latin Expanded — Official Google Fonts open-source catalog: M PLUS Code Latin
+- M PLUS Code Latin SemiExpanded — Official Google Fonts open-source catalog: M PLUS Code Latin
+- M PLUS U — Official Google Fonts open-source catalog: M PLUS U
+- Ma Shan Zheng — Official Google Fonts open-source catalog: Ma Shan Zheng
+- Macondo Swash Caps — Official Google Fonts open-source catalog: Macondo Swash Caps
+- Madimi One — Official Google Fonts open-source catalog: Madimi One
+- Maiden Orange — Official Google Fonts open-source catalog: Maiden Orange
+- Major Mono Display — Official Google Fonts open-source catalog: Major Mono Display
+- Manufacturing Consent — Official Google Fonts open-source catalog: Manufacturing Consent
+- Marcellus SC — Official Google Fonts open-source catalog: Marcellus SC
+- Marck Script — Official Google Fonts open-source catalog: Marck Script
+- Markazi Text — Official Google Fonts open-source catalog: Markazi Text
+- Marko One — Official Google Fonts open-source catalog: Marko One
+- Martel Sans — Official Google Fonts open-source catalog: Martel Sans
+- Martian Mono — Official Google Fonts open-source catalog: Martian Mono
+- Martian Mono Condensed — Official Google Fonts open-source catalog: Martian Mono
+- Martian Mono SemiCondensed — Official Google Fonts open-source catalog: Martian Mono
+- Martian Mono SemiExpanded — Official Google Fonts open-source catalog: Martian Mono
+- Mate SC — Official Google Fonts open-source catalog: Mate SC
+- Material Symbols — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols 28pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols 36pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols 48pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Filled — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Filled 28pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Filled 36pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Filled 48pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Filled Rounded — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Filled Rounded 28pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Filled Rounded 36pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Filled Rounded 48pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Outlined — Official Google Fonts open-source catalog: Material Symbols Outlined
+- Material Symbols Outlined 28pt — Official Google Fonts open-source catalog: Material Symbols Outlined
+- Material Symbols Outlined 36pt — Official Google Fonts open-source catalog: Material Symbols Outlined
+- Material Symbols Outlined 48pt — Official Google Fonts open-source catalog: Material Symbols Outlined
+- Material Symbols Outlined Filled — Official Google Fonts open-source catalog: Material Symbols Outlined
+- Material Symbols Outlined Filled 28pt — Official Google Fonts open-source catalog: Material Symbols Outlined
+- Material Symbols Outlined Filled 36pt — Official Google Fonts open-source catalog: Material Symbols Outlined
+- Material Symbols Outlined Filled 48pt — Official Google Fonts open-source catalog: Material Symbols Outlined
+- Material Symbols Rounded — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Rounded 28pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Rounded 36pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Rounded 48pt — Official Google Fonts open-source catalog: Material Symbols
+- Material Symbols Sharp — Official Google Fonts open-source catalog: Material Symbols Sharp
+- Material Symbols Sharp 28pt — Official Google Fonts open-source catalog: Material Symbols Sharp
+- Material Symbols Sharp 36pt — Official Google Fonts open-source catalog: Material Symbols Sharp
+- Material Symbols Sharp 48pt — Official Google Fonts open-source catalog: Material Symbols Sharp
+- Material Symbols Sharp Filled — Official Google Fonts open-source catalog: Material Symbols Sharp
+- Material Symbols Sharp Filled 28pt — Official Google Fonts open-source catalog: Material Symbols Sharp
+- Material Symbols Sharp Filled 36pt — Official Google Fonts open-source catalog: Material Symbols Sharp
+- Material Symbols Sharp Filled 48pt — Official Google Fonts open-source catalog: Material Symbols Sharp
+- Maven Pro — Official Google Fonts open-source catalog: Maven Pro
+- Mea Culpa — Official Google Fonts open-source catalog: Mea Culpa
+- Medula One — Official Google Fonts open-source catalog: Medula One
+- Meera Inimai — Official Google Fonts open-source catalog: Meera Inimai
+- Meie Script — Official Google Fonts open-source catalog: Meie Script
+- Meow Script — Official Google Fonts open-source catalog: Meow Script
+- Merriweather Sans — Official Google Fonts open-source catalog: Merriweather Sans
+- Metal Mania — Official Google Fonts open-source catalog: Metal Mania
+- Micro 5 — Official Google Fonts open-source catalog: Micro 5
+- Micro 5 Charted — Official Google Fonts open-source catalog: Micro 5 Charted
+- Miltonian Tattoo — Official Google Fonts open-source catalog: Miltonian Tattoo
+- Miranda Sans — Official Google Fonts open-source catalog: Miranda Sans
+- Miriam Libre — Official Google Fonts open-source catalog: Miriam Libre
+- Miss Fajardose — Official Google Fonts open-source catalog: Miss Fajardose
+- Mochiy Pop One — Official Google Fonts open-source catalog: Mochiy Pop One
+- Mochiy Pop P One — Official Google Fonts open-source catalog: Mochiy Pop P One
+- Modern Antiqua — Official Google Fonts open-source catalog: Modern Antiqua
+- Moirai One — Official Google Fonts open-source catalog: Moirai One
+- Momo Signature — Official Google Fonts open-source catalog: Momo Signature
+- Momo Trust Display — Official Google Fonts open-source catalog: Momo Trust Display
+- Momo Trust Sans — Official Google Fonts open-source catalog: Momo Trust Sans
+- Monomaniac One — Official Google Fonts open-source catalog: Monomaniac One
+- Monsieur La Doulaise — Official Google Fonts open-source catalog: Monsieur La Doulaise
+- Montagu Slab — Official Google Fonts open-source catalog: Montagu Slab
+- Montagu Slab 120pt — Official Google Fonts open-source catalog: Montagu Slab
+- Montagu Slab 24pt — Official Google Fonts open-source catalog: Montagu Slab
+- Montagu Slab 36pt — Official Google Fonts open-source catalog: Montagu Slab
+- Montagu Slab 48pt — Official Google Fonts open-source catalog: Montagu Slab
+- Montagu Slab 96pt — Official Google Fonts open-source catalog: Montagu Slab
+- Montenegrin Gothic One — Official Google Fonts open-source catalog: Montenegrin Gothic One
+- Montserrat Alternates — Official Google Fonts open-source catalog: Montserrat Alternates
+- Montserrat Underline — Official Google Fonts open-source catalog: Montserrat Underline
+- Moo Lah Lah — Official Google Fonts open-source catalog: Moo Lah Lah
+- Moon Dance — Official Google Fonts open-source catalog: Moon Dance
+- Mountains of Christmas — Official Google Fonts open-source catalog: Mountains of Christmas
+- Mouse Memoirs — Official Google Fonts open-source catalog: Mouse Memoirs
+- Mozilla Text — Official Google Fonts open-source catalog: Mozilla Text
+- Mr Bedfort — Official Google Fonts open-source catalog: Mr Bedfort
+- Mr Dafoe — Official Google Fonts open-source catalog: Mr Dafoe
+- Mr De Haviland — Official Google Fonts open-source catalog: Mr De Haviland
+- Mrs Saint Delafield — Official Google Fonts open-source catalog: Mrs Saint Delafield
+- Mrs Sheppards — Official Google Fonts open-source catalog: Mrs Sheppards
+- Ms Madi — Official Google Fonts open-source catalog: Ms Madi
+- My Soul — Official Google Fonts open-source catalog: My Soul
+- Mystery Quest — Official Google Fonts open-source catalog: Mystery Quest
+- Nanum Brush Script — Official Google Fonts open-source catalog: Nanum Brush Script
+- NanumGothic — Official Google Fonts open-source catalog: Nanum Gothic
+- NanumGothicCoding — Official Google Fonts open-source catalog: Nanum Gothic Coding
+- NanumMyeongjo — Official Google Fonts open-source catalog: Nanum Myeongjo
+- Nata Sans — Official Google Fonts open-source catalog: Nata Sans
+- National Park — Official Google Fonts open-source catalog: National Park
+- Nerko One — Official Google Fonts open-source catalog: Nerko One
+- New Amsterdam — Official Google Fonts open-source catalog: New Amsterdam
+- New Rocker — Official Google Fonts open-source catalog: New Rocker
+- New Tegomin — Official Google Fonts open-source catalog: New Tegomin
+- News Cycle — Official Google Fonts open-source catalog: News Cycle
+- Nixie One — Official Google Fonts open-source catalog: Nixie One
+- Nothing You Could Do — Official Google Fonts open-source catalog: Nothing You Could Do
+- Noticia Text — Official Google Fonts open-source catalog: Noticia Text
+- Noto Color Emoji — Official Google Fonts open-source catalog: Noto Color Emoji
+- Noto Emoji — Official Google Fonts open-source catalog: Noto Emoji
+- Noto Sans [Imported 2026-08-17] — Open-source license text found
+- Nova Cut — Official Google Fonts open-source catalog: Nova Cut
+- Nova Flat — Official Google Fonts open-source catalog: Nova Flat
+- Nova Oval — Official Google Fonts open-source catalog: Nova Oval
+- Nova Round — Official Google Fonts open-source catalog: Nova Round
+- Nova Script — Official Google Fonts open-source catalog: Nova Script
+- Nova Slim — Official Google Fonts open-source catalog: Nova Slim
+- Nova Square — Official Google Fonts open-source catalog: Nova Square
+- NovaMono — Official Google Fonts open-source catalog: Nova Mono
+- Nunito Sans — Official Google Fonts open-source catalog: Nunito Sans
+- Nuosu SIL — Official Google Fonts open-source catalog: Nuosu SIL
+- Odibee Sans — Official Google Fonts open-source catalog: Odibee Sans
+- Odor Mean Chey — Official Google Fonts open-source catalog: Odor Mean Chey
+- Old Standard TT — Official Google Fonts open-source catalog: Old Standard TT
+- Oleo Script — Official Google Fonts open-source catalog: Oleo Script
+- Oleo Script Swash Caps — Official Google Fonts open-source catalog: Oleo Script Swash Caps
+- Oooh Baby — Official Google Fonts open-source catalog: Oooh Baby
+- Open Sans — Official Google Fonts open-source catalog: Open Sans
+- Orelega One — Official Google Fonts open-source catalog: Orelega One
+- Original Surfer — Official Google Fonts open-source catalog: Original Surfer
+- Over the Rainbow — Official Google Fonts open-source catalog: Over the Rainbow
+- Overlock SC — Official Google Fonts open-source catalog: Overlock SC
+- Overpass Mono — Official Google Fonts open-source catalog: Overpass Mono
+- Oxygen Mono — Official Google Fonts open-source catalog: Oxygen Mono
+- PT Mono — Official Google Fonts open-source catalog: PT Mono
+- PT Sans — Official Google Fonts open-source catalog: PT Sans
+- PT Sans Caption — Official Google Fonts open-source catalog: PT Sans Caption
+- PT Sans Narrow — Official Google Fonts open-source catalog: PT Sans Narrow
+- PT Serif — Official Google Fonts open-source catalog: PT Serif
+- PT Serif Caption — Official Google Fonts open-source catalog: PT Serif Caption
+- Padyakke Expanded One — Official Google Fonts open-source catalog: Padyakke Expanded One
+- Palanquin Dark — Official Google Fonts open-source catalog: Palanquin Dark
+- Palette Mosaic — Official Google Fonts open-source catalog: Palette Mosaic
+- Passero One — Official Google Fonts open-source catalog: Passero One
+- Passion One — Official Google Fonts open-source catalog: Passion One
+- Passions Conflict — Official Google Fonts open-source catalog: Passions Conflict
+- Pathway Extreme — Official Google Fonts open-source catalog: Pathway Extreme
+- Pathway Extreme 120pt — Official Google Fonts open-source catalog: Pathway Extreme
+- Pathway Extreme 14pt — Official Google Fonts open-source catalog: Pathway Extreme
+- Pathway Extreme 28pt — Official Google Fonts open-source catalog: Pathway Extreme
+- Pathway Extreme 36pt — Official Google Fonts open-source catalog: Pathway Extreme
+- Pathway Extreme 72pt — Official Google Fonts open-source catalog: Pathway Extreme
+- Pathway Gothic One — Official Google Fonts open-source catalog: Pathway Gothic One
+- Patrick Hand — Official Google Fonts open-source catalog: Patrick Hand
+- Patrick Hand SC — Official Google Fonts open-source catalog: Patrick Hand SC
+- Patua One — Official Google Fonts open-source catalog: Patua One
+- Paytone One — Official Google Fonts open-source catalog: Paytone One
+- Permanent Marker — Official Google Fonts open-source catalog: Permanent Marker
+- Petit Formal Script — Official Google Fonts open-source catalog: Petit Formal Script
+- Pinyon Script — Official Google Fonts open-source catalog: Pinyon Script
+- Pirata One — Official Google Fonts open-source catalog: Pirata One
+- Pixelify Sans — Official Google Fonts open-source catalog: Pixelify Sans
+- Playfair Display — Official Google Fonts open-source catalog: Playfair Display
+- Playfair Display SC — Official Google Fonts open-source catalog: Playfair Display SC
+- Playpen Sans — Official Google Fonts open-source catalog: Playpen Sans
+- Playpen Sans Arabic — Official Google Fonts open-source catalog: Playpen Sans Arabic
+- Playpen Sans Deva — Official Google Fonts open-source catalog: Playpen Sans Deva
+- Playpen Sans Hebrew — Official Google Fonts open-source catalog: Playpen Sans Hebrew
+- Playpen Sans Thai — Official Google Fonts open-source catalog: Playpen Sans Thai
+- Playwrite AR — Official Google Fonts open-source catalog: Playwrite AR
+- Playwrite AR Guides — Official Google Fonts open-source catalog: Playwrite AR Guides
+- Playwrite AT — Official Google Fonts open-source catalog: Playwrite AT
+- Playwrite AT Guides — Official Google Fonts open-source catalog: Playwrite AT Guides
+- Playwrite AU NSW — Official Google Fonts open-source catalog: Playwrite AU NSW
+- Playwrite AU NSW Guides — Official Google Fonts open-source catalog: Playwrite AU NSW Guides
+- Playwrite AU QLD — Official Google Fonts open-source catalog: Playwrite AU QLD
+- Playwrite AU QLD Guides — Official Google Fonts open-source catalog: Playwrite AU QLD Guides
+- Playwrite AU SA — Official Google Fonts open-source catalog: Playwrite AU SA
+- Playwrite AU SA Guides — Official Google Fonts open-source catalog: Playwrite AU SA Guides
+- Playwrite AU TAS — Official Google Fonts open-source catalog: Playwrite AU TAS
+- Playwrite AU TAS Guides — Official Google Fonts open-source catalog: Playwrite AU TAS Guides
+- Playwrite AU VIC — Official Google Fonts open-source catalog: Playwrite AU VIC
+- Playwrite AU VIC Guides — Official Google Fonts open-source catalog: Playwrite AU VIC Guides
+- Playwrite BE VLG — Official Google Fonts open-source catalog: Playwrite BE VLG
+- Playwrite BE VLG Guides — Official Google Fonts open-source catalog: Playwrite BE VLG Guides
+- Playwrite BE WAL — Official Google Fonts open-source catalog: Playwrite BE WAL
+- Playwrite BE WAL Guides — Official Google Fonts open-source catalog: Playwrite BE WAL Guides
+- Playwrite BR — Official Google Fonts open-source catalog: Playwrite BR
+- Playwrite BR Guides — Official Google Fonts open-source catalog: Playwrite BR Guides
+- Playwrite CA — Official Google Fonts open-source catalog: Playwrite CA
+- Playwrite CA Guides — Official Google Fonts open-source catalog: Playwrite CA Guides
+- Playwrite CL — Official Google Fonts open-source catalog: Playwrite CL
+- Playwrite CL Guides — Official Google Fonts open-source catalog: Playwrite CL Guides
+- Playwrite CO — Official Google Fonts open-source catalog: Playwrite CO
+- Playwrite CO Guides — Official Google Fonts open-source catalog: Playwrite CO Guides
+- Playwrite CU — Official Google Fonts open-source catalog: Playwrite CU
+- Playwrite CU Guides — Official Google Fonts open-source catalog: Playwrite CU Guides
+- Playwrite CZ — Official Google Fonts open-source catalog: Playwrite CZ
+- Playwrite CZ Guides — Official Google Fonts open-source catalog: Playwrite CZ Guides
+- Playwrite DE Grund — Official Google Fonts open-source catalog: Playwrite DE Grund
+- Playwrite DE Grund Guides — Official Google Fonts open-source catalog: Playwrite DE Grund Guides
+- Playwrite DE LA — Official Google Fonts open-source catalog: Playwrite DE LA
+- Playwrite DE LA Guides — Official Google Fonts open-source catalog: Playwrite DE LA Guides
+- Playwrite DE SAS — Official Google Fonts open-source catalog: Playwrite DE SAS
+- Playwrite DE SAS Guides — Official Google Fonts open-source catalog: Playwrite DE SAS Guides
+- Playwrite DE VA — Official Google Fonts open-source catalog: Playwrite DE VA
+- Playwrite DE VA Guides — Official Google Fonts open-source catalog: Playwrite DE VA Guides
+- Playwrite DK Loopet — Official Google Fonts open-source catalog: Playwrite DK Loopet
+- Playwrite DK Loopet Guides — Official Google Fonts open-source catalog: Playwrite DK Loopet Guides
+- Playwrite DK Uloopet — Official Google Fonts open-source catalog: Playwrite DK Uloopet
+- Playwrite DK Uloopet Guides — Official Google Fonts open-source catalog: Playwrite DK Uloopet Guides
+- Playwrite ES — Official Google Fonts open-source catalog: Playwrite ES
+- Playwrite ES Deco — Official Google Fonts open-source catalog: Playwrite ES Deco
+- Playwrite ES Deco Guides — Official Google Fonts open-source catalog: Playwrite ES Deco Guides
+- Playwrite ES Guides — Official Google Fonts open-source catalog: Playwrite ES Guides
+- Playwrite FR Moderne — Official Google Fonts open-source catalog: Playwrite FR Moderne
+- Playwrite FR Moderne Guides — Official Google Fonts open-source catalog: Playwrite FR Moderne Guides
+- Playwrite FR Trad — Official Google Fonts open-source catalog: Playwrite FR Trad
+- Playwrite FR Trad Guides — Official Google Fonts open-source catalog: Playwrite FR Trad Guides
+- Playwrite GB J — Official Google Fonts open-source catalog: Playwrite GB J
+- Playwrite GB J Guides — Official Google Fonts open-source catalog: Playwrite GB J Guides
+- Playwrite GB S — Official Google Fonts open-source catalog: Playwrite GB S
+- Playwrite GB S Guides — Official Google Fonts open-source catalog: Playwrite GB S Guides
+- Playwrite HR — Official Google Fonts open-source catalog: Playwrite HR
+- Playwrite HR Guides — Official Google Fonts open-source catalog: Playwrite HR Guides
+- Playwrite HR Lijeva — Official Google Fonts open-source catalog: Playwrite HR Lijeva
+- Playwrite HR Lijeva Guides — Official Google Fonts open-source catalog: Playwrite HR Lijeva Guides
+- Playwrite HU — Official Google Fonts open-source catalog: Playwrite HU
+- Playwrite HU Guides — Official Google Fonts open-source catalog: Playwrite HU Guides
+- Playwrite ID — Official Google Fonts open-source catalog: Playwrite ID
+- Playwrite ID Guides — Official Google Fonts open-source catalog: Playwrite ID Guides
+- Playwrite IE — Official Google Fonts open-source catalog: Playwrite IE
+- Playwrite IE Guides — Official Google Fonts open-source catalog: Playwrite IE Guides
+- Playwrite IN — Official Google Fonts open-source catalog: Playwrite IN
+- Playwrite IN Guides — Official Google Fonts open-source catalog: Playwrite IN Guides
+- Playwrite IS — Official Google Fonts open-source catalog: Playwrite IS
+- Playwrite IS Guides — Official Google Fonts open-source catalog: Playwrite IS Guides
+- Playwrite IT Moderna — Official Google Fonts open-source catalog: Playwrite IT Moderna
+- Playwrite IT Moderna Guides — Official Google Fonts open-source catalog: Playwrite IT Moderna Guides
+- Playwrite IT Trad — Official Google Fonts open-source catalog: Playwrite IT Trad
+- Playwrite IT Trad Guides — Official Google Fonts open-source catalog: Playwrite IT Trad Guides
+- Playwrite MX — Official Google Fonts open-source catalog: Playwrite MX
+- Playwrite MX Guides — Official Google Fonts open-source catalog: Playwrite MX Guides
+- Playwrite NG Modern — Official Google Fonts open-source catalog: Playwrite NG Modern
+- Playwrite NG Modern Guides — Official Google Fonts open-source catalog: Playwrite NG Modern Guides
+- Playwrite NL — Official Google Fonts open-source catalog: Playwrite NL
+- Playwrite NL Guides — Official Google Fonts open-source catalog: Playwrite NL Guides
+- Playwrite NO — Official Google Fonts open-source catalog: Playwrite NO
+- Playwrite NO Guides — Official Google Fonts open-source catalog: Playwrite NO Guides
+- Playwrite NZ — Official Google Fonts open-source catalog: Playwrite NZ
+- Playwrite NZ Basic — Official Google Fonts open-source catalog: Playwrite NZ Basic
+- Playwrite NZ Basic Guides — Official Google Fonts open-source catalog: Playwrite NZ Basic Guides
+- Playwrite NZ Guides — Official Google Fonts open-source catalog: Playwrite NZ Guides
+- Playwrite PE — Official Google Fonts open-source catalog: Playwrite PE
+- Playwrite PE Guides — Official Google Fonts open-source catalog: Playwrite PE Guides
+- Playwrite PL — Official Google Fonts open-source catalog: Playwrite PL
+- Playwrite PL Guides — Official Google Fonts open-source catalog: Playwrite PL Guides
+- Playwrite PT — Official Google Fonts open-source catalog: Playwrite PT
+- Playwrite PT Guides — Official Google Fonts open-source catalog: Playwrite PT Guides
+- Playwrite RO — Official Google Fonts open-source catalog: Playwrite RO
+- Playwrite RO Guides — Official Google Fonts open-source catalog: Playwrite RO Guides
+- Playwrite SK — Official Google Fonts open-source catalog: Playwrite SK
+- Playwrite SK Guides — Official Google Fonts open-source catalog: Playwrite SK Guides
+- Playwrite TZ — Official Google Fonts open-source catalog: Playwrite TZ
+- Playwrite TZ Guides — Official Google Fonts open-source catalog: Playwrite TZ Guides
+- Playwrite US Modern — Official Google Fonts open-source catalog: Playwrite US Modern
+- Playwrite US Modern Guides — Official Google Fonts open-source catalog: Playwrite US Modern Guides
+- Playwrite US Trad — Official Google Fonts open-source catalog: Playwrite US Trad
+- Playwrite US Trad Guides — Official Google Fonts open-source catalog: Playwrite US Trad Guides
+- Playwrite VN — Official Google Fonts open-source catalog: Playwrite VN
+- Playwrite VN Guides — Official Google Fonts open-source catalog: Playwrite VN Guides
+- Playwrite ZA — Official Google Fonts open-source catalog: Playwrite ZA
+- Playwrite ZA Guides — Official Google Fonts open-source catalog: Playwrite ZA Guides
+- Plus Jakarta Sans — Official Google Fonts open-source catalog: Plus Jakarta Sans
+- PoetsenOne — Official Google Fonts open-source catalog: Poetsen One
+- Poiret One — Official Google Fonts open-source catalog: Poiret One
+- Poller One — Official Google Fonts open-source catalog: Poller One
+- Poltawski Nowy — Official Google Fonts open-source catalog: Poltawski Nowy
+- Pontano Sans — Official Google Fonts open-source catalog: Pontano Sans
+- Poor Story — Official Google Fonts open-source catalog: Poor Story
+- Poppins — Official Google Fonts open-source catalog: Poppins
+- Port Lligat Sans — Official Google Fonts open-source catalog: Port Lligat Sans
+- Port Lligat Slab — Official Google Fonts open-source catalog: Port Lligat Slab
+- Potta One — Official Google Fonts open-source catalog: Potta One
+- Pragati Narrow — Official Google Fonts open-source catalog: Pragati Narrow
+- Press Start 2P — Official Google Fonts open-source catalog: Press Start 2P
+- Princess Sofia — Official Google Fonts open-source catalog: Princess Sofia
+- Prosto One — Official Google Fonts open-source catalog: Prosto One
+- Protest Guerrilla — Official Google Fonts open-source catalog: Protest Guerrilla
+- Protest Revolution — Official Google Fonts open-source catalog: Protest Revolution
+- Protest Riot — Official Google Fonts open-source catalog: Protest Riot
+- Protest Strike — Official Google Fonts open-source catalog: Protest Strike
+- Proza Libre — Official Google Fonts open-source catalog: Proza Libre
+- Public Sans — Official Google Fonts open-source catalog: Public Sans
+- Puppies Play — Official Google Fonts open-source catalog: Puppies Play
+- Purple Purse — Official Google Fonts open-source catalog: Purple Purse
+- Quattrocento Sans — Official Google Fonts open-source catalog: Quattrocento Sans
+- Qwitcher Grypen — Official Google Fonts open-source catalog: Qwitcher Grypen
+- Racing Sans One — Official Google Fonts open-source catalog: Racing Sans One
+- Radio Canada — Official Google Fonts open-source catalog: Radio Canada
+- Radio Canada Big — Official Google Fonts open-source catalog: Radio Canada Big
+- Radio Canada Condensed — Official Google Fonts open-source catalog: Radio Canada
+- Radio Canada SemiCondensed — Official Google Fonts open-source catalog: Radio Canada
+- Raleway Dots — Official Google Fonts open-source catalog: Raleway Dots
+- Rammetto One — Official Google Fonts open-source catalog: Rammetto One
+- Rampart One — Official Google Fonts open-source catalog: Rampart One
+- Ravi Prakash — Official Google Fonts open-source catalog: Ravi Prakash
+- Readex Pro — Official Google Fonts open-source catalog: Readex Pro
+- Red Hat Display — Official Google Fonts open-source catalog: Red Hat Display
+- Red Hat Mono — Official Google Fonts open-source catalog: Red Hat Mono
+- Red Hat Text — Official Google Fonts open-source catalog: Red Hat Text
+- Red Rose — Official Google Fonts open-source catalog: Red Rose
+- Redacted Script — Official Google Fonts open-source catalog: Redacted Script
+- Reddit Mono — Official Google Fonts open-source catalog: Reddit Mono
+- Reddit Sans — Official Google Fonts open-source catalog: Reddit Sans
+- Reddit Sans Condensed — Official Google Fonts open-source catalog: Reddit Sans Condensed
+- Reem Kufi — Official Google Fonts open-source catalog: Reem Kufi
+- Reem Kufi Fun — Official Google Fonts open-source catalog: Reem Kufi Fun
+- Reem Kufi Ink — Official Google Fonts open-source catalog: Reem Kufi Ink
+- Reenie Beanie — Official Google Fonts open-source catalog: Reenie Beanie
+- Reggae One — Official Google Fonts open-source catalog: Reggae One
+- Rethink Sans — Official Google Fonts open-source catalog: Rethink Sans
+- Rhodium Libre — Official Google Fonts open-source catalog: Rhodium Libre
+- Ribeye Marrow — Official Google Fonts open-source catalog: Ribeye Marrow
+- Road Rage — Official Google Fonts open-source catalog: Road Rage
+- Roboto Condensed — Official Google Fonts open-source catalog: Roboto Condensed
+- Roboto Flex — Official Google Fonts open-source catalog: Roboto Flex
+- Roboto Mono — Official Google Fonts open-source catalog: Roboto Mono
+- Roboto Serif — Official Google Fonts open-source catalog: Roboto Serif
+- Roboto Slab — Official Google Fonts open-source catalog: Roboto Slab
+- Rock 3D — Official Google Fonts open-source catalog: Rock 3D
+- Rock Salt — Official Google Fonts open-source catalog: Rock Salt
+- RocknRoll One — Official Google Fonts open-source catalog: RocknRoll One
+- Ropa Sans — Official Google Fonts open-source catalog: Ropa Sans
+- Rouge Script — Official Google Fonts open-source catalog: Rouge Script
+- Rozha One — Official Google Fonts open-source catalog: Rozha One
+- Rubik 80s Fade — Official Google Fonts open-source catalog: Rubik 80s Fade
+- Rubik Beastly — Official Google Fonts open-source catalog: Rubik Beastly
+- Rubik Broken Fax — Official Google Fonts open-source catalog: Rubik Broken Fax
+- Rubik Bubbles — Official Google Fonts open-source catalog: Rubik Bubbles
+- Rubik Burned — Official Google Fonts open-source catalog: Rubik Burned
+- Rubik Dirt — Official Google Fonts open-source catalog: Rubik Dirt
+- Rubik Distressed — Official Google Fonts open-source catalog: Rubik Distressed
+- Rubik Doodle Shadow — Official Google Fonts open-source catalog: Rubik Doodle Shadow
+- Rubik Doodle Triangles — Official Google Fonts open-source catalog: Rubik Doodle Triangles
+- Rubik Gemstones — Official Google Fonts open-source catalog: Rubik Gemstones
+- Rubik Glitch — Official Google Fonts open-source catalog: Rubik Glitch
+- Rubik Glitch Pop — Official Google Fonts open-source catalog: Rubik Glitch Pop
+- Rubik Iso — Official Google Fonts open-source catalog: Rubik Iso
+- Rubik Lines — Official Google Fonts open-source catalog: Rubik Lines
+- Rubik Maps — Official Google Fonts open-source catalog: Rubik Maps
+- Rubik Marker Hatch — Official Google Fonts open-source catalog: Rubik Marker Hatch
+- Rubik Maze — Official Google Fonts open-source catalog: Rubik Maze
+- Rubik Microbe — Official Google Fonts open-source catalog: Rubik Microbe
+- Rubik Mono One — Official Google Fonts open-source catalog: Rubik Mono One
+- Rubik Moonrocks — Official Google Fonts open-source catalog: Rubik Moonrocks
+- Rubik Pixels — Official Google Fonts open-source catalog: Rubik Pixels
+- Rubik Puddles — Official Google Fonts open-source catalog: Rubik Puddles
+- Rubik Scribble — Official Google Fonts open-source catalog: Rubik Scribble
+- Rubik Spray Paint — Official Google Fonts open-source catalog: Rubik Spray Paint
+- Rubik Storm — Official Google Fonts open-source catalog: Rubik Storm
+- Rubik Vinyl — Official Google Fonts open-source catalog: Rubik Vinyl
+- Rubik Wet Paint — Official Google Fonts open-source catalog: Rubik Wet Paint
+- Ruge Boogie — Official Google Fonts open-source catalog: Ruge Boogie
+- Rum Raisin — Official Google Fonts open-source catalog: Rum Raisin
+- Ruslan Display — Official Google Fonts open-source catalog: Ruslan Display
+- Russo One — Official Google Fonts open-source catalog: Russo One
+- SN Pro — Official Google Fonts open-source catalog: SN Pro
+- STIX Two Math — Official Google Fonts open-source catalog: STIX Two Math
+- STIX Two Text — Official Google Fonts open-source catalog: STIX Two Text
+- SUSE Mono — Official Google Fonts open-source catalog: SUSE Mono
+- Saira Stencil — Official Google Fonts open-source catalog: Saira Stencil
+- Saira Stencil Condensed — Official Google Fonts open-source catalog: Saira Stencil
+- Saira Stencil Expanded — Official Google Fonts open-source catalog: Saira Stencil
+- Saira Stencil ExtraCondensed — Official Google Fonts open-source catalog: Saira Stencil
+- Saira Stencil SemiCondensed — Official Google Fonts open-source catalog: Saira Stencil
+- Saira Stencil SemiExpanded — Official Google Fonts open-source catalog: Saira Stencil
+- Saira Stencil UltraCondensed — Official Google Fonts open-source catalog: Saira Stencil
+- Sankofa Display — Official Google Fonts open-source catalog: Sankofa Display
+- Sansita Swashed — Official Google Fonts open-source catalog: Sansita Swashed
+- Sassy Frass — Official Google Fonts open-source catalog: Sassy Frass
+- Sawarabi Gothic — Official Google Fonts open-source catalog: Sawarabi Gothic
+- Sawarabi Mincho — Official Google Fonts open-source catalog: Sawarabi Mincho
+- Scheherazade New — Official Google Fonts open-source catalog: Scheherazade New
+- Schibsted Grotesk — Official Google Fonts open-source catalog: Schibsted Grotesk
+- Science Gothic — Official Google Fonts open-source catalog: Science Gothic
+- Science Gothic Condensed — Official Google Fonts open-source catalog: Science Gothic
+- Science Gothic Expanded — Official Google Fonts open-source catalog: Science Gothic
+- Science Gothic ExtraCondensed — Official Google Fonts open-source catalog: Science Gothic
+- Science Gothic ExtraExpanded — Official Google Fonts open-source catalog: Science Gothic
+- Science Gothic SemiCondensed — Official Google Fonts open-source catalog: Science Gothic
+- Science Gothic SemiExpanded — Official Google Fonts open-source catalog: Science Gothic
+- Science Gothic UltraCondensed — Official Google Fonts open-source catalog: Science Gothic
+- Science Gothic UltraExpanded — Official Google Fonts open-source catalog: Science Gothic
+- Scope One — Official Google Fonts open-source catalog: Scope One
+- Seaweed Script — Official Google Fonts open-source catalog: Seaweed Script
+- Secular One — Official Google Fonts open-source catalog: Secular One
+- Sedan SC — Official Google Fonts open-source catalog: Sedan SC
+- Sedgwick Ave — Official Google Fonts open-source catalog: Sedgwick Ave
+- Sedgwick Ave Display — Official Google Fonts open-source catalog: Sedgwick Ave Display
+- Send Flowers — Official Google Fonts open-source catalog: Send Flowers
+- Seymour One — Official Google Fonts open-source catalog: Seymour One
+- Shadows Into Light — Official Google Fonts open-source catalog: Shadows Into Light
+- Shadows Into Light Two — Official Google Fonts open-source catalog: Shadows Into Light Two
+- Shantell Sans — Official Google Fonts open-source catalog: Shantell Sans
+- Share Tech — Official Google Fonts open-source catalog: Share Tech
+- Share Tech Mono — Official Google Fonts open-source catalog: Share Tech Mono
+- Shippori Antique — Official Google Fonts open-source catalog: Shippori Antique
+- Shippori Antique B1 — Official Google Fonts open-source catalog: Shippori Antique B1
+- Shippori Mincho — Official Google Fonts open-source catalog: Shippori Mincho
+- Shippori Mincho B1 — Official Google Fonts open-source catalog: Shippori Mincho B1
+- Short Stack — Official Google Fonts open-source catalog: Short Stack
+- Sigmar One — Official Google Fonts open-source catalog: Sigmar One
+- Signika Negative — Official Google Fonts open-source catalog: Signika Negative
+- SirinStencil — Official Google Fonts open-source catalog: Sirin Stencil
+- Six Caps — Official Google Fonts open-source catalog: Six Caps
+- Sixtyfour Convergence — Official Google Fonts open-source catalog: Sixtyfour Convergence
+- Slabo 13px — Official Google Fonts open-source catalog: Slabo 13px
+- Slabo 27px — Official Google Fonts open-source catalog: Slabo 27px
+- Slackside One — Official Google Fonts open-source catalog: Slackside One
+- Smooch Sans — Official Google Fonts open-source catalog: Smooch Sans
+- Snowburst One — Official Google Fonts open-source catalog: Snowburst One
+- Sofadi One — Official Google Fonts open-source catalog: Sofadi One
+- Sofia Sans — Official Google Fonts open-source catalog: Sofia Sans
+- Sofia Sans Condensed — Official Google Fonts open-source catalog: Sofia Sans Condensed
+- Sofia Sans Extra Condensed — Official Google Fonts open-source catalog: Sofia Sans Extra Condensed
+- Sofia Sans Semi Condensed — Official Google Fonts open-source catalog: Sofia Sans Semi Condensed
+- Sometype Mono — Official Google Fonts open-source catalog: Sometype Mono
+- Sonsie One — Official Google Fonts open-source catalog: Sonsie One
+- Sorts Mill Goudy — Official Google Fonts open-source catalog: Sorts Mill Goudy
+- Sour Gummy — Official Google Fonts open-source catalog: Sour Gummy
+- Source Code Pro — Official Google Fonts open-source catalog: Source Code Pro
+- Source Sans 3 — Official Google Fonts open-source catalog: Source Sans 3
+- Space Grotesk — Official Google Fonts open-source catalog: Space Grotesk
+- Space Mono — Official Google Fonts open-source catalog: Space Mono
+- Special Elite — Official Google Fonts open-source catalog: Special Elite
+- Special Gothic — Official Google Fonts open-source catalog: Special Gothic
+- Special Gothic Condensed — Official Google Fonts open-source catalog: Special Gothic
+- Special Gothic Condensed One — Official Google Fonts open-source catalog: Special Gothic Condensed One
+- Special Gothic Expanded — Official Google Fonts open-source catalog: Special Gothic
+- Special Gothic Expanded One — Official Google Fonts open-source catalog: Special Gothic Expanded One
+- Special Gothic SemiCondensed — Official Google Fonts open-source catalog: Special Gothic
+- Special Gothic SemiExpanded — Official Google Fonts open-source catalog: Special Gothic
+- Spectral SC — Official Google Fonts open-source catalog: Spectral SC
+- Spicy Rice — Official Google Fonts open-source catalog: Spicy Rice
+- Spline Sans — Official Google Fonts open-source catalog: Spline Sans
+- Spline Sans Mono — Official Google Fonts open-source catalog: Spline Sans Mono
+- Squada One — Official Google Fonts open-source catalog: Squada One
+- Square Peg — Official Google Fonts open-source catalog: Square Peg
+- Sree Krushnadevaraya — Official Google Fonts open-source catalog: Sree Krushnadevaraya
+- Stack Sans Headline — Official Google Fonts open-source catalog: Stack Sans Headline
+- Stack Sans Notch — Official Google Fonts open-source catalog: Stack Sans Notch
+- Stack Sans Text — Official Google Fonts open-source catalog: Stack Sans Text
+- Stalinist One — Official Google Fonts open-source catalog: Stalinist One
+- Stardos Stencil — Official Google Fonts open-source catalog: Stardos Stencil
+- Stick No Bills — Official Google Fonts open-source catalog: Stick No Bills
+- Stint Ultra Condensed — Official Google Fonts open-source catalog: Stint Ultra Condensed
+- Stint Ultra Expanded — Official Google Fonts open-source catalog: Stint Ultra Expanded
+- Story Script — Official Google Fonts open-source catalog: Story Script
+- Strichpunkt Sans — Official Google Fonts open-source catalog: Strichpunkt Sans
+- Strichpunkt Sans Expanded — Official Google Fonts open-source catalog: Strichpunkt Sans
+- Strichpunkt Sans ExtraExpanded — Official Google Fonts open-source catalog: Strichpunkt Sans
+- Strichpunkt Sans SemiExpanded — Official Google Fonts open-source catalog: Strichpunkt Sans
+- Strichpunkt Sans UltraExpanded — Official Google Fonts open-source catalog: Strichpunkt Sans
+- Style Script — Official Google Fonts open-source catalog: Style Script
+- Sue Ellen Francisco — Official Google Fonts open-source catalog: Sue Ellen Francisco
+- Suez One — Official Google Fonts open-source catalog: Suez One
+- Sulphur Point — Official Google Fonts open-source catalog: Sulphur Point
+- Swanky and Moo Moo — Official Google Fonts open-source catalog: Swanky and Moo Moo
+- Syne Mono — Official Google Fonts open-source catalog: Syne Mono
+- Syne Tactile — Official Google Fonts open-source catalog: Syne Tactile
+- TASA Explorer — Official Google Fonts open-source catalog: TASA Explorer
+- TASA Orbiter — Official Google Fonts open-source catalog: TASA Orbiter
+- Tac One — Official Google Fonts open-source catalog: Tac One
+- Tai Heritage Pro — Official Google Fonts open-source catalog: Tai Heritage Pro
+- Tenali Ramakrishna — Official Google Fonts open-source catalog: Tenali Ramakrishna
+- Tenor Sans — Official Google Fonts open-source catalog: Tenor Sans
+- Text Me One — Official Google Fonts open-source catalog: Text Me One
+- The Girl Next Door — Official Google Fonts open-source catalog: The Girl Next Door
+- The Nautigal — Official Google Fonts open-source catalog: The Nautigal
+- TikTok Sans — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 18pt — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 18pt Condensed — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 18pt Expanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 18pt ExtraExpanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 18pt SemiCondensed — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 18pt SemiExpanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 24pt — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 24pt Condensed — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 24pt Expanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 24pt ExtraExpanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 24pt SemiCondensed — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 24pt SemiExpanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 28pt — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 28pt Condensed — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 28pt Expanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 28pt ExtraExpanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 28pt SemiCondensed — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans 28pt SemiExpanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans Condensed — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans Expanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans ExtraExpanded — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans SemiCondensed — Official Google Fonts open-source catalog: TikTok Sans
+- TikTok Sans SemiExpanded — Official Google Fonts open-source catalog: TikTok Sans
+- Tilt Neon — Official Google Fonts open-source catalog: Tilt Neon
+- Tilt Prism — Official Google Fonts open-source catalog: Tilt Prism
+- Tilt Warp — Official Google Fonts open-source catalog: Tilt Warp
+- Tiro Devanagari Hindi — Official Google Fonts open-source catalog: Tiro Devanagari Hindi
+- Titan One — Official Google Fonts open-source catalog: Titan One
+- Titillium Web — Official Google Fonts open-source catalog: Titillium Web
+- Trade Winds — Official Google Fonts open-source catalog: Trade Winds
+- Train One — Official Google Fonts open-source catalog: Train One
+- Tsukimi Rounded — Official Google Fonts open-source catalog: Tsukimi Rounded
+- Tulpen One — Official Google Fonts open-source catalog: Tulpen One
+- Turret Road — Official Google Fonts open-source catalog: Turret Road
+- Twinkle Star — Official Google Fonts open-source catalog: Twinkle Star
+- Ubuntu Condensed — Official Google Fonts open-source catalog: Ubuntu Condensed
+- Ubuntu Mono — Official Google Fonts open-source catalog: Ubuntu Mono
+- Ubuntu Sans Mono — Official Google Fonts open-source catalog: Ubuntu Sans Mono
+- Uncial Antiqua — Official Google Fonts open-source catalog: Uncial Antiqua
+- Unica One — Official Google Fonts open-source catalog: Unica One
+- Vampiro One — Official Google Fonts open-source catalog: Vampiro One
+- Varela Round — Official Google Fonts open-source catalog: Varela Round
+- Vast Shadow — Official Google Fonts open-source catalog: Vast Shadow
+- Vend Sans — Official Google Fonts open-source catalog: Vend Sans
+- Vesper Libre — Official Google Fonts open-source catalog: Vesper Libre
+- Viaoda Libre — Official Google Fonts open-source catalog: Viaoda Libre
+- Victor Mono — Official Google Fonts open-source catalog: Victor Mono
+- Vina Sans — Official Google Fonts open-source catalog: Vina Sans
+- Vollkorn SC — Official Google Fonts open-source catalog: Vollkorn SC
+- Vujahday Script — Official Google Fonts open-source catalog: Vujahday Script
+- WDXL Lubrifont JP N — Official Google Fonts open-source catalog: WDXL Lubrifont JP N
+- WDXL Lubrifont SC — Official Google Fonts open-source catalog: WDXL Lubrifont SC
+- WDXL Lubrifont TC — Official Google Fonts open-source catalog: WDXL Lubrifont TC
+- Waiting for the Sunrise — Official Google Fonts open-source catalog: Waiting for the Sunrise
+- Walter Turncoat — Official Google Fonts open-source catalog: Walter Turncoat
+- Water Brush — Official Google Fonts open-source catalog: Water Brush
+- Wendy One — Official Google Fonts open-source catalog: Wendy One
+- Winky Rough — Official Google Fonts open-source catalog: Winky Rough
+- Winky Sans — Official Google Fonts open-source catalog: Winky Sans
+- Wire One — Official Google Fonts open-source catalog: Wire One
+- Wix Madefor Display — Official Google Fonts open-source catalog: Wix Madefor Display
+- Wix Madefor Text — Official Google Fonts open-source catalog: Wix Madefor Text
+- Work Sans — Official Google Fonts open-source catalog: Work Sans
+- Xanh Mono — Official Google Fonts open-source catalog: Xanh Mono
+- Yanone Kaffeesatz — Official Google Fonts open-source catalog: Yanone Kaffeesatz
+- Yarndings 12 — Official Google Fonts open-source catalog: Yarndings 12
+- Yarndings 12 Charted — Official Google Fonts open-source catalog: Yarndings 12 Charted
+- Yarndings 20 — Official Google Fonts open-source catalog: Yarndings 20
+- Yarndings 20 Charted — Official Google Fonts open-source catalog: Yarndings 20 Charted
+- Yatra One — Official Google Fonts open-source catalog: Yatra One
+- Yeon Sung — Official Google Fonts open-source catalog: Yeon Sung
+- Yeseva One — Official Google Fonts open-source catalog: Yeseva One
+- Young Serif — Official Google Fonts open-source catalog: Young Serif
+- Ysabeau Infant — Official Google Fonts open-source catalog: Ysabeau Infant
+- Ysabeau Office — Official Google Fonts open-source catalog: Ysabeau Office
+- Ysabeau SC — Official Google Fonts open-source catalog: Ysabeau SC
+- Yuji Boku — Official Google Fonts open-source catalog: Yuji Boku
+- Yuji Hentaigana Akari — Official Google Fonts open-source catalog: Yuji Hentaigana Akari
+- Yuji Hentaigana Akebono — Official Google Fonts open-source catalog: Yuji Hentaigana Akebono
+- Yuji Mai — Official Google Fonts open-source catalog: Yuji Mai
+- Yuji Syuku — Official Google Fonts open-source catalog: Yuji Syuku
+- Yusei Magic — Official Google Fonts open-source catalog: Yusei Magic
+- Yuyu Short — Official Google Fonts open-source catalog: Yuyu Short
+- ZCOOL KuaiLe — Official Google Fonts open-source catalog: ZCOOL KuaiLe
+- ZCOOL QingKe HuangYou — Official Google Fonts open-source catalog: ZCOOL QingKe HuangYou
+- ZCOOL XiaoWei — Official Google Fonts open-source catalog: ZCOOL XiaoWei
+- Zalando Sans — Official Google Fonts open-source catalog: Zalando Sans
+- Zalando Sans Condensed — Official Google Fonts open-source catalog: Zalando Sans
+- Zalando Sans Expanded — Official Google Fonts open-source catalog: Zalando Sans Expanded
+- Zalando Sans SemiCondensed — Official Google Fonts open-source catalog: Zalando Sans
+- Zalando Sans SemiExpanded — Official Google Fonts open-source catalog: Zalando Sans SemiExpanded
+- Zen Antique — Official Google Fonts open-source catalog: Zen Antique
+- Zen Antique Soft — Official Google Fonts open-source catalog: Zen Antique Soft
+- Zen Dots — Official Google Fonts open-source catalog: Zen Dots
+- Zen Kaku Gothic Antique — Official Google Fonts open-source catalog: Zen Kaku Gothic Antique
+- Zen Kaku Gothic New — Official Google Fonts open-source catalog: Zen Kaku Gothic New
+- Zen Kurenaido — Official Google Fonts open-source catalog: Zen Kurenaido
+- Zen Loop — Official Google Fonts open-source catalog: Zen Loop
+- Zen Maru Gothic — Official Google Fonts open-source catalog: Zen Maru Gothic
+- Zen Old Mincho — Official Google Fonts open-source catalog: Zen Old Mincho
+- Zen Tokyo Zoo — Official Google Fonts open-source catalog: Zen Tokyo Zoo
+- Zhi Mang Xing — Official Google Fonts open-source catalog: Zhi Mang Xing
+- Zilla Slab — Official Google Fonts open-source catalog: Zilla Slab
+- Zilla Slab Highlight — Official Google Fonts open-source catalog: Zilla Slab Highlight
+- abeezee — Official Google Fonts open-source catalog: ABeeZee
+- abel — Official Google Fonts open-source catalog: Abel
+- aboreto — Official Google Fonts open-source catalog: Aboreto
+- aclonica — Official Google Fonts open-source catalog: Aclonica
+- acme — Official Google Fonts open-source catalog: Acme
+- actor — Official Google Fonts open-source catalog: Actor
+- adamina — Official Google Fonts open-source catalog: Adamina
+- afacad — Official Google Fonts open-source catalog: Afacad
+- agbalumo — Official Google Fonts open-source catalog: Agbalumo
+- agdasima — Official Google Fonts open-source catalog: Agdasima
+- akatab — Official Google Fonts open-source catalog: Akatab
+- akronim — Official Google Fonts open-source catalog: Akronim
+- akshar — Official Google Fonts open-source catalog: Akshar
+- akt — Official Google Fonts open-source catalog: Akt
+- aladin — Official Google Fonts open-source catalog: Aladin
+- alata — Official Google Fonts open-source catalog: Alata
+- alatsi — Official Google Fonts open-source catalog: Alatsi
+- aldrich — Official Google Fonts open-source catalog: Aldrich
+- alef — Official Google Fonts open-source catalog: Alef
+- alegreya — Official Google Fonts open-source catalog: Alegreya
+- aleo — Official Google Fonts open-source catalog: Aleo
+- alexandria — Official Google Fonts open-source catalog: Alexandria
+- alice — Official Google Fonts open-source catalog: Alice
+- alike — Official Google Fonts open-source catalog: Alike
+- alkalami — Official Google Fonts open-source catalog: Alkalami
+- alkatra — Official Google Fonts open-source catalog: Alkatra
+- allan — Official Google Fonts open-source catalog: Allan
+- allerta — Official Google Fonts open-source catalog: Allerta
+- allison — Official Google Fonts open-source catalog: Allison
+- allkin — Official Google Fonts open-source catalog: Allkin
+- allura — Official Google Fonts open-source catalog: Allura
+- almarai — Official Google Fonts open-source catalog: Almarai
+- almendra — Official Google Fonts open-source catalog: Almendra
+- alyamama — Official Google Fonts open-source catalog: Alyamama
+- amarante — Official Google Fonts open-source catalog: Amarante
+- amaranth — Official Google Fonts open-source catalog: Amaranth
+- amarna — Official Google Fonts open-source catalog: Amarna
+- amethysta — Official Google Fonts open-source catalog: Amethysta
+- amiko — Official Google Fonts open-source catalog: Amiko
+- amiri — Official Google Fonts open-source catalog: Amiri
+- amita — Official Google Fonts open-source catalog: Amita
+- anaheim — Official Google Fonts open-source catalog: Anaheim
+- andika — Official Google Fonts open-source catalog: Andika
+- angkor — Official Google Fonts open-source catalog: Angkor
+- anta — Official Google Fonts open-source catalog: Anta
+- antic — Official Google Fonts open-source catalog: Antic
+- anton — Official Google Fonts open-source catalog: Anton
+- antonio — Official Google Fonts open-source catalog: Antonio
+- anuphan — Official Google Fonts open-source catalog: Anuphan
+- anybody — Official Google Fonts open-source catalog: Anybody
+- arapey — Official Google Fonts open-source catalog: Arapey
+- arbutus — Official Google Fonts open-source catalog: Arbutus
+- arima — Official Google Fonts open-source catalog: Arima
+- arimo — Official Google Fonts open-source catalog: Arimo
+- arizonia — Official Google Fonts open-source catalog: Arizonia
+- armata — Official Google Fonts open-source catalog: Armata
+- arsenal — Official Google Fonts open-source catalog: Arsenal
+- artifika — Official Google Fonts open-source catalog: Artifika
+- arvo — Official Google Fonts open-source catalog: Arvo
+- arya — Official Google Fonts open-source catalog: Arya
+- asap — Official Google Fonts open-source catalog: Asap
+- asar — Official Google Fonts open-source catalog: Asar
+- asimovian — Official Google Fonts open-source catalog: Asimovian
+- asset — Official Google Fonts open-source catalog: Asset
+- assistant — Official Google Fonts open-source catalog: Assistant
+- astloch — Official Google Fonts open-source catalog: Astloch
+- asul — Official Google Fonts open-source catalog: Asul
+- athiti — Official Google Fonts open-source catalog: Athiti
+- atma — Official Google Fonts open-source catalog: Atma
+- aubrey — Official Google Fonts open-source catalog: Aubrey
+- audiowide — Official Google Fonts open-source catalog: Audiowide
+- average — Official Google Fonts open-source catalog: Average
+- b612 — Official Google Fonts open-source catalog: B612
+- babylonica — Official Google Fonts open-source catalog: Babylonica
+- bahiana — Official Google Fonts open-source catalog: Bahiana
+- bahianita — Official Google Fonts open-source catalog: Bahianita
+- ballet — Official Google Fonts open-source catalog: Ballet
+- balthazar — Official Google Fonts open-source catalog: Balthazar
+- bangers — Official Google Fonts open-source catalog: Bangers
+- barlow — Official Google Fonts open-source catalog: Barlow
+- barriecito — Official Google Fonts open-source catalog: Barriecito
+- barrio — Official Google Fonts open-source catalog: Barrio
+- basic — Official Google Fonts open-source catalog: Basic
+- baskervville — Official Google Fonts open-source catalog: Baskervville
+- battambang — Official Google Fonts open-source catalog: Battambang
+- baumans — Official Google Fonts open-source catalog: Baumans
+- bayon — Official Google Fonts open-source catalog: Bayon
+- beiruti — Official Google Fonts open-source catalog: Beiruti
+- belanosima — Official Google Fonts open-source catalog: Belanosima
+- belgrano — Official Google Fonts open-source catalog: Belgrano
+- bellefair — Official Google Fonts open-source catalog: Bellefair
+- belleza — Official Google Fonts open-source catalog: Belleza
+- bellota — Official Google Fonts open-source catalog: Bellota
+- benchnine — Official Google Fonts open-source catalog: BenchNine
+- benne — Official Google Fonts open-source catalog: Benne
+- bentham — Official Google Fonts open-source catalog: Bentham
+- besley — Official Google Fonts open-source catalog: Besley
+- bevan — Official Google Fonts open-source catalog: Bevan
+- bilbo — Official Google Fonts open-source catalog: Bilbo
+- biorhyme — Official Google Fonts open-source catalog: BioRhyme
+- birthstone — Official Google Fonts open-source catalog: Birthstone
+- biryani — Official Google Fonts open-source catalog: Biryani
+- bitcount — Official Google Fonts open-source catalog: Bitcount
+- bitter — Official Google Fonts open-source catalog: Bitter
+- bjcree — Official Google Fonts open-source catalog: BJCree
+- blaka — Official Google Fonts open-source catalog: Blaka
+- blinker — Official Google Fonts open-source catalog: Blinker
+- bokor — Official Google Fonts open-source catalog: Bokor
+- boldonse — Official Google Fonts open-source catalog: Boldonse
+- bonbon — Official Google Fonts open-source catalog: Bonbon
+- boogaloo — Official Google Fonts open-source catalog: Boogaloo
+- borel — Official Google Fonts open-source catalog: Borel
+- brawler — Official Google Fonts open-source catalog: Brawler
+- buda — Official Google Fonts open-source catalog: Buda
+- buenard — Official Google Fonts open-source catalog: Buenard
+- bungee — Official Google Fonts open-source catalog: Bungee
+- butcherman — Official Google Fonts open-source catalog: Butcherman
+- bytesized — Official Google Fonts open-source catalog: Bytesized
+- cabin — Official Google Fonts open-source catalog: Cabin
+- cagliostro — Official Google Fonts open-source catalog: Cagliostro
+- cairo — Official Google Fonts open-source catalog: Cairo
+- caladea — Official Google Fonts open-source catalog: Caladea
+- calistoga — Official Google Fonts open-source catalog: Calistoga
+- calligraffitti — Official Google Fonts open-source catalog: Calligraffitti
+- cambay — Official Google Fonts open-source catalog: Cambay
+- cambo — Official Google Fonts open-source catalog: Cambo
+- candal — Official Google Fonts open-source catalog: Candal
+- cantarell — Official Google Fonts open-source catalog: Cantarell
+- caprasimo — Official Google Fonts open-source catalog: Caprasimo
+- capriola — Official Google Fonts open-source catalog: Capriola
+- caramel — Official Google Fonts open-source catalog: Caramel
+- carattere — Official Google Fonts open-source catalog: Carattere
+- cardo — Official Google Fonts open-source catalog: Cardo
+- carlito — Official Google Fonts open-source catalog: Carlito
+- carme — Official Google Fonts open-source catalog: Carme
+- castoro — Official Google Fonts open-source catalog: Castoro
+- catamaran — Official Google Fonts open-source catalog: Catamaran
+- caudex — Official Google Fonts open-source catalog: Caudex
+- cause — Official Google Fonts open-source catalog: Cause
+- caveat — Official Google Fonts open-source catalog: Caveat
+- changa — Official Google Fonts open-source catalog: Changa
+- chango — Official Google Fonts open-source catalog: Chango
+- charm — Official Google Fonts open-source catalog: Charm
+- charmonman — Official Google Fonts open-source catalog: Charmonman
+- chathura — Official Google Fonts open-source catalog: Chathura
+- cherish — Official Google Fonts open-source catalog: Cherish
+- chewy — Official Google Fonts open-source catalog: Chewy
+- chicle — Official Google Fonts open-source catalog: Chicle
+- chilanka — Official Google Fonts open-source catalog: Chilanka
+- chivo — Official Google Fonts open-source catalog: Chivo
+- chokokutai — Official Google Fonts open-source catalog: Chokokutai
+- chonburi — Official Google Fonts open-source catalog: Chonburi
+- cinzel — Official Google Fonts open-source catalog: Cinzel
+- coda — Official Google Fonts open-source catalog: Coda
+- codystar — Official Google Fonts open-source catalog: Codystar
+- coiny — Official Google Fonts open-source catalog: Coiny
+- combo — Official Google Fonts open-source catalog: Combo
+- comfortaa — Official Google Fonts open-source catalog: Comfortaa
+- comforter — Official Google Fonts open-source catalog: Comforter
+- comme — Official Google Fonts open-source catalog: Comme
+- commissioner — Official Google Fonts open-source catalog: Commissioner
+- condiment — Official Google Fonts open-source catalog: Condiment
+- convergence — Official Google Fonts open-source catalog: Convergence
+- cookie — Official Google Fonts open-source catalog: Cookie
+- copse — Official Google Fonts open-source catalog: Copse
+- corben — Official Google Fonts open-source catalog: Corben
+- corinthia — Official Google Fonts open-source catalog: Corinthia
+- cormorant — Official Google Fonts open-source catalog: Cormorant
+- courgette — Official Google Fonts open-source catalog: Courgette
+- cousine — Official Google Fonts open-source catalog: Cousine
+- coustard — Official Google Fonts open-source catalog: Coustard
+- creepster — Official Google Fonts open-source catalog: Creepster
+- crushed — Official Google Fonts open-source catalog: Crushed
+- cuprum — Official Google Fonts open-source catalog: Cuprum
+- cutive — Official Google Fonts open-source catalog: Cutive
+- damion — Official Google Fonts open-source catalog: Damion
+- danfo — Official Google Fonts open-source catalog: Danfo
+- dangrek — Official Google Fonts open-source catalog: Dangrek
+- datatype — Official Google Fonts open-source catalog: Datatype
+- dekko — Official Google Fonts open-source catalog: Dekko
+- delius — Official Google Fonts open-source catalog: Delius
+- devonshire — Official Google Fonts open-source catalog: Devonshire
+- dhurjati — Official Google Fonts open-source catalog: Dhurjati
+- diphylleia — Official Google Fonts open-source catalog: Diphylleia
+- diplomata — Official Google Fonts open-source catalog: Diplomata
+- dokdo — Official Google Fonts open-source catalog: Dokdo
+- domine — Official Google Fonts open-source catalog: Domine
+- dongle — Official Google Fonts open-source catalog: Dongle
+- dorsa — Official Google Fonts open-source catalog: Dorsa
+- dosis — Official Google Fonts open-source catalog: Dosis
+- dotgothic16 — Official Google Fonts open-source catalog: DotGothic16
+- doto — Official Google Fonts open-source catalog: Doto
+- dynalight — Official Google Fonts open-source catalog: Dynalight
+- dynapuff — Official Google Fonts open-source catalog: DynaPuff
+- eater — Official Google Fonts open-source catalog: Eater
+- economica — Official Google Fonts open-source catalog: Economica
+- eczar — Official Google Fonts open-source catalog: Eczar
+- electrolize — Official Google Fonts open-source catalog: Electrolize
+- elsie — Official Google Fonts open-source catalog: Elsie
+- engagement — Official Google Fonts open-source catalog: Engagement
+- englebert — Official Google Fonts open-source catalog: Englebert
+- enriqueta — Official Google Fonts open-source catalog: Enriqueta
+- ephesis — Official Google Fonts open-source catalog: Ephesis
+- esteban — Official Google Fonts open-source catalog: Esteban
+- estedad — Official Google Fonts open-source catalog: Estedad
+- estonia — Official Google Fonts open-source catalog: Estonia
+- ewert — Official Google Fonts open-source catalog: Ewert
+- exile — Official Google Fonts open-source catalog: Exile
+- exo — Official Google Fonts open-source catalog: Exo
+- explora — Official Google Fonts open-source catalog: Explora
+- fahkwang — Official Google Fonts open-source catalog: Fahkwang
+- farro — Official Google Fonts open-source catalog: Farro
+- farsan — Official Google Fonts open-source catalog: Farsan
+- fascinate — Official Google Fonts open-source catalog: Fascinate
+- fasthand — Official Google Fonts open-source catalog: Fasthand
+- faustina — Official Google Fonts open-source catalog: Faustina
+- federant — Official Google Fonts open-source catalog: Federant
+- federo — Official Google Fonts open-source catalog: Federo
+- felipa — Official Google Fonts open-source catalog: Felipa
+- fenix — Official Google Fonts open-source catalog: Fenix
+- festive — Official Google Fonts open-source catalog: Festive
+- figtree — Official Google Fonts open-source catalog: Figtree
+- flamenco — Official Google Fonts open-source catalog: Flamenco
+- flavors — Official Google Fonts open-source catalog: Flavors
+- foldit — Official Google Fonts open-source catalog: Foldit
+- fondamento — Official Google Fonts open-source catalog: Fondamento
+- forum — Official Google Fonts open-source catalog: Forum
+- fraunces — Official Google Fonts open-source catalog: Fraunces
+- fredoka — Official Google Fonts open-source catalog: Fredoka
+- freehand — Official Google Fonts open-source catalog: Freehand
+- freeman — Official Google Fonts open-source catalog: Freeman
+- fresca — Official Google Fonts open-source catalog: Fresca
+- frijole — Official Google Fonts open-source catalog: Frijole
+- fruktur — Official Google Fonts open-source catalog: Fruktur
+- fuggles — Official Google Fonts open-source catalog: Fuggles
+- fustat — Official Google Fonts open-source catalog: Fustat
+- gabarito — Official Google Fonts open-source catalog: Gabarito
+- gabriela — Official Google Fonts open-source catalog: Gabriela
+- gaegu — Official Google Fonts open-source catalog: Gaegu
+- gafata — Official Google Fonts open-source catalog: Gafata
+- galada — Official Google Fonts open-source catalog: Galada
+- galdeano — Official Google Fonts open-source catalog: Galdeano
+- galindo — Official Google Fonts open-source catalog: Galindo
+- gantari — Official Google Fonts open-source catalog: Gantari
+- gayathri — Official Google Fonts open-source catalog: Gayathri
+- gelasio — Official Google Fonts open-source catalog: Gelasio
+- genos — Official Google Fonts open-source catalog: Genos
+- geo — Official Google Fonts open-source catalog: Geo
+- geologica — Official Google Fonts open-source catalog: Geologica
+- geom — Official Google Fonts open-source catalog: Geom
+- geomini — Official Google Fonts open-source catalog: Geomini
+- georama — Official Google Fonts open-source catalog: Georama
+- geostar — Official Google Fonts open-source catalog: Geostar
+- gidole — Official Google Fonts open-source catalog: Gidole
+- gidugu — Official Google Fonts open-source catalog: Gidugu
+- girassol — Official Google Fonts open-source catalog: Girassol
+- glegoo — Official Google Fonts open-source catalog: Glegoo
+- gloock — Official Google Fonts open-source catalog: Gloock
+- glory — Official Google Fonts open-source catalog: Glory
+- gluten — Official Google Fonts open-source catalog: Gluten
+- goldman — Official Google Fonts open-source catalog: Goldman
+- gorditas — Official Google Fonts open-source catalog: Gorditas
+- gotu — Official Google Fonts open-source catalog: Gotu
+- graduate — Official Google Fonts open-source catalog: Graduate
+- grandstander — Official Google Fonts open-source catalog: Grandstander
+- grenze — Official Google Fonts open-source catalog: Grenze
+- griffy — Official Google Fonts open-source catalog: Griffy
+- gruppo — Official Google Fonts open-source catalog: Gruppo
+- gudea — Official Google Fonts open-source catalog: Gudea
+- gugi — Official Google Fonts open-source catalog: Gugi
+- gulzar — Official Google Fonts open-source catalog: Gulzar
+- gupter — Official Google Fonts open-source catalog: Gupter
+- gurajada — Official Google Fonts open-source catalog: Gurajada
+- gwendolyn — Official Google Fonts open-source catalog: Gwendolyn
+- habibi — Official Google Fonts open-source catalog: Habibi
+- hahmlet — Official Google Fonts open-source catalog: Hahmlet
+- halant — Official Google Fonts open-source catalog: Halant
+- hanalei — Official Google Fonts open-source catalog: Hanalei
+- handjet — Official Google Fonts open-source catalog: Handjet
+- handlee — Official Google Fonts open-source catalog: Handlee
+- hanuman — Official Google Fonts open-source catalog: Hanuman
+- harmattan — Official Google Fonts open-source catalog: Harmattan
+- heebo — Official Google Fonts open-source catalog: Heebo
+- hind — Official Google Fonts open-source catalog: Hind
+- homenaje — Official Google Fonts open-source catalog: Homenaje
+- honk — Official Google Fonts open-source catalog: Honk
+- hubballi — Official Google Fonts open-source catalog: Hubballi
+- huninn — Official Google Fonts open-source catalog: Huninn
+- hurricane — Official Google Fonts open-source catalog: Hurricane
+- iansui — Official Google Fonts open-source catalog: Iansui
+- iceberg — Official Google Fonts open-source catalog: Iceberg
+- iceland — Official Google Fonts open-source catalog: Iceland
+- idiqlat — Official Google Fonts open-source catalog: Idiqlat
+- imbue — Official Google Fonts open-source catalog: Imbue
+- imprima — Official Google Fonts open-source catalog: Imprima
+- inconsolata — Official Google Fonts open-source catalog: Inconsolata
+- inder — Official Google Fonts open-source catalog: Inder
+- inika — Official Google Fonts open-source catalog: Inika
+- inspiration — Official Google Fonts open-source catalog: Inspiration
+- inter — Official Google Fonts open-source catalog: Inter
+- italiana — Official Google Fonts open-source catalog: Italiana
+- italianno — Official Google Fonts open-source catalog: Italianno
+- itim — Official Google Fonts open-source catalog: Itim
+- jaini — Official Google Fonts open-source catalog: Jaini
+- jaldi — Official Google Fonts open-source catalog: Jaldi
+- jaro — Official Google Fonts open-source catalog: Jaro
+- joan — Official Google Fonts open-source catalog: Joan
+- jomhuria — Official Google Fonts open-source catalog: Jomhuria
+- jomolhari — Official Google Fonts open-source catalog: Jomolhari
+- jost — Official Google Fonts open-source catalog: Jost
+- jua — Official Google Fonts open-source catalog: Jua
+- judson — Official Google Fonts open-source catalog: Judson
+- julee — Official Google Fonts open-source catalog: Julee
+- junge — Official Google Fonts open-source catalog: Junge
+- jura — Official Google Fonts open-source catalog: Jura
+- k2d — Official Google Fonts open-source catalog: K2D
+- kablammo — Official Google Fonts open-source catalog: Kablammo
+- kadwa — Official Google Fonts open-source catalog: Kadwa
+- kalam — Official Google Fonts open-source catalog: Kalam
+- kalnia — Official Google Fonts open-source catalog: Kalnia
+- kameron — Official Google Fonts open-source catalog: Kameron
+- kanchenjunga — Official Google Fonts open-source catalog: Kanchenjunga
+- kanit — Official Google Fonts open-source catalog: Kanit
+- kapakana — Official Google Fonts open-source catalog: Kapakana
+- karantina — Official Google Fonts open-source catalog: Karantina
+- karla — Official Google Fonts open-source catalog: Karla
+- karma — Official Google Fonts open-source catalog: Karma
+- katibeh — Official Google Fonts open-source catalog: Katibeh
+- kavivanar — Official Google Fonts open-source catalog: Kavivanar
+- kavoon — Official Google Fonts open-source catalog: Kavoon
+- kedebideri — Official Google Fonts open-source catalog: Kedebideri
+- kenia — Official Google Fonts open-source catalog: Kenia
+- khand — Official Google Fonts open-source catalog: Khand
+- khula — Official Google Fonts open-source catalog: Khula
+- kings — Official Google Fonts open-source catalog: Kings
+- knewave — Official Google Fonts open-source catalog: Knewave
+- kodchasan — Official Google Fonts open-source catalog: Kodchasan
+- koho — Official Google Fonts open-source catalog: KoHo
+- kosugi — Official Google Fonts open-source catalog: Kosugi
+- koulen — Official Google Fonts open-source catalog: Koulen
+- kranky — Official Google Fonts open-source catalog: Kranky
+- kreon — Official Google Fonts open-source catalog: Kreon
+- kristi — Official Google Fonts open-source catalog: Kristi
+- krub — Official Google Fonts open-source catalog: Krub
+- kufam — Official Google Fonts open-source catalog: Kufam
+- kurale — Official Google Fonts open-source catalog: Kurale
+- labrada — Official Google Fonts open-source catalog: Labrada
+- lacquer — Official Google Fonts open-source catalog: Lacquer
+- laila — Official Google Fonts open-source catalog: Laila
+- lalezar — Official Google Fonts open-source catalog: Lalezar
+- lancelot — Official Google Fonts open-source catalog: Lancelot
+- langar — Official Google Fonts open-source catalog: Langar
+- lateef — Official Google Fonts open-source catalog: Lateef
+- lato — Official Google Fonts open-source catalog: Lato
+- ledger — Official Google Fonts open-source catalog: Ledger
+- lekton — Official Google Fonts open-source catalog: Lekton
+- lemon — Official Google Fonts open-source catalog: Lemon
+- lemonada — Official Google Fonts open-source catalog: Lemonada
+- lexend — Official Google Fonts open-source catalog: Lexend
+- licorice — Official Google Fonts open-source catalog: Licorice
+- lilex — Official Google Fonts open-source catalog: Lilex
+- limelight — Official Google Fonts open-source catalog: Limelight
+- linefont — Official Google Fonts open-source catalog: Linefont
+- liter — Official Google Fonts open-source catalog: Liter
+- literata — Official Google Fonts open-source catalog: Literata
+- livvic — Official Google Fonts open-source catalog: Livvic
+- lobster — Official Google Fonts open-source catalog: Lobster
+- lora — Official Google Fonts open-source catalog: Lora
+- lugrasimo — Official Google Fonts open-source catalog: Lugrasimo
+- lumanosimo — Official Google Fonts open-source catalog: Lumanosimo
+- lunasima — Official Google Fonts open-source catalog: Lunasima
+- lusitana — Official Google Fonts open-source catalog: Lusitana
+- lustria — Official Google Fonts open-source catalog: Lustria
+- macondo — Official Google Fonts open-source catalog: Macondo
+- mada — Official Google Fonts open-source catalog: Mada
+- magra — Official Google Fonts open-source catalog: Magra
+- maitree — Official Google Fonts open-source catalog: Maitree
+- mako — Official Google Fonts open-source catalog: Mako
+- mali — Official Google Fonts open-source catalog: Mali
+- mallanna — Official Google Fonts open-source catalog: Mallanna
+- maname — Official Google Fonts open-source catalog: Maname
+- mandali — Official Google Fonts open-source catalog: Mandali
+- manjari — Official Google Fonts open-source catalog: Manjari
+- manrope — Official Google Fonts open-source catalog: Manrope
+- mansalva — Official Google Fonts open-source catalog: Mansalva
+- manuale — Official Google Fonts open-source catalog: Manuale
+- marcellus — Official Google Fonts open-source catalog: Marcellus
+- margarine — Official Google Fonts open-source catalog: Margarine
+- marhey — Official Google Fonts open-source catalog: Marhey
+- marmelad — Official Google Fonts open-source catalog: Marmelad
+- martel — Official Google Fonts open-source catalog: Martel
+- marvel — Official Google Fonts open-source catalog: Marvel
+- matangi — Official Google Fonts open-source catalog: Matangi
+- mate — Official Google Fonts open-source catalog: Mate
+- matemasie — Official Google Fonts open-source catalog: Matemasie
+- mclaren — Official Google Fonts open-source catalog: McLaren
+- meddon — Official Google Fonts open-source catalog: Meddon
+- medievalsharp — Official Google Fonts open-source catalog: MedievalSharp
+- megrim — Official Google Fonts open-source catalog: Megrim
+- menbere — Official Google Fonts open-source catalog: Menbere
+- merienda — Official Google Fonts open-source catalog: Merienda
+- merriweather — Official Google Fonts open-source catalog: Merriweather
+- metal — Official Google Fonts open-source catalog: Metal
+- metamorphous — Official Google Fonts open-source catalog: Metamorphous
+- metrophobic — Official Google Fonts open-source catalog: Metrophobic
+- michroma — Official Google Fonts open-source catalog: Michroma
+- milonga — Official Google Fonts open-source catalog: Milonga
+- miltonian — Official Google Fonts open-source catalog: Miltonian
+- mina — Official Google Fonts open-source catalog: Mina
+- mingzat — Official Google Fonts open-source catalog: Mingzat
+- miniver — Official Google Fonts open-source catalog: Miniver
+- mirza — Official Google Fonts open-source catalog: Mirza
+- mitr — Official Google Fonts open-source catalog: Mitr
+- modak — Official Google Fonts open-source catalog: Modak
+- moderustic — Official Google Fonts open-source catalog: Moderustic
+- mogra — Official Google Fonts open-source catalog: Mogra
+- mohave — Official Google Fonts open-source catalog: Mohave
+- molengo — Official Google Fonts open-source catalog: Molengo
+- molle — Official Google Fonts open-source catalog: Molle
+- monda — Official Google Fonts open-source catalog: Monda
+- monofett — Official Google Fonts open-source catalog: Monofett
+- monomakh — Official Google Fonts open-source catalog: Monomakh
+- monoton — Official Google Fonts open-source catalog: Monoton
+- montaga — Official Google Fonts open-source catalog: Montaga
+- montecarlo — Official Google Fonts open-source catalog: MonteCarlo
+- montez — Official Google Fonts open-source catalog: Montez
+- montserrat — Official Google Fonts open-source catalog: Montserrat
+- mooli — Official Google Fonts open-source catalog: Mooli
+- moul — Official Google Fonts open-source catalog: Moul
+- moulpali — Official Google Fonts open-source catalog: Moulpali
+- mukta — Official Google Fonts open-source catalog: Mukta
+- mulish — Official Google Fonts open-source catalog: Mulish
+- murecho — Official Google Fonts open-source catalog: Murecho
+- museomoderno — Official Google Fonts open-source catalog: MuseoModerno
+- mynerve — Official Google Fonts open-source catalog: Mynerve
+- nabla — Official Google Fonts open-source catalog: Nabla
+- namdhinggo — Official Google Fonts open-source catalog: Namdhinggo
+- narnoor — Official Google Fonts open-source catalog: Narnoor
+- neonderthaw — Official Google Fonts open-source catalog: Neonderthaw
+- neucha — Official Google Fonts open-source catalog: Neucha
+- neuton — Official Google Fonts open-source catalog: Neuton
+- newsreader — Official Google Fonts open-source catalog: Newsreader
+- niconne — Official Google Fonts open-source catalog: Niconne
+- niramit — Official Google Fonts open-source catalog: Niramit
+- nobile — Official Google Fonts open-source catalog: Nobile
+- nokora — Official Google Fonts open-source catalog: Nokora
+- norican — Official Google Fonts open-source catalog: Norican
+- nosifer — Official Google Fonts open-source catalog: Nosifer
+- notable — Official Google Fonts open-source catalog: Notable
+- ntr — Official Google Fonts open-source catalog: NTR
+- numans — Official Google Fonts open-source catalog: Numans
+- nunito — Official Google Fonts open-source catalog: Nunito
+- offside — Official Google Fonts open-source catalog: Offside
+- oi — Official Google Fonts open-source catalog: Oi
+- ojuju — Official Google Fonts open-source catalog: Ojuju
+- oldenburg — Official Google Fonts open-source catalog: Oldenburg
+- ole — Official Google Fonts open-source catalog: Ole
+- onest — Official Google Fonts open-source catalog: Onest
+- oranienbaum — Official Google Fonts open-source catalog: Oranienbaum
+- orbit — Official Google Fonts open-source catalog: Orbit
+- orbitron — Official Google Fonts open-source catalog: Orbitron
+- oregano — Official Google Fonts open-source catalog: Oregano
+- orienta — Official Google Fonts open-source catalog: Orienta
+- oswald — Official Google Fonts open-source catalog: Oswald
+- outfit — Official Google Fonts open-source catalog: Outfit
+- overlock — Official Google Fonts open-source catalog: Overlock
+- overpass — Official Google Fonts open-source catalog: Overpass
+- ovo — Official Google Fonts open-source catalog: Ovo
+- oxanium — Official Google Fonts open-source catalog: Oxanium
+- oxygen — Official Google Fonts open-source catalog: Oxygen
+- pacifico — Official Google Fonts open-source catalog: Pacifico
+- padauk — Official Google Fonts open-source catalog: Padauk
+- palanquin — Official Google Fonts open-source catalog: Palanquin
+- pangolin — Official Google Fonts open-source catalog: Pangolin
+- paprika — Official Google Fonts open-source catalog: Paprika
+- parastoo — Official Google Fonts open-source catalog: Parastoo
+- parisienne — Official Google Fonts open-source catalog: Parisienne
+- parkinsans — Official Google Fonts open-source catalog: Parkinsans
+- pattaya — Official Google Fonts open-source catalog: Pattaya
+- pavanam — Official Google Fonts open-source catalog: Pavanam
+- peddana — Official Google Fonts open-source catalog: Peddana
+- peralta — Official Google Fonts open-source catalog: Peralta
+- petemoss — Official Google Fonts open-source catalog: Petemoss
+- petrona — Official Google Fonts open-source catalog: Petrona
+- philosopher — Official Google Fonts open-source catalog: Philosopher
+- phudu — Official Google Fonts open-source catalog: Phudu
+- piazzolla — Official Google Fonts open-source catalog: Piazzolla
+- piedra — Official Google Fonts open-source catalog: Piedra
+- plaster — Official Google Fonts open-source catalog: Plaster
+- platypi — Official Google Fonts open-source catalog: Platypi
+- play — Official Google Fonts open-source catalog: Play
+- playball — Official Google Fonts open-source catalog: Playball
+- playfair — Official Google Fonts open-source catalog: Playfair
+- pliant — Official Google Fonts open-source catalog: Pliant
+- pochaevsk — Official Google Fonts open-source catalog: Pochaevsk
+- podkova — Official Google Fonts open-source catalog: Podkova
+- poly — Official Google Fonts open-source catalog: Poly
+- pompiere — Official Google Fonts open-source catalog: Pompiere
+- ponnala — Official Google Fonts open-source catalog: Ponnala
+- ponomar — Official Google Fonts open-source catalog: Ponomar
+- praise — Official Google Fonts open-source catalog: Praise
+- prata — Official Google Fonts open-source catalog: Prata
+- preahvihear — Official Google Fonts open-source catalog: Preahvihear
+- pridi — Official Google Fonts open-source catalog: Pridi
+- prociono — Official Google Fonts open-source catalog: Prociono
+- prompt — Official Google Fonts open-source catalog: Prompt
+- puritan — Official Google Fonts open-source catalog: Puritan
+- qahiri — Official Google Fonts open-source catalog: Qahiri
+- quando — Official Google Fonts open-source catalog: Quando
+- quantico — Official Google Fonts open-source catalog: Quantico
+- quattrocento — Official Google Fonts open-source catalog: Quattrocento
+- questrial — Official Google Fonts open-source catalog: Questrial
+- quicksand — Official Google Fonts open-source catalog: Quicksand
+- quintessential — Official Google Fonts open-source catalog: Quintessential
+- qwigley — Official Google Fonts open-source catalog: Qwigley
+- radley — Official Google Fonts open-source catalog: Radley
+- rajdhani — Official Google Fonts open-source catalog: Rajdhani
+- rakkas — Official Google Fonts open-source catalog: Rakkas
+- raleway — Official Google Fonts open-source catalog: Raleway
+- ramabhadra — Official Google Fonts open-source catalog: Ramabhadra
+- ramaraja — Official Google Fonts open-source catalog: Ramaraja
+- rambla — Official Google Fonts open-source catalog: Rambla
+- ramsina — Official Google Fonts open-source catalog: Ramsina
+- ranchers — Official Google Fonts open-source catalog: Ranchers
+- rancho — Official Google Fonts open-source catalog: Rancho
+- ranga — Official Google Fonts open-source catalog: Ranga
+- rasa — Official Google Fonts open-source catalog: Rasa
+- rationale — Official Google Fonts open-source catalog: Rationale
+- recursive — Official Google Fonts open-source catalog: Recursive
+- redacted — Official Google Fonts open-source catalog: Redacted
+- redressed — Official Google Fonts open-source catalog: Redressed
+- rem — Official Google Fonts open-source catalog: REM
+- revalia — Official Google Fonts open-source catalog: Revalia
+- ribeye — Official Google Fonts open-source catalog: Ribeye
+- righteous — Official Google Fonts open-source catalog: Righteous
+- risque — Official Google Fonts open-source catalog: Risque
+- roboto — Official Google Fonts open-source catalog: Roboto
+- rochester — Official Google Fonts open-source catalog: Rochester
+- rokkitt — Official Google Fonts open-source catalog: Rokkitt
+- romanesco — Official Google Fonts open-source catalog: Romanesco
+- rosario — Official Google Fonts open-source catalog: Rosario
+- rosarivo — Official Google Fonts open-source catalog: Rosarivo
+- rowdies — Official Google Fonts open-source catalog: Rowdies
+- rubik — Official Google Fonts open-source catalog: Rubik
+- ruda — Official Google Fonts open-source catalog: Ruda
+- rufina — Official Google Fonts open-source catalog: Rufina
+- ruluko — Official Google Fonts open-source catalog: Ruluko
+- ruthie — Official Google Fonts open-source catalog: Ruthie
+- ruwudu — Official Google Fonts open-source catalog: Ruwudu
+- rye — Official Google Fonts open-source catalog: Rye
+- sacramento — Official Google Fonts open-source catalog: Sacramento
+- sahitya — Official Google Fonts open-source catalog: Sahitya
+- sail — Official Google Fonts open-source catalog: Sail
+- saira — Official Google Fonts open-source catalog: Saira
+- salsa — Official Google Fonts open-source catalog: Salsa
+- sanchez — Official Google Fonts open-source catalog: Sanchez
+- sancreek — Official Google Fonts open-source catalog: Sancreek
+- sansation — Official Google Fonts open-source catalog: Sansation
+- sansita — Official Google Fonts open-source catalog: Sansita
+- sarabun — Official Google Fonts open-source catalog: Sarabun
+- sarala — Official Google Fonts open-source catalog: Sarala
+- sarina — Official Google Fonts open-source catalog: Sarina
+- sarpanch — Official Google Fonts open-source catalog: Sarpanch
+- satisfy — Official Google Fonts open-source catalog: Satisfy
+- savate — Official Google Fonts open-source catalog: Savate
+- scada — Official Google Fonts open-source catalog: Scada
+- schoolbell — Official Google Fonts open-source catalog: Schoolbell
+- sedan — Official Google Fonts open-source catalog: Sedan
+- sekuya — Official Google Fonts open-source catalog: Sekuya
+- sen — Official Google Fonts open-source catalog: Sen
+- sevillana — Official Google Fonts open-source catalog: Sevillana
+- shafarik — Official Google Fonts open-source catalog: Shafarik
+- shalimar — Official Google Fonts open-source catalog: Shalimar
+- shanti — Official Google Fonts open-source catalog: Shanti
+- share — Official Google Fonts open-source catalog: Share
+- shizuru — Official Google Fonts open-source catalog: Shizuru
+- shojumaru — Official Google Fonts open-source catalog: Shojumaru
+- shrikhand — Official Google Fonts open-source catalog: Shrikhand
+- sigmar — Official Google Fonts open-source catalog: Sigmar
+- signika — Official Google Fonts open-source catalog: Signika
+- silkscreen — Official Google Fonts open-source catalog: Silkscreen
+- simonetta — Official Google Fonts open-source catalog: Simonetta
+- sintony — Official Google Fonts open-source catalog: Sintony
+- sirivennela — Official Google Fonts open-source catalog: Sirivennela
+- sixtyfour — Official Google Fonts open-source catalog: Sixtyfour
+- skranji — Official Google Fonts open-source catalog: Skranji
+- slackey — Official Google Fonts open-source catalog: Slackey
+- smokum — Official Google Fonts open-source catalog: Smokum
+- smooch — Official Google Fonts open-source catalog: Smooch
+- smythe — Official Google Fonts open-source catalog: Smythe
+- sniglet — Official Google Fonts open-source catalog: Sniglet
+- snippet — Official Google Fonts open-source catalog: Snippet
+- sofia — Official Google Fonts open-source catalog: Sofia
+- solitreo — Official Google Fonts open-source catalog: Solitreo
+- solway — Official Google Fonts open-source catalog: Solway
+- sono — Official Google Fonts open-source catalog: Sono
+- sora — Official Google Fonts open-source catalog: Sora
+- spectral — Official Google Fonts open-source catalog: Spectral
+- spinnaker — Official Google Fonts open-source catalog: Spinnaker
+- spirax — Official Google Fonts open-source catalog: Spirax
+- splash — Official Google Fonts open-source catalog: Splash
+- sriracha — Official Google Fonts open-source catalog: Sriracha
+- srisakdi — Official Google Fonts open-source catalog: Srisakdi
+- staatliches — Official Google Fonts open-source catalog: Staatliches
+- stalemate — Official Google Fonts open-source catalog: Stalemate
+- stick — Official Google Fonts open-source catalog: Stick
+- stoke — Official Google Fonts open-source catalog: Stoke
+- strait — Official Google Fonts open-source catalog: Strait
+- sumana — Official Google Fonts open-source catalog: Sumana
+- sunshiney — Official Google Fonts open-source catalog: Sunshiney
+- sura — Official Google Fonts open-source catalog: Sura
+- suranna — Official Google Fonts open-source catalog: Suranna
+- suravaram — Official Google Fonts open-source catalog: Suravaram
+- suse — Official Google Fonts open-source catalog: SUSE
+- suwannaphum — Official Google Fonts open-source catalog: Suwannaphum
+- syncopate — Official Google Fonts open-source catalog: Syncopate
+- syne — Official Google Fonts open-source catalog: Syne
+- tagesschrift — Official Google Fonts open-source catalog: Tagesschrift
+- tajawal — Official Google Fonts open-source catalog: Tajawal
+- tangerine — Official Google Fonts open-source catalog: Tangerine
+- tapestry — Official Google Fonts open-source catalog: Tapestry
+- taprom — Official Google Fonts open-source catalog: Taprom
+- tauri — Official Google Fonts open-source catalog: Tauri
+- taviraj — Official Google Fonts open-source catalog: Taviraj
+- teachers — Official Google Fonts open-source catalog: Teachers
+- teko — Official Google Fonts open-source catalog: Teko
+- tektur — Official Google Fonts open-source catalog: Tektur
+- telex — Official Google Fonts open-source catalog: Telex
+- texturina — Official Google Fonts open-source catalog: Texturina
+- thasadith — Official Google Fonts open-source catalog: Thasadith
+- tienne — Official Google Fonts open-source catalog: Tienne
+- tillana — Official Google Fonts open-source catalog: Tillana
+- timmana — Official Google Fonts open-source catalog: Timmana
+- tinos — Official Google Fonts open-source catalog: Tinos
+- tiny5 — Official Google Fonts open-source catalog: Tiny5
+- tirra — Official Google Fonts open-source catalog: Tirra
+- tomorrow — Official Google Fonts open-source catalog: Tomorrow
+- tourney — Official Google Fonts open-source catalog: Tourney
+- triodion — Official Google Fonts open-source catalog: Triodion
+- trirong — Official Google Fonts open-source catalog: Trirong
+- trispace — Official Google Fonts open-source catalog: Trispace
+- trocchi — Official Google Fonts open-source catalog: Trocchi
+- trochut — Official Google Fonts open-source catalog: Trochut
+- truculenta — Official Google Fonts open-source catalog: Truculenta
+- trykker — Official Google Fonts open-source catalog: Trykker
+- tuffy — Official Google Fonts open-source catalog: Tuffy
+- ubuntu — Official Google Fonts open-source catalog: Ubuntu
+- uchen — Official Google Fonts open-source catalog: Uchen
+- ultra — Official Google Fonts open-source catalog: Ultra
+- unbounded — Official Google Fonts open-source catalog: Unbounded
+- underdog — Official Google Fonts open-source catalog: Underdog
+- unifrakturcook — Official Google Fonts open-source catalog: UnifrakturCook
+- unifrakturmaguntia — Official Google Fonts open-source catalog: UnifrakturMaguntia
+- unkempt — Official Google Fonts open-source catalog: Unkempt
+- unlock — Official Google Fonts open-source catalog: Unlock
+- unna — Official Google Fonts open-source catalog: Unna
+- uoqmunthenkhung — Official Google Fonts open-source catalog: UoqMunThenKhung
+- updock — Official Google Fonts open-source catalog: Updock
+- urbanist — Official Google Fonts open-source catalog: Urbanist
+- varela — Official Google Fonts open-source catalog: Varela
+- varta — Official Google Fonts open-source catalog: Varta
+- vazirmatn — Official Google Fonts open-source catalog: Vazirmatn
+- vibes — Official Google Fonts open-source catalog: Vibes
+- vibur — Official Google Fonts open-source catalog: Vibur
+- vidaloka — Official Google Fonts open-source catalog: Vidaloka
+- viga — Official Google Fonts open-source catalog: Viga
+- voces — Official Google Fonts open-source catalog: Voces
+- volkhov — Official Google Fonts open-source catalog: Volkhov
+- vollkorn — Official Google Fonts open-source catalog: Vollkorn
+- voltaire — Official Google Fonts open-source catalog: Voltaire
+- vt323 — Official Google Fonts open-source catalog: VT323
+- wallpoet — Official Google Fonts open-source catalog: Wallpoet
+- warnes — Official Google Fonts open-source catalog: Warnes
+- waterfall — Official Google Fonts open-source catalog: Waterfall
+- wavefont — Official Google Fonts open-source catalog: Wavefont
+- wellfleet — Official Google Fonts open-source catalog: Wellfleet
+- whisper — Official Google Fonts open-source catalog: Whisper
+- windsong — Official Google Fonts open-source catalog: WindSong
+- wittgenstein — Official Google Fonts open-source catalog: Wittgenstein
+- workbench — Official Google Fonts open-source catalog: Workbench
+- yaldevi — Official Google Fonts open-source catalog: Yaldevi
+- yantramanav — Official Google Fonts open-source catalog: Yantramanav
+- yellowtail — Official Google Fonts open-source catalog: Yellowtail
+- yesteryear — Official Google Fonts open-source catalog: Yesteryear
+- yomogi — Official Google Fonts open-source catalog: Yomogi
+- yrsa — Official Google Fonts open-source catalog: Yrsa
+- ysabeau — Official Google Fonts open-source catalog: Ysabeau
+- yuyu — Official Google Fonts open-source catalog: Yuyu
+- zain — Official Google Fonts open-source catalog: Zain
+- zeyada — Official Google Fonts open-source catalog: Zeyada
+
+## 2. Included freeware license permits commercial use
+
+- Bueno Regular Free — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Delight — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Dragon Regular Free — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- HUMANE Typeface — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Humane V.2.0 — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Lemon Regular Free — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- MONIQA_v.1.0 — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- MangoGrotesque — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Merchant Typeface — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Meshed Display — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Morganite — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- MorganitePro™ Regular Free — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Nohemi — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Origin — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Sober Regular Free — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- THUNDER — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+- Unique — Included EULA expressly permits personal and commercial projects; redistribution and font-file modification restrictions still apply
+
+## 3. Restricted, trial, test, personal-use, unlicensed, or suspect-source
+
+- ABC Diatype — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- AF Neue Berlin 1.0.1 [Personal Use] — Explicit trial, personal-use, or unlicensed marker
+- AF Sobremesa 1.0.2 [Personal Use] — Explicit trial, personal-use, or unlicensed marker
+- American Grotesk — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Arizona — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Arthemys Display TRIAL — Explicit trial, personal-use, or unlicensed marker
+- Asfalt — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Atleigh Regular Free — EULA permits personal projects only; a commercial license is required for client or commercial work
+- Bandit Trial — Explicit trial, personal-use, or unlicensed marker
+- Bingo — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Bubblegum — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Calibre — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Camera — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Camera Rounded — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Client Supplied Review — Source note identifies an unauthorized free-font download site and provides no valid production license
+- Connect — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Cowboy — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Daily — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Diatype — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Diatype Extra — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Diatype Rounded — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Die Grotesk — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Domaine — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Domaine Sans — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Doner Regular Trial — Explicit trial, personal-use, or unlicensed marker
+- Epicene — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Estragon — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Family — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Favorit — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Feijoa — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Financier — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Gaisyr — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Galapagos — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Gallique — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Geograph — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Ginto — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Ginto Rounded — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Gramercy — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Gravity — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Grow — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Heldane — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Helveesti — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Honeymoon — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Ikarus — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Karbon — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Kreol Display — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Kreol Headline — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Kreol Text — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Laica — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Maelstrom — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Manuka — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Marfa — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Marist — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Martina Plantijn — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Maxi — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Media Sans — Trial license permits testing, evaluation, comping, or presentation only; final or public work requires a non-trial license
+- Metric — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Mint_TRIAL — Explicit trial, personal-use, or unlicensed marker
+- Modern Gothic Mono Trial — Explicit trial, personal-use, or unlicensed marker
+- Modern Gothic Trial — Explicit trial, personal-use, or unlicensed marker
+- Monument Grotesk — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Multima — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- National — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- National 2 — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Campton — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Faktum — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Faktum Condensed — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Faktum Extended — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Freigeist — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Galano — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Magnat Display — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Magnat Headline — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Magnat Text — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Rational — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Rational Condensed — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Rational Mix — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Rational Mono — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neue Rational Narrow — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neurath — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Neurath Mono — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- NewPanam Skyline Trial — Explicit trial, personal-use, or unlicensed marker
+- Newzald — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Nylo — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Oracle — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Otto — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Paloma — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Pareto — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Pelikan — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Pitch — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Prophet — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Publisher — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Quaria Display — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Quaria Text — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- RB Campton Neue Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Faktum Neue Cond Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Faktum Neue Ext Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Faktum Neue Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Freigeist Neue Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Galano Neue Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Kreol Display Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Kreol Headline Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Kreol Text Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Magnat Neue Display Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Magnat Neue Headline Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Magnat Neue Text Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Multima Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Neurath Mono Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Neurath Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Nylo Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Quaria Display Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Quaria Text Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Rational Neue Condensed Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Rational Neue Mix Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Rational Neue Mono Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Rational Neue Narrow Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Rational Neue Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Spyk Display Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Spyk Text Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Stakkat Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Vitruv Display Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Vitruv Headline Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- RB Vitruv Text Unlicensed Test — Explicit trial, personal-use, or unlicensed marker
+- ROM — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Reign Regular Trial — Explicit trial, personal-use, or unlicensed marker
+- Repro — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Rhetorik Sans Trial — Explicit trial, personal-use, or unlicensed marker
+- Rhetorik Serif Trial — Explicit trial, personal-use, or unlicensed marker
+- SansPlomb_TRIAL — Explicit trial, personal-use, or unlicensed marker
+- Schengen — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Signifier — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Social — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Solar — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Spyk Display — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Spyk Text — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Stakkat — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Stefan — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Synt — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Söhne — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Test Signifier — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- The Future — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Tiempos — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Untitled — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Visual Trial — Explicit trial, personal-use, or unlicensed marker
+- Vitruv Display — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Vitruv Headline — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Vitruv Text — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Walter — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Whyte — Dinamo documentation identifies the included variable font as a trial and directs the user to purchase a license
+- Wigrum — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- Youth Trial — Explicit trial, personal-use, or unlicensed marker
+- mediasanscondensedweb — Font filenames explicitly identify these webfont files as trial versions
+- mediasansextendedweb — Font filenames explicitly identify these webfont files as trial versions
+- mediasansextracondensedweb — Font filenames explicitly identify these webfont files as trial versions
+- mediasanssemicondensedweb — Font filenames explicitly identify these webfont files as trial versions
+- mediasansweb — Font filenames explicitly identify these webfont files as trial versions
+- mxpf — Embedded font metadata or filename explicitly contains a trial, test, demo, or unlicensed marker
+- wigrumweb — Font filenames explicitly identify these webfont files as trial versions
+
+## 4. Web-only license
+
+- Untitled Sans — User confirmed license is for web use only; not licensed for desktop, print, PDF, presentation, logo, or similar production use
+
+## 5. Vendor/foundry identified; entitlement record still needed
+
+- Anek Latin Condensed — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Benton Sans — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Bodoni 72 Smallcaps — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- BrownStd — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- BrownStd Reclining — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Circular Std — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Darwin — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Fight to the Finish BB — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Fight to the Finish Rough BB — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Fjord — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Founders Grotesk — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Gotham Black — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Gotham Bold — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Gotham ExtraLight — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Gotham Light — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Gotham Medium — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Gotham Thin — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Gotham Ultra — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Graphik — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Helsinki XXL — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Helvetica Neue LT Pro — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Hubot Sans Condensed — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Instrument Sans Condensed — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Kreadon — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Material Icons Outlined — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Material Icons Round — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Material Icons Sharp — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Material Icons Two Tone — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Minion Pro Bold Cond Subhead — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Minion Pro Cond — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Minion Pro Cond Italic — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Minion Pro Italic Display — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Minion Pro Semibold Caption — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Minion Pro Semibold Italic — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Mona Sans Condensed — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Montreal — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Mozilla Headline Condensed — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Nanum Pen — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Neue Montreal — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Noir — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Proxima Nova — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Rounded Mplus 1c — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Source Serif 4 48pt — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Supermercado — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Synchrony Sans — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+- Ubuntu Sans Condensed — Identifiable vendor or foundry metadata exists, but no matched license record establishes current entitlement
+
+## 6. Legacy source; provenance confirmation needed
+
+- AF TOMMY HILFIGER — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AG Buch Condensed BQ — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AG Buch Rounded BQ — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AG Buch Stencil BQ — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AG Foreigner Light-Italic — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AG Foreigner Light-Plain — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AG Foreigner-Roman — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AG Old Face BQ — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AGLettericaCondensed — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AGOpus — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- ATPacella — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aase — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aaux ProRegular Italic SC — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aaux ProThin Italic SC — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Abacus Four SSi — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Abadi MT Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AbcFaces — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AbcPhonicsOne — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AbcTeacher — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aberration — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Abscissa — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Abuse — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Academiury-ITV — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Academy — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Accent SF — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Ache Extended — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AchillesBlur — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Acid House — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Action Jackson — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AdLibICG — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Addled — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AdineKirnberg — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Adobe Caslon Pro — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Adobe Garamond Expert — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Adobe Garamond Pro — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Adobe Jenson Pro — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Advert — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Advisor SSi — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aeos Operating — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Agenda LightCondensed — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Agendatype — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AgfaRotisSansSerifLight — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AgfaRotisSemiSerif — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AgfaRotisSemisans — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aida — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Ainsdale — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Airbrake — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AkronBoldCondensed — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Akzidenz-Grotesk BQ — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Albertina MT Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AlcuinEF — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aldine 721 Light — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aldine721 BT — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AldridgeScriptSSK — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aldus BQ — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aleksei Disturbed — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AlexonLightTab — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- All Hearts — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Alor — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Alor Narrow Condensed — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Alpha Bravo — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Alpha Dance — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Alphastep — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Alphastep i version — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Alte Schwabacher D — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Altemus CutsTwo — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Altemus Pointers — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AlyssaOpti — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AmTypEFLigIta — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AmTypewriterEF MedCond — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AmTypewriterITC — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Amasis MT Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AmbienteScriptSSK — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Ambroise Francois — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Ambrosius Aurelianus — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Ameretto Thin — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AmeriGarmnd BT — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- American UncialInitialsOpen — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- American UncialOpen — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AmericanCheese — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AmericanTypewriterCondensedBQ — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Amery — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AmintaMedium — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Amoeba — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Amped For Evil — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AmplitudeComp-Bold — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Ampoule — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Amulet — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Angie SmallCaps — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AnnaLightC — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Antiqua Light SSi — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Antique Olive T Compact — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AntiqueOlive — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AntsyPants — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Apex New — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Apple Garamond — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Apple Garamond Light — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AquilliaComicHa — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Arcade Classic — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- ArcadeAmerica — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Archangel Body — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Ardagh — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Argenta — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Argentum Black — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Arial — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Arial MT Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Army Hollow — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Arrow — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Arrow Font — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Arrr Matey BB — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Art-Nouveau 1900 — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Arta Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Arthur — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- As seen on TV Skew — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AsianWallpainting — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Aspastic — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Astalamet — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Astro-SemiBold — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Astute SSi — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Atarax P — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Atilla — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Atilla Thin — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Atlantix Display SSi — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Atlantix SSi — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Augusta Schnurkl Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AureliaEF-LightItalic — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Austere SSi — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Auto 2 — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Auto 2 LF — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Auto 2 SmCp — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Auto 3 — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Auto 3 Lt — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Auto SuggestionPlain — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Automaton Caps SSi — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Autorama — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Autotrace Five — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AvalonURWTMed — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- AvantGardeExtLitITC — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Avenir — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Avenir LT 65 Medium — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Bernhard Modern Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Century Gothic Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- DIN 1451 Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Franklin Gothic Medium — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Helvetica Neue LT Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Helvetica Neue for IBM — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- ITC American Typewriter — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- ITC American Typewriter Condens — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- ITC American Typewriter Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Minion Pro — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Minion Std — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Myriad Pro — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- P22 Franklin Caslon — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Reclaim the Streets — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Sudestada — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+- Tekton Pro — Legacy source-renamed font file with no matched license evidence; confirm its original purchase or source before production use
+
+## 7. No evidence establishing production rights
+
+- BDO Grotesk — No matched license evidence; embedded metadata does not establish production rights
+- Cult — No matched license evidence; embedded metadata does not establish production rights
+- Decay — No matched license evidence; embedded metadata does not establish production rights
+- GT America — No matched license evidence; embedded metadata does not establish production rights
+- Intelo — No matched license evidence; embedded metadata does not establish production rights
+- Material Icons — No matched license evidence; embedded metadata does not establish production rights
+- Strawford — No matched license evidence; embedded metadata does not establish production rights
+
+## 8. Unsupported legacy font artifact
+
+- DrManta — Legacy bitmap font-map file with no matched license evidence; retain for reference and keep out of production
+
+## 9. Administrative item (not a font family)
+
+- 00 Catalog & Audit — Administrative catalog folder; not a font family

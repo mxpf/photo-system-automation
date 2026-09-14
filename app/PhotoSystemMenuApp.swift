@@ -8,15 +8,9 @@ enum Settings {
 
 func preferredFont(size: CGFloat, weight: NSFont.Weight = .regular) -> NSFont {
     let names = [
-        "ABCDiatypeTrial-Regular",
-        "ABCDiatypeTrial-Medium",
-        "ABCDiatypeTrial-Bold",
-        "ABCDiatypeTrial-Heavy",
-        "Diatype",
-        "ABC Diatype",
-        "ABCDiatype",
-        "Diatype-Regular",
-        "Diatype Variable",
+        "Geist",
+        "Geist-Regular",
+        "Geist Variable",
     ]
     for name in names {
         if let font = NSFont(name: name, size: size) {
@@ -91,6 +85,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(item("Status…", action: #selector(showStatus)))
         menu.addItem(item("Open latest report", action: #selector(openLatestReport)))
         menu.addItem(.separator())
+        menu.addItem(item("Audit font intake…", action: #selector(auditFonts)))
+        menu.addItem(item("Font library status…", action: #selector(showFontStatus)))
+        menu.addItem(item("Font use guide…", action: #selector(showFontGuide)))
+        menu.addItem(item("Open font catalog", action: #selector(openFontCatalog)))
+        menu.addItem(.separator())
 
         let interval = NSMenuItem(title: "Set interval", action: nil, keyEquivalent: "")
         interval.attributedTitle = styled("Set interval", size: 14, weight: .medium)
@@ -125,7 +124,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func makeMainWindow() -> NSWindow {
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 460, height: 340),
+            contentRect: NSRect(x: 0, y: 0, width: 460, height: 390),
             styleMask: [.titled, .closable, .miniaturizable],
             backing: .buffered,
             defer: false
@@ -134,7 +133,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         window.center()
         window.isReleasedWhenClosed = false
 
-        let container = NSView(frame: NSRect(x: 0, y: 0, width: 460, height: 340))
+        let container = NSView(frame: NSRect(x: 0, y: 0, width: 460, height: 390))
         container.wantsLayer = true
         container.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
 
@@ -162,7 +161,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         let buttonGrid = NSGridView(views: [
             [button("Audit now", #selector(auditNow)), button("Status", #selector(showStatus))],
-            [button("Latest report", #selector(openLatestReport)), button("Project folder", #selector(openProject))]
+            [button("Font intake", #selector(auditFonts)), button("Font status", #selector(showFontStatus))],
+            [button("Latest report", #selector(openLatestReport)), button("Font catalog", #selector(openFontCatalog))]
         ])
         buttonGrid.rowSpacing = 10
         buttonGrid.columnSpacing = 10
@@ -324,6 +324,22 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func openLatestReport() {
         run(["latest-report", "--open"], title: "Latest photo report")
+    }
+
+    @objc private func auditFonts() {
+        run(["font-audit", "--notify"], title: "Font intake audit", notifyOnDone: true)
+    }
+
+    @objc private func showFontStatus() {
+        run(["font-status"], title: "Font library status")
+    }
+
+    @objc private func showFontGuide() {
+        run(["font-guide"], title: "Font use guide")
+    }
+
+    @objc private func openFontCatalog() {
+        run(["font-catalog", "--open"], title: "Font catalog")
     }
 
     @objc private func setInterval(_ sender: NSMenuItem) {

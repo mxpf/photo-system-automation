@@ -6,6 +6,8 @@ Photo System is built around one opinion: preservation and presentation should b
 
 kDrive holds the canonical files. Ente gives those files a humane photo-app surface. This repo sits between them as a quiet auditor, making sure new photos are noticed, compared, reported, and only promoted when the batch makes sense.
 
+It also maintains a production-safe font library in kDrive. Approved fonts stay available at the top level; trial, web-only, unlicensed, and unresolved fonts are preserved in quarantine rather than mixed into everyday production work.
+
 ## What it does
 
 Photo System watches the kDrive folders where new photos arrive, compares them against the canonical archive, and tells you what needs attention.
@@ -169,6 +171,9 @@ It provides:
 - Audit now
 - Status
 - Open latest report
+- Audit font intake
+- View font-library status
+- Open the production font catalog
 - Set background audit interval
 - Stop background audit
 - Open project folder
@@ -215,7 +220,7 @@ From Terminal:
 The build script:
 
 - compiles the native macOS app
-- embeds Diatype if the font is available locally
+- embeds the production-approved open-source Geist family when available locally
 - copies the app icon into the bundle
 - applies local ad-hoc signing
 
@@ -224,3 +229,45 @@ Output:
 ```text
 /Users/mxpf/Code/photo-system-automation/dist/Photo System.app
 ```
+
+## Font library
+
+The canonical font library lives at:
+
+```text
+/Users/mxpf/kDrive/05 Reference/Design/Typography/Fonts
+```
+
+Its working model is deliberately simple:
+
+```text
+Fonts/
+├── <production-approved family>/
+├── Specimens & Licenses/
+├── _Incoming/
+└── _Quarantine/
+    ├── Restricted/
+    └── Needs License Review/
+```
+
+Production-approved families remain easy to browse and install. Restricted and unresolved families are retained, not deleted, but kept out of the normal production path. New fonts go into `_Incoming` and are audited before filing.
+
+The catalog distinguishes open-source fonts, freeware licenses that expressly allow commercial use, trials and test builds, web-only licenses, and fonts whose purchase or provenance still needs confirmation.
+
+From Terminal:
+
+```bash
+./bin/photo-system font-status
+./bin/photo-system font-audit
+./bin/photo-system font-catalog --open
+```
+
+The scheduled photo audit also checks font intake. It remains read-only: it can inspect metadata, calculate hashes, identify likely duplicates, and create a review report, but it does not install, move, rename, overwrite, or remove incoming files.
+
+Detailed policy and audit files:
+
+- [Production font collection](docs/font-system/PRODUCTION_FONT_COLLECTION.md)
+- [Font licensing audit](docs/font-system/FONT_LICENSING_AUDIT.md)
+- `data/font-production-allowlist.txt`
+- `data/font-restricted.txt`
+- `data/font-license-review.txt`

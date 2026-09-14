@@ -6,8 +6,12 @@
   "reports_root": "/Users/mxpf/kDrive/01 Personal/Photos/Inbox/_automation/reports",
   "legacy_automation_root": "/Users/mxpf/kDrive/01 Personal/Photos/Inbox/_automation",
   "ente_full_import_package": "/Volumes/Sanctum/Ente Full Import Package - 2026-08-28",
+  "font_library_root": "/Users/mxpf/kDrive/05 Reference/Design/Typography/Fonts",
+  "font_intake": "/Users/mxpf/kDrive/05 Reference/Design/Typography/Fonts/_Incoming",
+  "font_catalog": "/Users/mxpf/Code/photo-system-automation/data/font-licensing-audit.csv",
+  "font_reports_root": "/Users/mxpf/Code/photo-system-automation/logs/font-audit",
+  "font_audit_enabled": true,
   "notify_only_when_action_needed": true,
   "allow_destructive_actions": false,
   "allow_archive_promotion_without_confirmation": false
 }
-

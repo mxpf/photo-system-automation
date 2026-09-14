@@ -15,7 +15,7 @@ if [ -f "$PROJECT_DIR/assets/PhotoSystem.icns" ]; then
 fi
 
 find "$FONTS" -type f \( -name '*.otf' -o -name '*.ttf' \) -delete
-for font in "$HOME"/Library/Fonts/ABCDiatypeTrial-*.otf "$HOME"/Library/Fonts/*Diatype*.otf "$HOME"/Library/Fonts/*Diatype*.ttf; do
+for font in "$HOME"/Library/Fonts/Geist-VariableFont_wght.ttf "$HOME"/Library/Fonts/Geist-Italic-VariableFont_wght.ttf; do
   if [ -f "$font" ]; then
     cp "$font" "$FONTS/"
   fi
